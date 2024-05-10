@@ -1,0 +1,6 @@
+@ReffffoundApi_HostAddress = http://localhost:5272
+
+GET {{ReffffoundApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
