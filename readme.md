@@ -29,7 +29,7 @@ its ffffound - long lost, now refound :-)
         3. Credentials (use token as long as user mangement not ready)
     4. Register: enter name, email, pw
     5. Login
-2. /backend
+2. /backend > https://github.com/tim-ioplus/reffffound_backend
     1. posts api: crud, list
     2. users api: crud, login 
     3. img API: (later on)
