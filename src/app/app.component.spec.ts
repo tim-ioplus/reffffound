@@ -17,13 +17,20 @@ describe('AppComponent', () => {
   it(`should have the 'refffound_frontend' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('refffound_frontend');
+    expect(app.title).toEqual('reFFFFound!');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, refffound_frontend');
+    expect(compiled.querySelector('h1')?.textContent).toContain('reFFFFOUND!');
+  });
+
+  it('should render tagline', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h3')?.textContent).toContain('Image Bookmarking');
   });
 });
