@@ -1,0 +1,33 @@
+<div *ngIf="findling">
+<p>
+Quoted from: <a href="{{ findling.url }}" target="_blank">{{ findling.url }}</a> <br>
+<small> {{ findling.image }}</small>
+</p>
+<table>
+<tr>
+    <td>
+    <img src="{{ findling.image }}" style="width:500px;height:auto;" /><br>
+    <small><a href="">FLAG THIS IMAGE</a></small>
+    </td>
+    <td style="vertical-align:top;">
+    <!-- No Contextlinks here. -->
+    </td>
+</tr>
+</table>
+<p>
+<small>Posted on: {{ findling.timestamp }} </small><br>
+saved by {{ findling.savedby }} people: {{ findling.usercontext}}
+</p>
+<br>
+<!-- <div id="contextfindlings" *ngif="contextfindlings">
+@for (image of contextfindlings; track $index) 
+{
+<div style="float:left;">
+<a href="{{image.posturl}}"><img src="{{image.url}}"></a>
+<br *ngif="$index==5">
+</div>
+} 
+</div> -->
+
+</div>
+    

@@ -1,0 +1,27 @@
+
+<div *ngif="findlings">
+    @for (item of findlings; track item) {
+      <div>
+        <p>
+        Quoted from: <a href="{{ item.url }}" target="_blank">{{ item.url }}</a> <br>
+        <small> {{ item.image }}<br>
+        {{ item.timestamp }} &nbsp; <a href="#">saved by {{ item.savedby }} people</a>
+        </small>
+      </p>
+      <table>
+        <tr>
+          <td>
+            <img src="{{ item.image }}" style="width:500px;height:auto;" /><br>
+            <small><a href="">FLAG THIS IMAGE</a></small>
+          </td>
+          <td style="vertical-align:top;">
+            <a href="{{ item.context1link }}"><img src="{{ item.context1img }}" style="with:75px;height:auto;" /></a>
+            <a href="{{ item.context2link }}"><img src="{{ item.context2img }}" /></a>
+            <a href="{{ item.context3link }}"><img src="{{ item.context3img }}" /></a>
+          </td>
+        </tr>
+      </table>
+      <br>
+    </div>
+    }
+</div>
