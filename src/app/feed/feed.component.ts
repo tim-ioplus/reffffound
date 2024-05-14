@@ -1,12 +1,13 @@
 import { Component, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Findling } from './findling';
-import { FindlingService } from './findling.service';
+import { Findling } from '../findling';
+import { FindlingService } from '../Services/findling.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'feed-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './feed.component.html'
   /*styleUrl: './feed.component.css'*/
 })

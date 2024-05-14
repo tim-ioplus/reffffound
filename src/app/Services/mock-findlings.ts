@@ -1,4 +1,4 @@
-import { Findling} from './findling';
+import { Findling} from '../findling';
 export const FINDLINGS: Findling[] = [
   //
     {

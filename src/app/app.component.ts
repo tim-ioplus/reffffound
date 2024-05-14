@@ -1,13 +1,20 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { FeedComponent } from './feed.component';
-import { FindlingDetailComponent } from './findling-detail.component';
-import { FindlingService } from './findling.service';
+import { RouterLink } from '@angular/router';
+import { RouterLinkActive } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+//
+//
+import { FeedComponent } from './feed/feed.component';
+import { FindlingComponent } from './findling/findling.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FeedComponent, FindlingDetailComponent],
+  imports: [
+    CommonModule, RouterOutlet, RouterLink, RouterLinkActive, PageNotFoundComponent, 
+    FeedComponent, FindlingComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
