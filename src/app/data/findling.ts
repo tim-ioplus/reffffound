@@ -2,6 +2,7 @@ export class Findling
 {
     id!: number
     guid!: string
+    furl!: string
     url!: string
     title!: string
     image!: string

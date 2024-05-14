@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { FINDLINGS } from './mock-findlings';
-import { Findling } from '../findling';
+import { FINDLINGS } from '../data/mock-findlings';
+import { Findling } from '../data/findling';
 
 @Injectable({
     providedIn: 'root'

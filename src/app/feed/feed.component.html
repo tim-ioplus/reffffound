@@ -10,11 +10,11 @@
       <table>
         <tr>
           <td>
-            <img src="{{ item.image }}" style="width:500px;height:auto;" /><br>
+            <a routerLink="{{ item.furl }}"><img src="{{ item.image }}" style="width:500px;height:auto;" /></a><br>
             <small><a href="">FLAG THIS IMAGE</a></small>
           </td>
           <td style="vertical-align:top;">
-            <a href="{{ item.context1link }}"><img src="{{ item.context1img }}" style="with:75px;height:auto;" /></a>
+            <a href="{{ item.context1link }}"><img src="{{ item.context1img }}" style="width:75px;height:auto;" /></a>
             <a href="{{ item.context2link }}"><img src="{{ item.context2img }}" /></a>
             <a href="{{ item.context3link }}"><img src="{{ item.context3img }}" /></a>
           </td>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Findling } from '../findling';
-import { FindlingService } from '../Services/findling.service';
+import { Findling } from '../data/findling';
+import { FindlingService } from '../services/findling.service';
 
 @Component({
   selector: 'findling-root',
