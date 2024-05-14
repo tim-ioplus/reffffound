@@ -6,7 +6,7 @@
   <div class="content">
     <div class="left-side">
       <div>
-        <img src="/assets/logo.gif" />
+        <a routerLink="/feed"><img src="/assets/logo.gif" /></a>
       </div>
       <div class="">
 
@@ -39,31 +39,7 @@
       </div>
       <div>
         <!-- Component RecentActiveUsers -->
-        @for (item of [
-          { name: 'koelleforniadreamin',link: '/user/koelleforniadreamin' ,count: '4711' },
-          { name: 'anliberant',link: '/user/anliberant' ,count: '7675' },
-          { name: 'smalltownwitch',link: '/user/smalltownwitch' ,count: '332' },
-          { name: 'hypetype',link: '/user/hypetype' ,count: '2402' },
-          { name: 'charlienoir',link: '/user/charlienoir' ,count: '513' },
-          { name: 'piltdown',link: '/user/piltdown' ,count: '2870' },
-          { name: 'jess',link: '/user/jess' ,count: '5993' },
-          { name: 'turnheim-collette',link: '/user/turnheim-collette' ,count: '1174' }, 
-          { name: 'talfad',link: '/user/talfad' ,count: '8' },
-          { name: 'er-minio',link: '/user/er-minio' ,count: '890' },
-          { name: 'jeffhamada',link: '/user/jeffhamada' ,count: '12020' },
-          { name: 'radiostaticstar',link: '/user/radiostaticstar' ,count: '399' },
-          { name: 'nacionjaguar',link: '/user/nacionjaguar' ,count: '13' },
-          { name: 'brandpowder',link: '/user/brandpowder' ,count: '11817' },
-          { name: 'visualaffection',link: '/user/visualaffection' ,count: '4145' },
-          { name: 'mrpt',link: '/user/mrpt' ,count: '29869' },
-          { name: 'newd3',link: '/user/newd3' ,count: '8551' },
-          { name: 'ricin',link: '/user/ricin' ,count: '3667' },
-          { name: 'peekasso',link: '/user/peekasso' ,count: '5003' },
-        ]; track item.name) {
-          <a class="" [href]="item.link" target="" rel="noopener" >
-            <span>{{ item.name }}</span>
-          </a> ({{item.count}}) <br>
-        }
+        <user-activity-root></user-activity-root>
       </div>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>

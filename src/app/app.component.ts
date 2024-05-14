@@ -8,13 +8,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 //
 import { FeedComponent } from './feed/feed.component';
 import { FindlingComponent } from './findling/findling.component';
+import { UserActivityComponent } from './useractivity/useractivity.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     CommonModule, RouterOutlet, RouterLink, RouterLinkActive, PageNotFoundComponent, 
-    FeedComponent, FindlingComponent],
+    FeedComponent, FindlingComponent, UserActivityComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
