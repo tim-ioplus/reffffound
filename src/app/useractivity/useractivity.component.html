@@ -1,5 +1,14 @@
-@for (item of users; track item.name) {
-          <a class="" [href]="item.link" target="" rel="noopener" >
-            <span>{{ item.name }}</span>
-          </a> ({{item.count}}) <br>
-        }
+<span style="color:#909090;font-size:10px;"><i>recent active users</i></span>
+<ul style="width: 149px;
+font-size: 10px;
+margin: 0px 0 0 1px;
+padding: 0;
+list-style-type: none;
+line-height: 18px;">
+@for (item of users; track item.name) 
+{
+  <li>
+    <a class="" [href]="item.link" target="" rel="noopener"><span>{{ item.name }}</span></a> ({{item.count}}) 
+  </li>
+}
+</ul>
