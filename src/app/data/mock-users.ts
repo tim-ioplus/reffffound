@@ -1,7 +1,7 @@
 import { User } from "./user";
 
 export const USERS: User[] = [
-    {id: 1, name: 'koelleforniadreaming', link:'/user/koelleforniadreamin', count: 9},
+    {id: 1, name: 'koelleforniadreamin', link:'/user/koelleforniadreamin', count: 9},
     {id: 2, name: 'anliberant', link:'/user/anliberant', count: 6},
     {id: 3, name: 'smalltownwitch', link:'/user/smalltownwitch', count: 3},
     {id: 4, name: 'hypetype', link:'/user/hypetype', count: 7},
