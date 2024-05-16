@@ -9,14 +9,14 @@ Quoted from: <a href="{{ findling.url }}" target="_blank">{{ findling.url }}</a>
     <img src="{{ findling.image }}" style="width:500px;height:auto;" /><br>
     <small><a href="">FLAG THIS IMAGE</a></small>
     </td>
-    <td style="vertical-align:top;">
+    <td style="vertical-align:top;width:75px;height:auto;">
     <!-- No Contextlinks here. -->
     </td>
 </tr>
 </table>
 <p>
 <small>Posted on: {{ findling.timestamp }} </small><br>
-saved by {{ findling.savedby }} people: {{ findling.usercontext}}
+saved by {{ findling.savedby }} people: {{ usercontext}}
 </p>
 <br>
 <!-- <div id="contextfindlings" *ngif="contextfindlings">

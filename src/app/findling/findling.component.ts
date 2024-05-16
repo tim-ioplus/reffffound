@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { Findling } from '../data/findling';
 import { FindlingService } from '../services/findling.service';
 
@@ -12,15 +13,21 @@ import { FindlingService } from '../services/findling.service';
 
 export class FindlingComponent 
 {
-    findling: Findling;
+    findling: Findling | undefined;
     contextfindlings: Findling[] = []; 
+    usercontext: string | undefined = '';
     //contextusers: 
 
-    constructor(private findlingService: FindlingService)
+    constructor(private findlingService: FindlingService, private activatedRoute: ActivatedRoute)
     {
-      var idx = Math.round(Math.random());
-      console.log(idx);
-      this.findling = findlingService.list()[idx];
+      let uriguid = activatedRoute.snapshot.paramMap.get('guid')?.toString();
+      console.log(uriguid);
+      if(uriguid != undefined)
+      {
+        this.findling = findlingService.get(uriguid);
+        this.usercontext = this.findling?.usercontext;
+      }
+
       console.log(this.findling);
     }
 }

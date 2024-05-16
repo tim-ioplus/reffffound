@@ -33,7 +33,7 @@ export const FINDLINGS: Findling[] = [
       context2img: 'https://web.archive.org/web/20170314074430im_/http://img-thumb.ffffound.com/static-data/assets/6/383e1d87ddbef6091ff76169c1b68e10a205cd74_xs.jpg',
       context3link: '/image/2ff3ced3b5da5378fcbb58f0afffb0df6a590cca',
       context3img: 'https://web.archive.org/web/20170314074430im_/http://img-thumb.ffffound.com/static-data/assets/6/2ff3ced3b5da5378fcbb58f0afffb0df6a590cca_xs.jpg',
-      usercontext: 'koelleforniadreamin, xyz',
+      usercontext: 'koelleforniadreamin',
       furl: '/image/' + '912wqsd45-df345643-bnghuz78-4587p4lc'
       //
     },
@@ -75,7 +75,7 @@ export const FINDLINGS: Findling[] = [
     },
     {
       id: 6,
-      guid: '1f4767c2a88dc670237f5f9923c4a814af749734',
+      guid: 'bb3a00dc6a101fb174dc2f74097e405846f8b45e',
       url: 'https://web.archive.org/web/20170427012448/http://www.inhousedesign.co.nz/inhouseblog.html',
       title: 'https://inhousedesign.co.nz/',
       image: 'https://web.archive.org/web/20170427012517im_/http://img.ffffound.com/static-data/assets/6/bb3a00dc6a101fb174dc2f74097e405846f8b45e_m.jpg',
@@ -88,7 +88,7 @@ export const FINDLINGS: Findling[] = [
       context3link: '',
       context3img: '',
       usercontext: 'koelleforniadreamin',
-      furl: '/image/' + '1f4767c2a88dc670237f5f9923c4a814af749734'
+      furl: '/image/' + 'bb3a00dc6a101fb174dc2f74097e405846f8b45e'
       //
     },
     {

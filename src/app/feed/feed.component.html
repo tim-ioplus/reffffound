@@ -4,23 +4,28 @@
         <p>
         Quoted from: <a href="{{ item.url }}" target="_blank">{{ item.url }}</a> <br>
         <small> {{ item.image }}<br>
-        {{ item.timestamp }} &nbsp; <a href="#">saved by {{ item.savedby }} people</a>
+        {{ item.timestamp }} &nbsp; <a routerLink="{{ item.furl }}">saved by {{ item.savedby }} people</a>
         </small>
       </p>
-      <table>
+      <table style="width:575px;height:auto;">
         <tr>
-          <td>
+          <td style="width:520px;height:auto;">
             <a routerLink="{{ item.furl }}"><img src="{{ item.image }}" style="width:500px;height:auto;" /></a><br>
             <small><a href="">FLAG THIS IMAGE</a></small>
           </td>
-          <td style="vertical-align:top;">
-            <a href="{{ item.context1link }}"><img src="{{ item.context1img }}" style="width:75px;height:auto;" /></a>
-            <a href="{{ item.context2link }}"><img src="{{ item.context2img }}" /></a>
+          <td style="border-left:1px solid #f0f0f0;vertical-align:top;">
+            <!-- SIMPLE FEED
+              <a href="{{ item.context1link }}"><img src="{{ item.context1img }}" style="width:75px;height:auto;" /></a>
+             <a href="{{ item.context2link }}"><img src="{{ item.context2img }}" /></a>
             <a href="{{ item.context3link }}"><img src="{{ item.context3img }}" /></a>
+            -->
           </td>
         </tr>
       </table>
       <br>
     </div>
     }
+</div>
+<div id="pagination">
+<a (click)="NextPage(1)" routerLink="/feed/1">1</a>, <a (click)="NextPage(2)" routerLink="/feed/2">2</a>, <a (click)="NextPage(3)" routerLink="/feed/3">3</a>
 </div>
