@@ -6,7 +6,8 @@
   <div class="content">
     <div class="left-side">
       <div>
-        <a routerLink="/feed"><img src="/assets/logo.gif" /></a>
+        <!--<a routerLink="/feed"><img src="/assets/logo.png" /></a>-->
+        <a routerLink="/feed"><img src="/assets/logo2.png" /></a>
       </div>
       <div class="">
 
@@ -22,27 +23,33 @@
           { title: 'iPhone', link: '/iphone' },
           { title: 'Register', link: '/register' },
         ]; track item.title) {
-          <a class="" [href]="item.link" target="_blank" rel="noopener" >
+          <a class="" onclick="alert('Coming soon');" href="" rel="noopener" >
             <span>{{ item.title }}</span>
           </a><br>
         }
       </div>
-      <div>
-        <ul class="unordered none">
-          <li><a class="" href="/privacypolicy">Privacy Policy</a></li>
-          <li><a class="" href="/termsofservice">Terms of Service</a></li>
-          <li><a class="" href="/contact">Contact</a></li>
-          <br>
-          <li><a class="" href="/changelog">Change Log</a></li>
-          <li><a class="" href="/feed">Feed</a></li>
+      <div id="menu-legal" style="font-size:10px; margin-top:20px;">
+        <ul style="margin:0;padding:0;line-height:18px;list-style-type: none;">
+          <li><a class="" onclick="alert('Coming soon');" href="">Privacy Policy</a></li>
+          <li><a class="" onclick="alert('Coming soon');" href="">Terms of Service</a></li>
+          <li><a class="" onclick="alert('Coming soon');" href="">Contact</a></li>
         </ul>
       </div>
-      <div>
+      <div id="menu-etc" style="font-size:10px; margin-top:20px;">
+        <ul style="margin:0;padding:0;line-height:18px;list-style-type: none;">
+          <li><a class="" onclick="alert('Coming soon');" href="">Change Log</a></li>
+          <li><a class="" onclick="alert('Coming soon');" href="">Feed</a></li>
+        </ul>
+      </div>
+      <div id="menu-user_activity" style="margin-top:20px;">
         <!-- Component RecentActiveUsers -->
         <user-activity-root></user-activity-root>
       </div>
+      <div id="menu-ads">
+
+      </div>
     </div>
-    <div class="divider" role="separator" aria-label="Divider"></div>
+    <!-- <div class="divider" role="separator" aria-label="Divider"></div> -->
     <div class="right-side">
       <div class="">
         <h1>{{ title }}</h1>
