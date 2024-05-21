@@ -20,6 +20,6 @@ import { UserActivityComponent } from './useractivity/useractivity.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'reFFFFound!';
+  title = 'RE: FFFFOUND!';
   claim = 'Image Bookmarking';
 }

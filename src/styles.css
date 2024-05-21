@@ -46,6 +46,11 @@
       Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
       "Segoe UI Symbol";
   }
+  h2 {
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0px 0 0 0;
+  }
 
   p {
     margin: 0;
@@ -56,8 +61,8 @@
     width: 100%;
     min-height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
     padding: 1rem;
     box-sizing: inherit;
     position: relative;
