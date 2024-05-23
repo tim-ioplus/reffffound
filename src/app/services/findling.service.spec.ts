@@ -21,6 +21,20 @@ describe('FindlingService', () => {
       expect(results.length > 1).toBeTruthy();
     })
 
+    it('should returns all findlings as json string', () => {
+      const fixture = TestBed.createComponent(FindlingService);
+      const service = fixture.componentInstance;
+      expect(service != null).toBeTruthy();
+
+      var result = service.listall();
+      expect(result != null && result.length > 20);
+      console.log(result.length);
+
+      var findlingsjson = JSON.stringify(result);
+      expect(findlingsjson != null && findlingsjson.length > 1000);
+      console.log(findlingsjson);      
+    })
+
     it('should get one result', () => {
       const fixture = TestBed.createComponent(FindlingService);
       const service = fixture.componentInstance;

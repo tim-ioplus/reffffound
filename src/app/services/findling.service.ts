@@ -33,7 +33,6 @@ export class FindlingService
         {
           results.push(element);
         }
-           
       }
       
       return results;
