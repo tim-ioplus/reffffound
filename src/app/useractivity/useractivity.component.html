@@ -8,7 +8,7 @@ line-height: 18px;">
 @for (item of users; track item.name) 
 {
   <li>
-    <a class="" [href]="item.link" target="" rel="noopener"><span>{{ item.name }}</span></a> ({{item.count}}) 
+    <a routerLink="{{ item.link }}" routerLinkActive="router-link-active" target="" rel="noopener"><span>{{ item.name }}</span></a> ({{item.count}}) 
   </li>
 }
 </ul>
