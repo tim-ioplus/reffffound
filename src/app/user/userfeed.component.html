@@ -3,15 +3,15 @@
     @for (item of findlings; track item) {
       <div>
         <p>
-        Quoted from: <a href="{{ item.url }}" target="_blank">{{ item.url }}</a> <br>
-        <small> {{ item.image }}<br>
-        {{ item.timestamp }} &nbsp; <a routerLink="{{ item.furl }}">saved by {{ item.savedby }} people</a>
+        Quoted from: <a href="{{ item.Url }}" target="_blank">{{ item.Url }}</a> <br>
+        <small> {{ item.Image }}<br>
+        {{ item.Timestamp }} &nbsp; <a routerLink="{{ item.Furl }}">saved by {{ item.Savedby }} people</a>
         </small>
       </p>
       <table style="width:575px;height:auto;">
         <tr>
           <td style="width:520px;height:auto;">
-            <a routerLink="{{ item.furl }}"><img src="{{ item.image }}" style="width:500px;height:auto;" /></a><br>
+            <a routerLink="{{ item.Furl }}"><img src="{{ item.Image }}" style="width:500px;height:auto;" /></a><br>
             <small><a href="">FLAG THIS IMAGE</a></small>
           </td>
           <td style="border-left:1px solid #f0f0f0;vertical-align:top;">

@@ -1,18 +1,18 @@
 export class Findling
 {
-    id!: number
-    guid!: string
-    furl!: string
-    url!: string
-    title!: string
-    image!: string
-    savedby!: number
-    timestamp!: string
-    usercontext!: string
-    context1link!: string
-    context1img!: string
-    context2link!: string
-    context2img!: string
-    context3link!: string
-    context3img!: string
+    Id!: number
+    Guid!: string
+    Url!: string
+    Title!: string
+    Image!: string
+    Savedby!: number
+    Timestamp!: string
+    Context1link!: string
+    Context1img!: string
+    Context2link!: string
+    Context2img!: string
+    Context3link!: string
+    Context3img!: string
+    Usercontext!: string
+    Furl!: string
 }

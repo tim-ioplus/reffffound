@@ -1,12 +1,12 @@
 <div *ngIf="findling">
 <p>
-Quoted from: <a href="{{ findling.url }}" target="_blank">{{ findling.url }}</a> <br>
-<small> {{ findling.image }}</small>
+Quoted from: <a href="{{ findling.Url }}" target="_blank">{{ findling.Url }}</a> <br>
+<small> {{ findling.Image }}</small>
 </p>
 <table>
 <tr>
     <td>
-    <img src="{{ findling.image }}" style="width:500px;height:auto;" /><br>
+    <img src="{{ findling.Image }}" style="width:500px;height:auto;" /><br>
     <small><a href="">FLAG THIS IMAGE</a></small>
     </td>
     <td style="vertical-align:top;width:75px;height:auto;">
@@ -15,8 +15,8 @@ Quoted from: <a href="{{ findling.url }}" target="_blank">{{ findling.url }}</a>
 </tr>
 </table>
 <p>
-<small>Posted on: {{ findling.timestamp }} </small><br>
-saved by {{ findling.savedby }} people: {{ usercontext}}
+<small>Posted on: {{ findling.Timestamp }} </small><br>
+saved by {{ findling.Savedby }} people: {{ usercontext}}
 </p>
 <br>
 <!-- <div id="contextfindlings" *ngif="contextfindlings">

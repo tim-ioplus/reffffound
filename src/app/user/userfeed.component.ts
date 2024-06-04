@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Findling } from '../data/findling';
 import { FindlingService } from '../services/findling.service';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'userfeed-root',
@@ -15,19 +16,24 @@ import { CommonModule } from '@angular/common';
   })
   //implements OnInit
   export class UserFeedComponent {
-      findlings: Findling[] | undefined = [];
+      findlings : Findling[];
       _service : FindlingService;
       _route: ActivatedRoute;
-      _username: string | undefined= '' ;
+      _username: string = '' ;
   
-      constructor(private findlingService: FindlingService, private activatedRoute: ActivatedRoute) 
+      constructor(private findlingService: FindlingService, private activatedRoute: ActivatedRoute,
+        private _http: HttpClient
+      ) 
       {
+        this.findlings = [];
         this._username = '';
           this._service = findlingService;
           this._route = activatedRoute;
-          this._username = this._route.snapshot.paramMap.get('name')?.toString();
+          this._username = this._route.snapshot.paramMap.get('name')!;
           
-          this.findlings = this._service.listByUser(this._username);
-          window.scrollTo(0,0);
+         this._http.get<Findling[]>('assets/findlings.json')
+          .subscribe((data) => {
+              this.findlings = data.filter(f => f.Usercontext.startsWith(this._username));
+            });
       }
   }
