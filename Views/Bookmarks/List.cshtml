@@ -1,4 +1,6 @@
-﻿@model IEnumerable<reffffound.Models.Bookmark>
+@model IEnumerable<reffffound.Models.Bookmark>
+
+<a class="nav-link text-dark" title="Bookmark an Image" asp-area="" asp-controller="Bookmarks" asp-action="Create" asp-route-username="@ViewBag.Username">Bookmark an Image</a>
 
 @foreach (var bookmark in Model)
 {

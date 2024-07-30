@@ -1,35 +1,73 @@
- reffffound
+# REffffound
 
-its ffffound - long lost, now refound :-)
+its ffffound - lomng lost, now refound :)
 
 
-1. /frontend
-    1. Masterview: index/homefeed: 
-        1. header: reffffound logo, claim
-        2. sidebar: Links zu.. 
-            1. About, Anmelden, Screensaver, IPhone, -register-
-            2. Privacy, TToS, Contact, Change Logg, Feed (rss url)
-            3. zuletzt aktice Nutzer  inkl Postanzahl: _nutzername (anzahl posts)_
-        1. feedbar
-            1. 25 posts per Page
-            2. Post Feedview Contains: Quoted Url, Image, Link zu Post, Preview Images of 3 Adjacent Posts
-    2. Detailview: /image/{id}
-        1. Quoted Url: Titel, Link
-        2. Image, max 520px breit, höhe auto
-        3. Link zu Flagging: repost Posts for Lagalities etc.
-        4. 'postred on:' Time-Stamp 
-        5. Other users saving this Image
-        6. recommendation posts: preview images of ~10 other posted images by user
-        7. recommendation Users: intro to ~10 other users, with: 
-            1. link to user
-            2. preview Images of ~5 selected posts of user linking to respective post
-    3. Create
-        1. Enter Image url
-        2. Enter Page url (when cannot be parsed from image url!)
-        3. Credentials (use token as long as user mangement not ready)
-    4. Register: enter name, email, pw
-    5. Login
-2. /backend > https://github.com/tim-ioplus/reffffound_backend
-    1. posts api: crud, list
-    2. users api: crud, login 
-    3. img API: (later on)
+## v 1..
+- *RE:ffffound logo > Y*
+- *View Feed:, mindestens 2 seitig (20stück), keine kontextbilder(?) > Y*
+	- *link 'saved by' user auf /image/:guid > Y*
+- *View Detail: einzelbild, keine kontextbilder (rechts), keine kontextuser > Y*
+- *View: Aktive Nutzer,  hardkodierten > Y*
+- *Feeddaten, Userdaten hardkodiert > Y*
+- *kontextmenus: log/register mit pop up > Y*
+- *Bonus: Userfeeds > Y*
+
+
+## v 1+..
+
+* Testhosting, ng version
+ 
+![alt text](Documentation/20240521175852.png)
+
+v..
+* ~~Unitttests für Models (zB. Timestamp parsing) > Y/2: mit TestController~~ 
+* ~~CRUDLIST fähig für Posts > 3/4 >> Update/Put NOK issue '#6/#?/#9'> Y~~
+* ~~Feeddaten, userdaten hardkodiert > Y~~
+* Guid bei post erzeugt #8 > Y
+
+
+
+v..
+* use observables > Y
+
+v..
+* ==Frontend an Api angebunden== 
+	* ==https://www.npmjs.com/package/ts-sync-request==
+	* ==https://stackoverflow.com/questions/62296092/how-to-make-synchronous-http-request-in-angular-8-or-9-make-a-request-and-wait==
+* ==Daten aus Api hardkodiert==
+* ==CORS Fehler korrigiert== 
+	d* >> how to host/deploy net api?  (any api?)
+*  ==api gehostet==
+
+v.. 
+* Api an DB (Mongo?) angebunden
+* Daten read an FE
+
+v..
+* User Auth
+  * **sicherung > simpler api key oder jwt?** >> ?
+	* apikey: festerkeyhardcorediert wird bei jedem req in die payload gelgt und im controller abgefragt
+	* jwt mit .net core:
+	* https://learn.microsoft.com/de-de/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-8.0
+
+v..
+* ==Daten write aus Front End: Posts==
+*  ==View Feed inkl Kontextbilder==
+* allq queries mit .AddPArameterWithValue >> kein stringgebaue 
+* testdaten Create()..
+
+v..
+* dynamische pagination
+* 
+
+v..
+* Pagination in userfeed
+
+v..
+* Load spinner for images
+* View Detail inkl Kontextbilder
+* View Detail inkl Kontextuser
+* self hosting Images > azure blobs? 
+* 
+

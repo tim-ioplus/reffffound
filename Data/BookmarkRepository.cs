@@ -184,12 +184,7 @@ namespace reffffound.Data
             return List("", "", page);
         }
 
-        public List<Bookmark> List(string user = "", int page = 1)
-        {
-            return List(user, "post", page);
-        }
-
-        public List<Bookmark> List(string user = "", string filter ="post", int page = 1)
+        public List<Bookmark> List(string username = "", string filter ="post", int page = 1)
         {
             var bookmarks = new List<Bookmark>();
             try
@@ -197,27 +192,29 @@ namespace reffffound.Data
                 using (SqlConnection connection = GetConnection())
                 {
                     string userFragment = "";
-                    if (!string.IsNullOrEmpty(user))
+                    if (!string.IsNullOrEmpty(username))
                     {
                         if (filter == "" || filter == "post")
                         {
-                            userFragment = " WHERE Usercontext LIKE '@user%'";
+                            userFragment = " WHERE Usercontext LIKE '" + username + "%'";
 
                         }
                         else if (filter == "found")
                         {
-                            userFragment = " WHERE Usercontext LIKE '%@user%'";
+                            userFragment = " WHERE Usercontext LIKE '%" + username + "%'";
                         }
                     }
-                    
-                    string sql = $"SELECT * FROM [dbo].[Findlings] {userFragment} ORDER BY ID desc OFFSET @skip ROWS Fetch FIRST 10 ROWS ONLY;";
 
-                    int skip = (page - 1) * 10;
+                    int skip = page > 0 ? ((page - 1) * 10) : 0;
+                    string sql = $"SELECT * FROM [dbo].[Findlings] " + userFragment + " ORDER BY ID desc OFFSET " + skip + " ROWS Fetch FIRST 10 ROWS ONLY;";                    
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@userFragment", userFragment);
-                        command.Parameters.AddWithValue("@skip", skip);
+                        /* @todo 
+                         * fix query with parameters 
+                         command.Parameters.AddWithValue("@userFragment", userFragment);
+                        command.Parameters.AddWithValue("@ skip", skip);
+                        */
 
                         connection.Open();
                         using (SqlDataReader reader = command.ExecuteReader())

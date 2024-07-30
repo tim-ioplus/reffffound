@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
@@ -26,6 +26,5 @@ else
 }
 <li class="nav-item">
         <a class="nav-link text-dark" title="Hydrate Database" asp-area="" asp-controller="Bookmarks" asp-action="Hydrate">Hydrate</a>
-        <a class="nav-link text-dark" title="Bookmark an Image" asp-area="" asp-controller="Bookmarks" asp-action="Create">Bookmark an Image</a>
 </li>
 </ul>

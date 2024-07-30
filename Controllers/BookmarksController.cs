@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Versioning;
 using reffffound.Data;
@@ -40,26 +40,29 @@ namespace reffffound.Controllers
             return View("Detail", bookmark);
         }
 
-        // GET: Bookmarks/List/User/1
-        public ActionResult List(string user, int page)
+    /*
+        // GET: Bookmarks/List/Username/1
+        public ActionResult List(string username, int page)
         {
-            var usersBookmarks = _bookmarkRepository.List(user, page);
+            var usersBookmarks = _bookmarkRepository.List(username, page);
+            ViewBag.Username = username;
+            return View("List", usersBookmarks);
+        }
+    */
+
+        // GET: Bookmarks/List/Username/filter/1
+        public ActionResult List(string username, string filter, int page)
+        {
+            var usersBookmarks = _bookmarkRepository.List(username, filter, page);
+            ViewBag.Username = username;
             return View("List", usersBookmarks);
         }
 
-        // GET: Bookmarks/List/User/postfound/1
-        public ActionResult List(string user, string filter, int page)
+        // GET: Bookmarks/Create/Username
+        public ActionResult Create(string username)
         {
-            var usersBookmarks = _bookmarkRepository.List(user, filter, page);
-            return View("List", usersBookmarks);
-        }
-
-        // GET: Bookmarks/Create
-        public ActionResult Create()
-        {
-            var bookmark = new Bookmark();
-            bookmark.Usercontext = new Random().Next(0, 3) < 2 ? "koelleforniadreamin" : "hypetype"; //;collection["User"][0];
-            return View("Create", bookmark);
+            ViewBag.Username = username;
+            return View("Create");
         }
 
 

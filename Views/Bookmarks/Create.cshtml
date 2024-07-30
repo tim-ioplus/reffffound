@@ -1,4 +1,4 @@
-﻿@model reffffound.Models.Bookmark
+@model reffffound.Models.Bookmark
 
 <h4>Bookmark</h4>
 <hr />
@@ -8,7 +8,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group" style="display:none">
                 <label asp-for="Usercontext" class="control-label"></label>
-                <input asp-for="Usercontext" class="form-control" value="@Model.Usercontext"/>
+                <input asp-for="Usercontext" class="form-control" value="@ViewBag.Username" />
                 <!-- <span asp-validation-for="" class="text-danger"></span> -->
             </div>
             <!--<div class="form-group">
@@ -92,6 +92,6 @@
 </div>
 
 <div>
-    <a asp-controller="Home" asp-action="Index">Back to List</a>
+    <a asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="1">>Back to List</a>
 </div>
 
