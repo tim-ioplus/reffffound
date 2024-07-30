@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!-- <ul class="navbar-nav"> -->
+<ul style="margin-top:10px;padding:0;line-height:12px;list-style-type: none;">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+    </li>
+    <li class="nav-item">
+        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>
+}
+<li class="nav-item">
+        <a class="nav-link text-dark" title="Hydrate Database" asp-area="" asp-controller="Bookmarks" asp-action="Hydrate">Hydrate</a>
+        <a class="nav-link text-dark" title="Bookmark an Image" asp-area="" asp-controller="Bookmarks" asp-action="Create">Bookmark an Image</a>
+</li>
+</ul>

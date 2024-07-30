@@ -1,0 +1,129 @@
+﻿@model reffffound.Models.Bookmark
+@{
+    ViewData["Title"] = "Bookmarks Details..";
+}
+<div style="margin-left:12px;padding:5px 5px 20px 50px;">
+    <p class="bookmarkheader">
+        <h4> <a href="@Html.DisplayFor(model => model.Url)" target="_blank">@Html.DisplayFor(model => model.Title) </a> </h4>
+        <h5> @Html.DisplayFor(model => model.Url) </h5>
+    </p>
+    
+    <table>
+        <tr>
+            <td>
+                <p class="bookmarkimage">
+                    <image style="max-width:500px;height:auto;" src="@Model.Image"></image><br/>
+                    <small><a style="margin-top:0px;text-size-adjust:0.75em" class="flag smalltext" asp-controller="Home" asp-action="Copyright">FLAG THIS IMAGE</a></small>
+                </p>
+            </td>
+            <td style="vertical-align:top;width:75px;height:auto;">
+                <!-- No Contextlinks here. yet.. -->
+            </td>
+        </tr>
+    </table>
+    
+    <p class="bookmarkfooter componentTodo">
+        <small> Posted on @Html.DisplayFor(model => model.Timestamp) </small><br/>
+        Saved By @Model.Savedby People: @foreach (var username in Model.Usercontext.Replace(" ", "").Split(','))
+        {
+            <a class="nav-link text-dark" style="display:inline;padding:2px;" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-user="@username" asp-route-page="1">@username</a>
+        }
+    </p>
+
+</div>
+<!-- 
+<div>
+    <h4>Bookmark</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Guid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Guid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Savedby)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Savedby)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Timestamp)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Timestamp)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Context1link)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Context1link)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Context1img)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Context1img)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Context2link)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Context2link)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Context2img)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Context2img)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Context3link)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Context3link)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Context3img)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Context3img)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Usercontext)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Usercontext)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FullUrl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FullUrl)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+-->

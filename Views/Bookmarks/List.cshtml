@@ -1,0 +1,32 @@
+﻿@model IEnumerable<reffffound.Models.Bookmark>
+
+@foreach (var bookmark in Model)
+{
+    <p class="bookmarkheader">
+        <h4> @bookmark.Title</h4>
+        <h5> @bookmark.Url</h5>
+    </p>
+    <table>
+    <tr>
+        <td>
+            <p class="bookmarkimage">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid">
+                    <image style="max-width:500px;height:auto;" src="@bookmark.Image"></image>
+                </a>
+            </p>
+        </td>
+        <td style="vertical-align:top;width:75px;height:auto;">
+            <!-- No Contextlinks here. yet.. -->
+        </td>
+    </tr>
+    </table>
+    <p class="bookmarkfooter componentTodo">
+        <small>Posted on: @bookmark.Timestamp </small><br>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid">
+        Saved By @bookmark.Savedby People</a>
+    </p>
+}
+
+
+
+
