@@ -6,7 +6,7 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />
+    <!-- <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />-->
 </head>
 <body>
     <header>
@@ -16,8 +16,9 @@
                     <td>
                         <div class="left-side">
                             <div class="">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Index">
-                                    <img src="https://raw.githubusercontent.com/tim-ioplus/reffffound/main/src/assets/logo.png" />
+                                <a class="nav-link" asp-area="" asp-controller="Bookmarks" asp-action="Index">
+                                    <!-- <img src="https://raw.githubusercontent.com/tim-ioplus/reffffound/main/src/assets/logo.png" /> -->
+                                    <img src="~/assets/logo.png" />
                                 </a>
                             </div>
                         </div>
@@ -46,19 +47,19 @@
                         </div>
                         <div id="menu-context" class="">
                             <ul style="margin:0;padding:0;line-height:12px;list-style-type: none;">
-                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Screensaver">Screensaver</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Mobile">Mobile</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                                <li class="nav-item"><a class="nav-link text" asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                                <li class="nav-item"><a class="nav-link text" asp-area="" asp-controller="Home" asp-action="Screensaver">Screensaver</a></li>
+                                <li class="nav-item"><a class="nav-link text" asp-area="" asp-controller="Home" asp-action="Mobile">Mobile</a></li>
+                                <li class="nav-item"><a class="nav-link text" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                             </ul>
                         </div>
 
                         <div id="menu-legal" style="font-size:10px; margin-top:20px;">
                             <ul style="margin:0;padding:0;line-height:6px;list-style-type: none;">                            
-                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
-                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Terms">Terms of Service</a>
-                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ChangeLog">Change Log</a>
-                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Feed">Feed</a>
+                                <li class="nav-item"><a class="nav-link text" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
+                                <li class="nav-item"><a class="nav-link text" asp-area="" asp-controller="Home" asp-action="Terms">Terms of Service</a>
+                                <li class="nav-item"><a class="nav-link text" asp-area="" asp-controller="Home" asp-action="ChangeLog">Change Log</a>
+                                <li class="nav-item"><a class="nav-link text" asp-area="" asp-controller="Home" asp-action="Feed">Feed</a>
                             </ul>
                         </div>
 

@@ -31,15 +31,28 @@ ul
 }
 a
 {
-    /*color:#0000ff;*/
-    color:#1d60d9;
+    color:#0000ff !important;
+    /*color:#1d60d9;*/
 }
 a:hover
 {
     text-decoration:underline;
 }
 
+h1 {}
+h2 {}
+h3 {}
+h4 {}
+h5 {}
+h6 {}
+
 .form-group, .form-group label, .form-group input, .form-group span
 {
     min-width: 500px;
+}
+
+.flaglink {
+  color: #9b9b9b;
+  font-size: 0.66em;
+  text-decoration:none;
 }
