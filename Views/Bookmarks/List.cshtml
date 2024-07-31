@@ -2,15 +2,21 @@
 
 <a class="nav-link text-dark" title="Bookmark an Image" asp-area="" asp-controller="Bookmarks" asp-action="Create" asp-route-username="@ViewBag.Username">Bookmark an Image</a>
 
+<div style="margin-left:12px;">
+
 @foreach (var bookmark in Model)
 {
+  <blockquote style="margin:5px 5px 20px 50px">
+
     <p class="bookmarkheader">
-        <h4> @bookmark.Title</h4>
-        <h5> @bookmark.Url</h5>
+        <i>Quoted From:</i>&nbsp;
+        <span class="headerlink"><a target="_blank" href="@bookmark.Url">@bookmark.Title</a></span><br />
+        <span class="headerurl">@bookmark.Url</span>
     </p>
+
     <table>
     <tr>
-        <td>
+        <td style="width:500px;" valign="top">
             <p class="bookmarkimage">
                 <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid">
                     <image style="max-width:500px;height:auto;" src="@bookmark.Image"></image>
@@ -27,8 +33,22 @@
         <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid">
         Saved By @bookmark.Savedby People</a>
     </p>
+  </blockquote>
 }
 
-
+</div>
+<div class="pagination">
+    <!--
+    <p>
+        ViewBag["Pagination"].ToString();
+    </p>
+    -->
+    <br />
+    <p class="pagination component">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-page="1">1</a>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-page="2">2</a>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-page="3">3</a>
+    </p>
+</div>
 
 

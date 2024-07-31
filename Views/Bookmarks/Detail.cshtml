@@ -1,19 +1,22 @@
-﻿@model reffffound.Models.Bookmark
+@model reffffound.Models.Bookmark
 @{
     ViewData["Title"] = "Bookmarks Details..";
 }
-<div style="margin-left:12px;padding:5px 5px 20px 50px;">
+<div style="margin-left:12px;">
+    <blockquote style="margin:5px 5px 20px 50px">
+
     <p class="bookmarkheader">
-        <h4> <a href="@Html.DisplayFor(model => model.Url)" target="_blank">@Html.DisplayFor(model => model.Title) </a> </h4>
-        <h5> @Html.DisplayFor(model => model.Url) </h5>
+        <i>Quoted From:</i>&nbsp;
+        <span class="headerlink"><a target="_blank" href="@Html.DisplayFor(model => model.Url)l">@Html.DisplayFor(model => model.Title)</a></span><br />
+        <span class="headerurl">@Html.DisplayFor(model => model.Url)</span>
     </p>
-    
-    <table>
-        <tr>
-            <td>
+
+        <table>
+            <tr>
+                <td style="width:500px;" valign="top">
                 <p class="bookmarkimage">
                     <image style="max-width:500px;height:auto;" src="@Model.Image"></image><br/>
-                    <small><a style="margin-top:0px;text-size-adjust:0.75em" class="flag smalltext" asp-controller="Home" asp-action="Copyright">FLAG THIS IMAGE</a></small>
+                    <small><a style="margin-top:0px;" class="flaglink" asp-controller="Home" asp-action="Copyright">FLAG THIS IMAGE</a></small>
                 </p>
             </td>
             <td style="vertical-align:top;width:75px;height:auto;">
@@ -30,6 +33,7 @@
         }
     </p>
 
+    </blockquote>
 </div>
 <!-- 
 <div>

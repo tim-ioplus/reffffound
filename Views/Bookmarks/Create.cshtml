@@ -1,6 +1,9 @@
 @model reffffound.Models.Bookmark
+<div>
+    <a asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="1">>Back to List</a>
+</div>
 
-<h4>Bookmark</h4>
+<h4>Bookmark an Image</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -91,7 +94,5 @@
     </div>
 </div>
 
-<div>
-    <a asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="1">>Back to List</a>
-</div>
+
 
