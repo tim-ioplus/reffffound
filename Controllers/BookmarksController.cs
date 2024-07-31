@@ -22,8 +22,9 @@ namespace reffffound.Controllers
         public ActionResult Index(int page = 1)
         {
             var bookmarks = _bookmarkRepository.List(page);
-            
-            //ViewBag.Pagination
+
+            // 
+            // ViewBag.Pagination
             
             return View("Index", bookmarks);
         }
@@ -84,7 +85,7 @@ namespace reffffound.Controllers
                 var bookmark = new Bookmark
                 {
                     Guid = Guid.NewGuid().ToString(),
-                    Timestamp = DateTime.Now.ToString("yyyy-mm-dd HH:mm:ss"),
+                    Timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     Url = url,
                     Title = title,
                     Image = image, 
@@ -95,7 +96,7 @@ namespace reffffound.Controllers
                 bookmark = _bookmarkRepository.AddContext(bookmark);
                 _bookmarkRepository.Create(bookmark);
                 
-                return RedirectToAction(nameof(Details),"Bookmarks", new { guid = bookmark.Guid});
+                 return RedirectToAction(nameof(Details),"Bookmarks", new { guid = bookmark.Guid});
             }
             catch
             {
