@@ -56,6 +56,7 @@ namespace reffffound.Data
             if (string.IsNullOrWhiteSpace(bookmark.Guid)) throw new NoNullAllowedException();
             if (string.IsNullOrWhiteSpace(bookmark.Url)) throw new NoNullAllowedException();
             if (string.IsNullOrWhiteSpace(bookmark.Title)) throw new NoNullAllowedException();
+            if (bookmark.Title.Length > 64) bookmark.Title = bookmark.Title.Substring(0,64);
             if (string.IsNullOrWhiteSpace(bookmark.Image)) throw new NoNullAllowedException();
             if (bookmark.Savedby == 0) bookmark.Savedby = 1;
             if (string.IsNullOrWhiteSpace(bookmark.Timestamp)) throw new NoNullAllowedException();
@@ -373,13 +374,26 @@ namespace reffffound.Data
 
         public bool Hydrate()
         {
+            bool updateTimestampToNow = true;
+
             var mockData = ListMockData();
             if (mockData == null || mockData.Count == 0) return false;
 
             foreach (var bookmark in mockData)
             {
-                var bookmarkWithContext = AddContext(bookmark);
-                Create(bookmarkWithContext);
+                var savedBookmark = Read(bookmark.Guid);
+                if(savedBookmark == null || string.IsNullOrEmpty(savedBookmark.Guid))
+                {
+                  var bookmarkWithContext = AddContext(bookmark);
+                  if(updateTimestampToNow)
+                  {
+                    var newTimestamp = DateTime.Now;            
+                    
+                    bookmarkWithContext.Timestamp = newTimestamp.ToString("yyyy-MM-dd HH:mm:ss");
+                  }
+
+                  Create(bookmarkWithContext);
+                }
             }
 
             foreach (var bookmark in mockData) 
@@ -393,6 +407,7 @@ namespace reffffound.Data
 
             return true;
         }
+
         #endregion
 
         public List<Bookmark> AddContext(List<Bookmark> bookmarks)
