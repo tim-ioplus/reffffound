@@ -10,6 +10,7 @@ using System.Security.Policy;
 using Microsoft.Data.SqlClient;
 using System.Text;
 using NuGet.Packaging.Signing;
+using NuGet.Versioning;
 
 namespace reffffound.Data
 {
@@ -116,7 +117,7 @@ namespace reffffound.Data
         {
             if (string.IsNullOrWhiteSpace(guid)) return null;
 
-            var bookmark = new Bookmark();
+            Bookmark bookmark = null;
 
             try
             {
@@ -344,6 +345,37 @@ namespace reffffound.Data
             return bookmark;
         }
 
+      private DateTime GetLastPostingTimestamp()
+      {
+          DateTime timestamp = DateTime.MinValue;
+          try
+            {
+                using (SqlConnection connection = GetConnection())
+                {
+                  String sql = string.Format("SELECT TOP 1 [Timestamp] FROM [dbo].[Findlings] ORDER BY Timestamp desc");
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string timestring = reader.GetString(0);
+                                timestamp = DateTime.ParseExact(timestring,"yyyy-MM-dd HH:mm:ss", null);
+                            }
+                        }
+                    }
+                }
+              }
+          catch(Exception ex)
+          {
+            throw ex;
+          }
+
+        return timestamp;
+      }
+
         #endregion
 
         #region Test und local data
@@ -372,41 +404,54 @@ namespace reffffound.Data
             }
         }
 
-        public bool Hydrate()
-        {
-            bool updateTimestampToNow = true;
+    /// <summary>
+    /// Adds new Sample Post Data to the Database
+    /// Keeps the Database Row Ids and Timestamps in Order
+    /// </summary>
+    /// <returns></returns>
+    public bool Hydrate()
+    {
+      bool updateTimestamp = true;
 
-            var mockData = ListMockData();
-            if (mockData == null || mockData.Count == 0) return false;
+      var mockData = ListMockData();
+      if (mockData == null || mockData.Count == 0) return false;
 
-            foreach (var bookmark in mockData)
+      var lastPostingTime = GetLastPostingTimestamp();
+      var earliestTimestamp = lastPostingTime.AddHours(1);//new DateTime(2024,7,31,13,10,42).AddHours(1);
+      var justNowTimestamp = DateTime.Now.AddHours(-1);
+      var diffTimespan = justNowTimestamp.Subtract(earliestTimestamp);
+
+      var timeSpanPerPost = diffTimespan.Divide(mockData.Count);
+      var currentTime = earliestTimestamp;
+
+      foreach (var bookmark in mockData)
+      {
+          var savedBookmark = Read(bookmark.Guid);
+          if(savedBookmark == null)
+          {
+            var bookmarkWithContext = AddContext(bookmark);
+
+            if(updateTimestamp)
             {
-                var savedBookmark = Read(bookmark.Guid);
-                if(savedBookmark == null || string.IsNullOrEmpty(savedBookmark.Guid))
-                {
-                  var bookmarkWithContext = AddContext(bookmark);
-                  if(updateTimestampToNow)
-                  {
-                    var newTimestamp = DateTime.Now;            
-                    
-                    bookmarkWithContext.Timestamp = newTimestamp.ToString("yyyy-MM-dd HH:mm:ss");
-                  }
-
-                  Create(bookmarkWithContext);
-                }
+              currentTime = currentTime.Add(timeSpanPerPost);            
+              bookmarkWithContext.Timestamp = currentTime.ToString("yyyy-MM-dd HH:mm:ss");
             }
 
-            foreach (var bookmark in mockData) 
-            {
-                var bookmarkToCheck = Read(bookmark.Guid);
-                if (bookmarkToCheck == null)
-                {
-                    return false;
-                }
-            }
+            Create(bookmarkWithContext);
+          }
+      }
 
-            return true;
-        }
+      foreach (var bookmark in mockData) 
+      {
+          var bookmarkToCheck = Read(bookmark.Guid);
+          if (bookmarkToCheck == null)
+          {
+              return false;
+          }
+      }
+
+      return true;
+    }
 
         #endregion
 

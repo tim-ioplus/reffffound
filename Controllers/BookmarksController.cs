@@ -80,7 +80,6 @@ namespace reffffound.Controllers
                 var title = collection["Title"][0];
                 var image = collection["Image"][0];
                 var usercontext = collection["Usercontext"][0];
-                //
                 
                 var bookmark = new Bookmark
                 {
