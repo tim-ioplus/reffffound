@@ -54,7 +54,7 @@ its ffffound - lomng lost, now refound :)
 * Bookmark-element im feed: add 'Quoted from', link to url
 * ~~Fix timestamp bug where current minutes saved as month~~
 * alle queries mit .AddParameterWithValue > kein stringgebaue 
-* Hydrate() -> testdaten Create()..
+* ~~Hydrate() -> testdaten Create()..~~
 
 ## v .5
 * partial views (activeUsers..) füllen
@@ -70,7 +70,9 @@ its ffffound - lomng lost, now refound :)
 
 ## v .7
 * View Detail inkl Kontextbilder
+ * 10 posts (5x2)
 * View Detail inkl Kontextuser
+ * die letzten 5 (5x1) Posts 
 
 ## v .x
 * self hosting Images > azure blobs? 

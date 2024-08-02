@@ -50,6 +50,10 @@ h6 {}
 {
     min-width: 500px;
 }
+.quoted, .headerurl
+{
+    color:#9b9b9b;
+}
 
 .flaglink {
   color: #9b9b9b;
