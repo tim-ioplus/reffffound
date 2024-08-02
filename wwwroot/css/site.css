@@ -50,13 +50,45 @@ h6 {}
 {
     min-width: 500px;
 }
+
+.container
+{
+    margin-left:0px !important;
+}
+
+.title
+{
+    margin-left:20px;
+}
+
+.assets
+{
+  margin-left: 12px;
+}
+
+.bookmarkblock {
+  margin: 5px 5px 50px 20px;
+}
+
+.headerlink {
+  font-size: 18px;
+  white-space: nowrap;
+}
 .quoted, .headerurl
 {
     color:#9b9b9b;
 }
 
-.flaglink {
-  color: #9b9b9b;
-  font-size: 0.66em;
-  text-decoration:none;
+.flaglink, .flaglink a {
+  color: #f1f1f1; /*#9b9b9b;*/
+  font-size: 0.875em;
+  text-decoration: none;
+  margin-top: 0px;
 }
+
+.posted{}
+.savedby
+{
+    display:block;
+}
+

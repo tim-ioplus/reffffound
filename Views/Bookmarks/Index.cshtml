@@ -6,10 +6,10 @@
     ViewData["Title"] = "RE: FFFFOUND! image bookmarking";
 }
 
-    <div style="margin-left:12px;">
+<div class="assets">
         @foreach (var bookmark in Model)
         {
-            <blockquote style="margin:5px 5px 20px 50px">
+        <blockquote class="bookmarkblock">
 
             <p class="bookmarkheader">
                 <span class="quoted">Quoted From:</span>&nbsp;
@@ -21,7 +21,7 @@
               <tr>
                   <td style="width:500px;" valign="top">
                       <p class="bookmarkimage">
-                          <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid">
+                          <a class="" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid">
                               <image style="max-width:500px;height:auto;" src="@bookmark.Image"></image>
                           </a>
                       </p>
@@ -30,7 +30,7 @@
                       @if (bookmark.Context1img != "" && bookmark.Context1link != "")
                       {
                           <div class="related-xs" style="margin-left:18px; margin:18px;">
-                              <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Context1link">
+                              <a class="" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Context1link">
                                   <image style="max-width:100px;height:auto;" src="@bookmark.Context1img"></image>
                               </a>
                           </div>
@@ -38,7 +38,7 @@
                       @if (bookmark.Context2img != "" && bookmark.Context2link != "")
                       {
                           <div class="related-xs" style="margin-left:18px; margin:18px;">
-                              <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Context2link">
+                              <a class="" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Context2link">
                                   <image style="max-width:100px;height:auto;" src="@bookmark.Context2img"></image>
                               </a>
                           </div>
@@ -46,7 +46,7 @@
                       @if (bookmark.Context3img != "" && bookmark.Context3link != "")
                       {
                           <div class="related-xs" style="margin-left:18px; margin:18px;">
-                              <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Context3link">
+                              <a class="" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Context3link">
                                   <image style="max-width:100px;height:auto;" src="@bookmark.Context3img"></image>
                               </a>
                           </div>
@@ -56,8 +56,8 @@
                 </table>
 
                 <p class="bookmarkfooter componentTodo">
-                    <small>Posted on: @bookmark.Timestamp </small><br>
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid">
+                    <span class="posted">Posted on: @bookmark.Timestamp </span><br>
+                    <a class="savedby" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid">
                         Saved By @bookmark.Savedby People
                     </a>
                 </p>

@@ -2,11 +2,11 @@
 
 <a class="nav-link text-dark" title="Bookmark an Image" asp-area="" asp-controller="Bookmarks" asp-action="Create" asp-route-username="@ViewBag.Username">Bookmark an Image</a>
 
-<div style="margin-left:12px;">
+<div class="assets">
 
 @foreach (var bookmark in Model)
 {
-  <blockquote style="margin:5px 5px 20px 50px">
+  <blockquote class="bookmarkblock">
 
     <p class="bookmarkheader">
         <span class="quoted">Quoted From:</span>&nbsp;
@@ -18,7 +18,7 @@
     <tr>
         <td style="width:500px;" valign="top">
             <p class="bookmarkimage">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid">
+                <a class="" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid">
                     <image style="max-width:500px;height:auto;" src="@bookmark.Image"></image>
                 </a>
             </p>
@@ -29,8 +29,8 @@
     </tr>
     </table>
     <p class="bookmarkfooter componentTodo">
-        <small>Posted on: @bookmark.Timestamp </small><br>
-        <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid">
+        <span class="posted">Posted on: @bookmark.Timestamp </span><br>
+        <a class="savedby" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid">
         Saved By @bookmark.Savedby People</a>
     </p>
   </blockquote>

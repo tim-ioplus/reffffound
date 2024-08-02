@@ -2,8 +2,8 @@
 @{
     ViewData["Title"] = "Bookmarks Details..";
 }
-<div style="margin-left:12px;">
-    <blockquote style="margin:5px 5px 20px 50px">
+<div class="assets">
+    <blockquote class="bookmarkblock">
 
       <p class="bookmarkheader">
         <span class="quoted">Quoted From:</span>&nbsp;
@@ -16,7 +16,7 @@
                 <td style="width:500px;" valign="top">
                 <p class="bookmarkimage">
                     <image style="max-width:500px;height:auto;" src="@Model.Image"></image><br/>
-                    <small><a style="margin-top:0px;" class="flaglink" asp-controller="Home" asp-action="Copyright">FLAG THIS IMAGE</a></small>
+                    <span class="flaglink"><a class="" asp-controller="Home" asp-action="Copyright">Flag this image</a></span>
                 </p>
             </td>
             <td style="vertical-align:top;width:75px;height:auto;">
@@ -26,7 +26,7 @@
     </table>
     
     <p class="bookmarkfooter componentTodo">
-        <small> Posted on @Html.DisplayFor(model => model.Timestamp) </small><br/>
+        <span class="posted"> Posted on @Html.DisplayFor(model => model.Timestamp) </span><br/>
         Saved By @Model.Savedby People: @foreach (var username in Model.Usercontext.Replace(" ", "").Split(','))
         {
             <a class="nav-link text-dark" style="display:inline;padding:2px;" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-user="@username" asp-route-page="1">@username</a>
