@@ -92,3 +92,13 @@ h6 {}
     display:block;
 }
 
+/* Page: Change Log */
+.versionbullets{
+    list-style-type:disc;
+    padding-left:12px;
+}
+
+.versionbullets li {
+
+}
+

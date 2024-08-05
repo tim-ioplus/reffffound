@@ -1,43 +1,58 @@
 @{
     ViewData["Title"] = "RE: FFFFOUND! image bookmarking";
 }
-
-<div class="text-center">
-    <h3 class="display-4">Change Log</h3>
-    <p>
+<div class="assets">
+  <h3 class="">Change Log</h3>
+  <!-- -->
+  <blockquote class="bookmarkblock">
+    <p class="bookmarkheader">
       <h4 class="">Version 0.5</h4>
-      <ul>
+      <ul class="versionbullets">
             <li style="background-color:gold;"> WHATS NEXT?! :)</li>
-            <li style="background-color:lightgreen;">feed navigation: previous- & next- buttons without 'full-pagination'</li>
-            <ul>
-                <li style="background-color:lightgreen;">include 'Last Post' logic to mark the end of feed</li>
-                <li style="background-color:lightgreen;">add variety to Last Post to create a funny moment and communicate my crafty intentions</li>
+      </<ul>
+    </p>
+  </blockquote>
+</ul>
+  <!-- -->
+  <blockquote class="bookmarkblock">
+    <p class="bookmarkheader">
+      <h4 class="">Version 0.5</h4>
+      <ul class="versionbullets">
+            <li> Fix layout for Info pages (ChangeLog,..) </li>
+            <li>feed navigation: previous- & next- buttons without 'full-pagination'</li>
+                <ul class="versionbullets">
+                <li>include 'Last Post' logic to mark the end of feed</li>
+                <li>add variety to Last Post to create a funny moment and communicate my crafty intentions</li>
             </ul>
-            <li style="background-color:lightgreen;">connection string & credentials from appsettings.json, cleanup for gh publishing</li>
-            ~feed navigation: previous- & next- buttons without 'full-pagination'~~
-            
+            <li>connection string & credentials from appsettings.json, cleanup for gh publishing</li            
         </ul>
     </p>
-    <p>
-        <h4 class="display-4">Version 0.4 - 02.08.2024 </h4>
-        <ul>
-          <li>fix Data write from Front End on Posts</li>
-          <li>Index Feed inkl Kontextbilder</li>
-          <li>Create Bookmark mit username via ViewBags</li>
-          <li>incl header logo bmp</li>
-          <li>fix css</li>
-          <ul><li>a:color</li>
-          <li>font-type > serifiger</li>
-          <li>link zu Flag Image more subtle</li>
+  </blockquote>
+  <blockquote class="bookmarkblock">
+      <p class="bookmarkheader">
+      <h4 style="background-color:lightgreen;">Version 0.4 - 02.08.2024 </h4>
+      <ul class="versionbullets">
+        <li>fix Data write from Front End on Posts</li>
+        <li>Index Feed inkl Kontextbilder</li>
+        <li>Create Bookmark mit username via ViewBags</li>
+        <li>incl header logo bmp</li>
+        <li>fix css</li>
+          <ul class="versionbullets">
+          <li>use similar coloours for links</li>
+          <li>font-type: chosse more 'serfic' font</li>
+          <li>more subtle link styling to Flag Image Method</li>
           <li>fix blockquote position</li>
           <li>fix container position to left</li>
           </ul>
-          <li>text: fix title</li>
-          <li>Bookmark-element im feed: add 'Quoted from', link to url</li>
-          <li>Fix timestamp bug where current minutes saved as month</li>
-          <li>Hydrate() -> testdaten Create()..</li>
-          <li>Hydrate()</li>
-          <li>generate timestamp from wihtin last 3 months and overwrite timestamps</li>
+        <li>Text: fix title texts</li>
+        <li>Bookmark-element in feed view: add 'Quoted from', link to url</li>
+        <li>Fix timestamp bug where current minutes saved as month</li>
+        <li>Testdata</li>
+        <ul class="versionbullets">
+          <li>load testdata from static json file and use Create()</li>
+          <li>ensure timestamp and database id consistency: generate timestamp from wihtin last 3 months and overwrite timestamps</li>
         </ul>
-    </p>
+      </ul>
+      </p>
+  </blockquote>
 </div>
