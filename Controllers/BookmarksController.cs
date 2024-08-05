@@ -12,11 +12,12 @@ namespace reffffound.Controllers
         private BookmarkRepository _bookmarkRepository;
         private UserRepository _userRepository;
 
-        public BookmarksController(ApplicationDbContext context)
+        public BookmarksController(ApplicationDbContext context, IConfiguration configuration)
         {
             _context = context;
-            _bookmarkRepository = new BookmarkRepository(_context);
-            _userRepository = new UserRepository(_context);
+            var connectionString = configuration["ConnectionStrings:DataConnection"] ?? "";
+            _bookmarkRepository = new BookmarkRepository(_context, connectionString);
+            _userRepository = new UserRepository(_context, connectionString);
         }
         // GET: Bookmarks/index/1
         public ActionResult Index(int page = 1)

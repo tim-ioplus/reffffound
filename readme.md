@@ -42,7 +42,7 @@ its ffffound - long lost, now refound :)
 * ~~Api an DB (Mongo? > SQL) angebunden~~
 * ~~Daten read an FE~~
 
-### v .4 
+### v .4 ==ok==
 * ~~Daten write aus Front End: Posts~~
 *  ~~Index Feed inkl Kontextbilder~~
 * ~~Create Bookmark mit username via ViewBags~~
@@ -61,17 +61,18 @@ its ffffound - long lost, now refound :)
   * ~~generate timestamp from wihtin last 3 months and overwrite timestamps~~
 
  
- 
 ### v .41
 
+* ~~connection string & credentials in appsettings.json~~
 * feed navigation: previous- & next- buttons without 'full-pagination'
 * alle queries mit .AddParameterWithValue > kein stringgebaue 
-* differenz blockquote position index & list
+* css: difference in blockquote position index & list
 * static float menu
  * feed: top(t)
  * userpage: top (t), Post(p)
  * adminpage: plus hydrate(h)
-   
+
+
 ### v .5
 * partial views (activeUsers..) füllen
   * fill dbo.ContentUsers with testusers

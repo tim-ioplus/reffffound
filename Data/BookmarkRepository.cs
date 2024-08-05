@@ -11,27 +11,28 @@ using Microsoft.Data.SqlClient;
 using System.Text;
 using NuGet.Packaging.Signing;
 using NuGet.Versioning;
+using Microsoft.IdentityModel.Protocols.Configuration;
 
 namespace reffffound.Data
 {
     public class BookmarkRepository
     {
         public string ContentRootPath = "";
-        private readonly IConfiguration _configuration;
+        private string _connectionString;
         private ApplicationDbContext _context;
         private SqlConnection _DbConnection;
 
-        public BookmarkRepository(ApplicationDbContext context)
+        public BookmarkRepository(ApplicationDbContext context, string connectionString)
         {
             _context = context;
-            //_DbConnection = GetConnection();
+            _connectionString = connectionString;
         }
 
 
         private SqlConnection GetConnection()
         {
-            var connectionString = _configuration != null ? _configuration["ConnectionStrings:SqlConnection"]
-                    : "Server=DESKTOP-JQTJ275\\SQLEXPRESS;Database=reffffound;TrustedConnection=true;MultipleActiveResultSets=true;User=appsu;Password=appsu3000";
+            var connectionString = _connectionString != null ? _connectionString : "";
+
             var _settings = new Dictionary<string, string>();
 
             foreach (string setting in connectionString.Split(";"))
@@ -41,10 +42,10 @@ namespace reffffound.Data
             }
 
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = _settings["Server"]; //"DESKTOP-JQTJ275\\SQLEXPRESS";
-            builder.InitialCatalog = _settings["Database"]; //"reffffound";
-            builder.UserID = _settings["User"]; //"appsu";
-            builder.Password = _settings["Password"]; //"appsu3000";
+            builder.DataSource = _settings["Server"];
+            builder.InitialCatalog = _settings["Database"];
+            builder.UserID = _settings["User"];
+            builder.Password = _settings["Password"];
             
             builder.MultipleActiveResultSets = bool.Parse(_settings["MultipleActiveResultSets"]); //true
             builder.TrustServerCertificate = bool.Parse(_settings["TrustedConnection"]); //true;

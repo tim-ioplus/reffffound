@@ -1,4 +1,4 @@
-﻿using Azure.Core.Serialization;
+using Azure.Core.Serialization;
 using reffffound.Models;
 using System.Text.Json;
 using System;
@@ -22,7 +22,7 @@ namespace reffffound.Data
         private ApplicationDbContext _context;
         private SqlConnection _DbConnection;
 
-        public UserRepository(ApplicationDbContext context)
+        public UserRepository(ApplicationDbContext context, string connectionString)
         {
             _context = context;
             //_DbConnection = GetConnection();
