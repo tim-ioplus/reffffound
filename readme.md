@@ -61,10 +61,12 @@ its ffffound - long lost, now refound :)
   * ~~generate timestamp from wihtin last 3 months and overwrite timestamps~~
 
  
-### v .41
+### v .5
 
 * ~~connection string & credentials in appsettings.json~~
-* feed navigation: previous- & next- buttons without 'full-pagination'
+* ~~feed navigation: previous- & next- buttons without 'full-pagination'~~
+ * ~~include 'Last Post' logic to mark the end of feed~~
+ * ~~add variety to Last Post to create a funny moment and communicate my crafty intentions~~ 
 * alle queries mit .AddParameterWithValue > kein stringgebaue 
 * css: difference in blockquote position index & list
 * static float menu
@@ -73,24 +75,19 @@ its ffffound - long lost, now refound :)
  * adminpage: plus hydrate(h)
 
 
-### v .5
+### v 0.6 - 0.9
 * partial views (activeUsers..) füllen
   * fill dbo.ContentUsers with testusers
   * on Bookmarks/Create increase Count property for posting Users by 1 
 * dynamische pagination
 * in indexfeed
 * in userfeed
-
-### v .6
 * in 'Bookmarks/Create' fill Title Field automaticlly > UrlField.onChange() request 
 * Load spinner for images
-
-### v .7
 * View Detail inkl Kontextbilder
  * 10 posts (5x2)
 * View Detail inkl Kontextuser
- * die letzten 5 (5x1) Posts 
-
+ * die letzten 5 (5x1) Posts
 
 
 ## v x.y
