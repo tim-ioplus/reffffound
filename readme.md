@@ -67,8 +67,10 @@ its ffffound - long lost, now refound :)
 * ~~feed navigation: previous- & next- buttons without 'full-pagination'~~
  * ~~include 'Last Post' logic to mark the end of feed~~
  * ~~add variety to Last Post to create a funny moment and communicate my crafty intentions~~ 
+* ~~update end-of-feed View as own errror view. incl links to prev/next feed pages~~
+* ~~css: difference in blockquote position index & list~~
+* ~~css: fix txt position for current pagenum in pagination~~
 * alle queries mit .AddParameterWithValue > kein stringgebaue 
-* css: difference in blockquote position index & list
 * static float menu
  * feed: top(t)
  * userpage: top (t), Post(p)
@@ -76,12 +78,10 @@ its ffffound - long lost, now refound :)
 
 
 ### v 0.6 - 0.9
+
 * partial views (activeUsers..) füllen
   * fill dbo.ContentUsers with testusers
-  * on Bookmarks/Create increase Count property for posting Users by 1 
-* dynamische pagination
-* in indexfeed
-* in userfeed
+  * on Bookmarks/Create increase Count property for posting Users by 
 * in 'Bookmarks/Create' fill Title Field automaticlly > UrlField.onChange() request 
 * Load spinner for images
 * View Detail inkl Kontextbilder
@@ -101,3 +101,4 @@ its ffffound - long lost, now refound :)
 	* jwt mit .net core:
 	* https://learn.microsoft.com/de-de/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-8.0
 * Save bookmark for logged in users
+* dynamische pagination: in indexfeed, in userfeed
