@@ -101,4 +101,11 @@ h6 {}
 .versionbullets li {
 
 }
-
+.versionwip
+{
+    background-color:gold;
+}
+.versionfinished
+{
+    background-color:lightgreen;
+}
