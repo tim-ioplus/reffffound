@@ -70,7 +70,8 @@ its ffffound - long lost, now refound :)
 * ~~update end-of-feed View as own errror view. incl links to prev/next feed pages~~
 * ~~css: difference in blockquote position index & list~~
 * ~~css: fix txt position for current pagenum in pagination~~
-* alle queries mit .AddParameterWithValue > kein stringgebaue 
+* ~~all Database - queries mit .AddParameterWithValue > kein stringgebaue~~
+* ~~Fix Bug in 'Update()' Method where bookmark.Title is being overwritten with Value from bookmark.Guid*~~
 * static float menu
  * feed: top(t)
  * userpage: top (t), Post(p)

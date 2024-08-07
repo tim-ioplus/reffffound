@@ -149,7 +149,7 @@ namespace reffffound.Data
       return bookmark;
     }
 
-    public List<Bookmark> ReadThreeContextBookmarks(string user, string timestamp)
+    public List<Bookmark> ReadThreeContextBookmarks(string username, string timestamp)
     {
       var bookmarks = new List<Bookmark>();
 
@@ -157,9 +157,12 @@ namespace reffffound.Data
       {
         using (SqlConnection connection = GetConnection())
         {
-          var sql = $"SELECT TOP 3 Guid, Image FROM [dbo].[Findlings] WHERE Usercontext LIKE '" + user + "%' AND timestamp < '" + timestamp + "' ORDER BY RAND() ";
+          var sql = $"SELECT TOP 3 Guid, Image FROM [dbo].[Findlings] WHERE Usercontext LIKE @username% AND timestamp < @timestamp ORDER BY RAND() ";
           using (SqlCommand command = new SqlCommand(sql, connection))
           {
+            command.Parameters.AddWithValue("@username", username);
+            command.Parameters.AddWithValue("@timestamp", timestamp);
+
             connection.Open();
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -199,26 +202,23 @@ namespace reffffound.Data
           {
             if (filter == "" || filter == "post")
             {
-              userFragment = " WHERE Usercontext LIKE '" + username + "%'";
+              userFragment = " WHERE Usercontext LIKE @username%";
 
             }
             else if (filter == "found")
             {
-              userFragment = " WHERE Usercontext LIKE '%" + username + "%'";
+              userFragment = " WHERE Usercontext LIKE %@username";
             }
           }
 
           int skip = page > 0 ? ((page - 1) * 10) : 0;
-          string sql = $"SELECT * FROM [dbo].[Findlings] " + userFragment + " ORDER BY ID desc OFFSET " + skip + " ROWS Fetch FIRST 10 ROWS ONLY;";
+          string sql = $"SELECT * FROM [dbo].[Findlings] " + userFragment + " ORDER BY ID desc OFFSET @skip ROWS Fetch FIRST 10 ROWS ONLY;";
 
           using (SqlCommand command = new SqlCommand(sql, connection))
           {
-            /* @todo 
-             * fix query with parameters 
-             command.Parameters.AddWithValue("@userFragment", userFragment);
-            command.Parameters.AddWithValue("@ skip", skip);
-            */
-
+            command.Parameters.AddWithValue("@username", username);
+            command.Parameters.AddWithValue("@skip", skip);
+            
             connection.Open();
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -246,29 +246,42 @@ namespace reffffound.Data
         using (SqlConnection connection = GetConnection())
         {
           string sql = $@"UPDATE [dbo].[Findlings]
-                   SET [Guid] = {bookmark.Guid}
-                      ,[Url] = {bookmark.Url}
-                      ,[Title] = {bookmark.Guid}
-                      ,[Image] = {bookmark.Image}
-                      ,[SavedBy] = {bookmark.Savedby}
-                      ,[Timestamp] = {bookmark.Timestamp}
-                      ,[Usercontext] = {bookmark.Usercontext}
-                      ,[FullURL] = {bookmark.FullUrl}
-                      ,[Context1link] = {bookmark.Context1link}
-                      ,[Context1Img] = {bookmark.Context1img}
-                      ,[Context2link] = {bookmark.Context2link}
-                      ,[Context2Img] = {bookmark.Context2img}
-                      ,[Context3link] = {bookmark.Context3link}
-                      ,[Context3Img] = {bookmark.Context3img}
-                      WHERE [Id] = {bookmark.Id},";
+                   SET [Guid] = @guid
+                      ,[Url] = @url
+                      ,[Title] = @title
+                      ,[Image] = @image
+                      ,[SavedBy] = @savedBy
+                      ,[Timestamp] = @timestamp
+                      ,[Usercontext] = @usercontext
+                      ,[FullURL] = @fullUrl
+                      ,[Context1link] = @context1link
+                      ,[Context1Img] = @context1img
+                      ,[Context2link] = @context2link
+                      ,[Context2Img] = @context2img
+                      ,[Context3link] = @ontext3link
+                      ,[Context3Img] = @ontext3img
+                      WHERE [Id] = @id";
 
           using (SqlCommand command = new SqlCommand(sql, connection))
           {
+            command.Parameters.AddWithValue("@guid", bookmark.Guid);
+            command.Parameters.AddWithValue("@url", bookmark.Url);
+            command.Parameters.AddWithValue("@title", bookmark.Title);
+            command.Parameters.AddWithValue("@image", bookmark.Image);
+            command.Parameters.AddWithValue("@savedBy", bookmark.Savedby);
+            command.Parameters.AddWithValue("@timestamp", bookmark.Timestamp);
+            command.Parameters.AddWithValue("@usercontext", bookmark.Usercontext);
+            command.Parameters.AddWithValue("@fullUrl", bookmark.FullUrl ?? "");
+            command.Parameters.AddWithValue("@context1link", bookmark.Context1link ?? "");
+            command.Parameters.AddWithValue("@context1img", bookmark.Context1img ?? "");
+            command.Parameters.AddWithValue("@context2link", bookmark.Context2link ?? "");
+            command.Parameters.AddWithValue("@context2img", bookmark.Context2img ?? "");
+            command.Parameters.AddWithValue("@context3link", bookmark.Context3link ?? "");
+            command.Parameters.AddWithValue("@context3img", bookmark.Context3img ?? "");
+            command.Parameters.AddWithValue("@id", bookmark.Id);
+
             connection.Open();
-            using (SqlDataReader reader = command.ExecuteReader())
-            {
-              // Updated
-            }
+            command.ExecuteNonQuery();
           }
         }
       }
@@ -286,15 +299,14 @@ namespace reffffound.Data
       {
         using (SqlConnection connection = GetConnection())
         {
-          String sql = string.Format("Delete FROM dbo.Findlings Where Id = {0}", id);
+          String sql = string.Format("Delete FROM dbo.Findlings Where Id = @id");
 
           using (SqlCommand command = new SqlCommand(sql, connection))
           {
+            command.Parameters.AddWithValue("@id", bookmark.Id);
+
             connection.Open();
-            using (SqlDataReader reader = command.ExecuteReader())
-            {
-              // Deleted
-            }
+            command.ExecuteNonQuery();
           }
         }
       }
