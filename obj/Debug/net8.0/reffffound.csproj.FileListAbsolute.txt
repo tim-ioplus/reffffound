@@ -528,3 +528,5 @@ C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\refint\reffffound.dll
 C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\reffffound.pdb
 C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\reffffound.genruntimeconfig.cache
 C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\ref\reffffound.dll
+C:\Users\T14\Documents\GitHub\reffffound\bin\Debug\net8.0\Assets\logo.png
+C:\Users\T14\Documents\GitHub\reffffound\bin\Debug\net8.0\wwwroot\assets\logo.png
