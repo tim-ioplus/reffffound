@@ -29,12 +29,19 @@
         <span class="posted"> Posted on @Html.DisplayFor(model => model.Timestamp) </span><br/>
         Saved By @Model.Savedby People: @foreach (var username in Model.Usercontext.Replace(" ", "").Split(','))
         {
-            <a class="nav-link text-dark" style="display:inline;padding:2px;" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-user="@username" asp-route-page="1">@username</a>
+            <a class="nav-link text-dark" style="display:inline;padding:2px;" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@username" asp-route-filter="post" asp-route-page="1">@username</a>
         }
     </p>
 
     </blockquote>
 </div>
+
+<div class="staticmenu">
+	<a asp-controller="Bookmarks" asp-action="Edit" asp-route-guid="@Model.Guid" asp-route-username="@ViewBag.Username">Edit (e)</a>|
+	<a asp-controller="Bookmarks" asp-action="Delete" asp-route-guid="@Model.Guid" asp-route-username="@ViewBag.Username">Delete (d)</a>
+</div>
+
+
 <!-- 
 <div>
     <h4>Bookmark</h4>

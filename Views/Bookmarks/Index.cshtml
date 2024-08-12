@@ -71,3 +71,10 @@
 		<a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Index" asp-route-page="@ViewBag.NextPage">Next</a>
 	</p>
 </div>
+
+<div class="staticmenu">
+	<a class="inactive" href="javascript:void(0);" onmousedown="" onclick="return false;">tile(v)</a>
+	<a class="inactive" href="javascript:void(0);" onmousedown="" onclick="return false;">top(t)</a>
+	<a class="" asp-area="" asp-controller="Bookmarks" asp-action="Index" asp-route-page="@ViewBag.PreviousPage">previous (p)</a>
+	<a class="" asp-area="" asp-controller="Bookmarks" asp-action="Index" asp-route-page="@ViewBag.NextPage">next (n)</a>
+</div>
