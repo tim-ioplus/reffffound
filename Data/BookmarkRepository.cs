@@ -197,26 +197,27 @@ namespace reffffound.Data
       {
         using (SqlConnection connection = GetConnection())
         {
-          string userFragment = "";
+          string sql = "";
+          int skip = page > 0 ? ((page - 1) * 10) : 0;
           if (!string.IsNullOrEmpty(username))
           {
             if (filter == "" || filter == "post")
             {
-              userFragment = " WHERE Usercontext LIKE @username%";
+              sql = "SELECT * FROM [dbo].[Findlings] WHERE Usercontext LIKE '" + username + "%' ORDER BY ID desc OFFSET @skip ROWS Fetch FIRST 10 ROWS ONLY;";
 
             }
             else if (filter == "found")
             {
-              userFragment = " WHERE Usercontext LIKE %@username";
+              sql = "SELECT * FROM [dbo].[Findlings] WHERE Usercontext LIKE '" + username + "%' ORDER  BY ID desc OFFSET @skip ROWS Fetch FIRST 10 ROWS ONLY;";
             }
           }
-
-          int skip = page > 0 ? ((page - 1) * 10) : 0;
-          string sql = $"SELECT * FROM [dbo].[Findlings] " + userFragment + " ORDER BY ID desc OFFSET @skip ROWS Fetch FIRST 10 ROWS ONLY;";
+          else
+          {
+            sql = "SELECT * FROM [dbo].[Findlings] ORDER  BY ID desc OFFSET @skip ROWS Fetch FIRST 10 ROWS ONLY;";
+          }
 
           using (SqlCommand command = new SqlCommand(sql, connection))
           {
-            command.Parameters.AddWithValue("@username", username);
             command.Parameters.AddWithValue("@skip", skip);
             
             connection.Open();
