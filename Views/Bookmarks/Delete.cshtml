@@ -1,0 +1,131 @@
+@model reffffound.Models.Bookmark
+@{
+    ViewData["Title"] = "Bookmarks Details..";
+}
+<h4>Delete Bookmark</h4>
+<h5>@Model.Guid</h5>
+<hr />
+<div class="assets">
+    <blockquote class="bookmarkblock">
+
+      <p class="bookmarkheader">
+        <span class="quoted">Quoted From:</span>&nbsp;
+        <span class="headerlink"><a target="_blank" href="@Html.DisplayFor(model => model.Url)l">@Html.DisplayFor(model => model.Title)</a></span><br />
+        <span class="headerurl">@Html.DisplayFor(model => model.Url)</span>
+    </p>
+
+        <table>
+            <tr>
+                <td style="width:500px;" valign="top">
+                <p class="bookmarkimage">
+                    <image style="max-width:500px;height:auto;" src="@Model.Image"></image><br/>
+                    <span class="flaglink"><a class="" asp-controller="Home" asp-action="Copyright">Flag this image</a></span>
+                </p>
+            </td>
+            <td style="vertical-align:top;width:75px;height:auto;">
+                <!-- No Contextlinks here. yet.. -->
+            </td>
+        </tr>
+    </table>
+    
+    <p class="bookmarkfooter componentTodo">
+        <span class="posted"> Posted on @Html.DisplayFor(model => model.Timestamp) </span><br/>
+        Saved By @Model.Savedby People: @foreach (var username in Model.Usercontext.Replace(" ", "").Split(','))
+        {
+            <a class="nav-link text-dark" style="display:inline;padding:2px;" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-user="@username" asp-route-page="1">@username</a>
+        }
+    </p>
+
+    </blockquote>
+</div>
+<form asp-action="Delete">
+	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+	<div class="form-group" style="display:none">
+		<label asp-for="Usercontext" class="control-label"></label>
+		<input asp-for="Usercontext" class="form-control" value="@ViewBag.Username" />
+		<!-- <span asp-validation-for="" class="text-danger"></span> -->
+	</div>
+	<!--<div class="form-group">
+		<label asp-for="Guid" class="control-label"></label>
+		<input asp-for="Guid" class="form-control" />
+		<span asp-validation-for="Guid" class="text-danger"></span>
+	</div>
+	-->
+	<div class="form-group" style="display:none">
+		<label asp-for="Url" class="control-label"></label>
+		<input asp-for="Url" class="form-control" value="@Model.Url" />
+		<span asp-validation-for="Url" class="text-danger"></span>
+	</div>
+	<div class="form-group" style="display:none">
+		<label asp-for="Title" class="control-label"></label>
+		<input asp-for="Title" class="form-control" value="@Model.Title" />
+		<span asp-validation-for="Title" class="text-danger"></span>
+	</div>
+	<div class="form-group" style="display:none">
+		<label asp-for="Image" class="control-label"></label>
+		<input asp-for="Image" class="form-control" value="@Model.Image" />
+		<span asp-validation-for="Image" class="text-danger"></span>
+	</div>
+	<!--
+	<div class="form-group">
+		<label asp-for="Savedby" class="control-label"></label>
+		<input asp-for="Savedby" class="form-control" />
+		<span asp-validation-for="Savedby" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Timestamp" class="control-label"></label>
+		<input asp-for="Timestamp" class="form-control" />
+		<span asp-validation-for="Timestamp" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Context1link" class="control-label"></label>
+		<input asp-for="Context1link" class="form-control" />
+		<span asp-validation-for="Context1link" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Context1img" class="control-label"></label>
+		<input asp-for="Context1img" class="form-control" />
+		<span asp-validation-for="Context1img" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Context2link" class="control-label"></label>
+		<input asp-for="Context2link" class="form-control" />
+		<span asp-validation-for="Context2link" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Context2img" class="control-label"></label>
+		<input asp-for="Context2img" class="form-control" />
+		<span asp-validation-for="Context2img" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Context3link" class="control-label"></label>
+		<input asp-for="Context3link" class="form-control" />
+		<span asp-validation-for="Context3link" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Context3img" class="control-label"></label>
+		<input asp-for="Context3img" class="form-control" />
+		<span asp-validation-for="Context3img" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Usercontext" class="control-label"></label>
+		<input asp-for="Usercontext" class="form-control" />
+		<span asp-validation-for="Usercontext" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="FullUrl" class="control-label"></label>
+		<input asp-for="FullUrl" class="form-control" />
+		<span asp-validation-for="FullUrl" class="text-danger"></span>
+	</div>
+	-->
+	<div class="form-group">
+		<span class="text-danger">Attention: Bookmark will be deleted forever!</span>
+		<input style="margin-top:24px" type="submit" value="Delete" class="btn btn-primary" />
+	</div>
+</form>
+
+<div class="staticmenu">
+	<a asp-action="List" asp-controller="Bookmarks" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="1">>Back to List</a>
+	<a asp-action="Edit" asp-route-id="@Model.Guid">Edit (e)</a> |
+	<a>Delete (d)</a>
+</div>

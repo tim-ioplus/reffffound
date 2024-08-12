@@ -23,7 +23,8 @@ namespace reffffound.Controllers
     public ActionResult Index(int page = 1)
     {
       var bookmarks = _bookmarkRepository.List(page);
-      ViewBag.PreviousPage = page - 1;
+      page = page < 1 ? 1 : page; 
+      ViewBag.PreviousPage = page > 0 ? page - 1 : 1;
       ViewBag.CurrentPage = page;
       ViewBag.NextPage = page + 1;
 
@@ -60,10 +61,13 @@ namespace reffffound.Controllers
       }
       else
       {
-        ViewBag.PreviousPage = page - 1;
+        page = page < 1 ? 1 : page; 
+        ViewBag.PreviousPage = page > 1 ? page - 1 : 1;
         ViewBag.CurrentPage = page;
         ViewBag.NextPage = page + 1;
+
         ViewBag.Username = username;
+        ViewBag.IsAdminUser = username.Equals("koelleforniadreamin");
 
         return View("List", usersBookmarks);
       }
@@ -72,10 +76,11 @@ namespace reffffound.Controllers
     public ActionResult FeedNullFour(string username = "", string filter = "", int page = 0)
     {
       var bookmark = _bookmarkRepository.GetFeedNullFour(username, filter, page);
-      
-      ViewBag.PreviousPage = page - 1;
+      page = page < 1 ? 1 : page; 
+      ViewBag.PreviousPage = page > 1 ? page - 1 : 1;
       ViewBag.CurrentPage = page;
-      ViewBag.NextPage = 1;
+      ViewBag.NextPage = page + 1;
+
       ViewBag.Username = username;
       ViewBag.NextAction = string.IsNullOrWhiteSpace(username) ? "Index" : "List";
 
@@ -141,17 +146,18 @@ namespace reffffound.Controllers
       }
     }
 
-    /*
+    
     // GET: BookmarkController/Edit/5
-    public ActionResult Edit(int id)
+    public ActionResult Edit(string guid)
     {
-        return View();
+        var bm = _bookmarkRepository.Read(guid);
+        return View("Edit", bm);
     }
 
     // POST: BookmarkController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id, IFormCollection collection)
+    public ActionResult Edit(string guid, IFormCollection collection)
     {
         try
         {
@@ -164,11 +170,11 @@ namespace reffffound.Controllers
     }
 
     // GET: BookmarkController/Delete/5
-    public ActionResult Delete(int id)
+    public ActionResult Delete(string guid)
     {
         return View();
     }
-
+    
     // POST: BookmarkController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -183,6 +189,6 @@ namespace reffffound.Controllers
             return View();
         }
     }
-    */
+    
   }
 }
