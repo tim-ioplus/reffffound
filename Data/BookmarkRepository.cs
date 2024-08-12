@@ -259,8 +259,8 @@ namespace reffffound.Data
                       ,[Context1Img] = @context1img
                       ,[Context2link] = @context2link
                       ,[Context2Img] = @context2img
-                      ,[Context3link] = @ontext3link
-                      ,[Context3Img] = @ontext3img
+                      ,[Context3link] = @context3link
+                      ,[Context3Img] = @context3img
                       WHERE [Id] = @id";
 
           using (SqlCommand command = new SqlCommand(sql, connection))
@@ -292,7 +292,7 @@ namespace reffffound.Data
       }
     }
 
-    public void Delete(int id)
+    public void Delete(string guid)
     {
       var bookmark = new Bookmark();
 
@@ -300,11 +300,11 @@ namespace reffffound.Data
       {
         using (SqlConnection connection = GetConnection())
         {
-          String sql = string.Format("Delete FROM dbo.Findlings Where Id = @id");
+          String sql = string.Format("Delete FROM dbo.Findlings Where Guid = @guid");
 
           using (SqlCommand command = new SqlCommand(sql, connection))
           {
-            command.Parameters.AddWithValue("@id", bookmark.Id);
+            command.Parameters.AddWithValue("@guid", guid);
 
             connection.Open();
             command.ExecuteNonQuery();
@@ -348,6 +348,8 @@ namespace reffffound.Data
       bookmark.Savedby = savedBy;
       bookmark.Timestamp = timestamp;
       bookmark.Usercontext = usercontext;
+      bookmark.SetUsername();
+
       bookmark.FullUrl = fullurl;
       bookmark.Context1link = context1link;
       bookmark.Context1img = context1img;

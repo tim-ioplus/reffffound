@@ -1,6 +1,4 @@
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NuGet.Versioning;
 using reffffound.Data;
 using reffffound.Models;
 
@@ -23,8 +21,9 @@ namespace reffffound.Controllers
     public ActionResult Index(int page = 1)
     {
       var bookmarks = _bookmarkRepository.List(page);
+
       page = page < 1 ? 1 : page; 
-      ViewBag.PreviousPage = page > 0 ? page - 1 : 1;
+      ViewBag.PreviousPage = page > 1 ? page - 1 : 1;
       ViewBag.CurrentPage = page;
       ViewBag.NextPage = page + 1;
 
@@ -47,11 +46,13 @@ namespace reffffound.Controllers
       var bookmark = _bookmarkRepository.Read(guid);
       if (bookmark == null || string.IsNullOrWhiteSpace(bookmark.Guid)) return View("Error");
 
+      ViewBag.Username = bookmark.Username;
+
       return View("Detail", bookmark);
     }
 
     // GET: Bookmarks/List/username/filter/1
-    public ActionResult List(string username, string filter, int page)
+    public ActionResult List(string username, string filter = "post", int page = 1)
     {
       var usersBookmarks = _bookmarkRepository.List(username, filter, page);
 
@@ -103,25 +104,16 @@ namespace reffffound.Controllers
     {
       try
       {
-        var cks = this.Request.Cookies;
-
-        var url = collection["Url"][0];
-        var title = collection["Title"][0];
-        var image = collection["Image"][0];
-        var usercontext = collection["Usercontext"][0];
-
-        var bookmark = new Bookmark
+        var bookmark = new Bookmark().FromCollection(collection);
+        if(!bookmark.IsValid())
         {
-          Guid = Guid.NewGuid().ToString(),
-          Timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-          Url = url,
-          Title = title,
-          Image = image,
-          Usercontext = usercontext,
-          Savedby = 1
-        };
+          return View("Create", bookmark);
+        }
 
+        bookmark.Guid = Guid.NewGuid().ToString();
+        bookmark.Timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         bookmark = _bookmarkRepository.AddContext(bookmark);
+
         _bookmarkRepository.Create(bookmark);
 
         return RedirectToAction(nameof(Details), "Bookmarks", new { guid = bookmark.Guid });
@@ -130,6 +122,89 @@ namespace reffffound.Controllers
       {
         return View("Error");
       }
+    }
+    
+    // GET: BookmarkController/Edit/5
+    public ActionResult Edit(string guid)
+    {
+        if(String.IsNullOrWhiteSpace(guid)) return View("Error");
+
+        var bm = _bookmarkRepository.Read(guid);
+        ViewBag.Username = bm.Username;
+
+        return View("Edit", bm);
+    }
+
+    // POST: BookmarkController/Edit/5
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Edit(string guid, IFormCollection collection)
+    {
+        try
+        {
+            if(String.IsNullOrWhiteSpace(guid)) return View("Error");
+            var bookmark = _bookmarkRepository.Read(guid);
+            if(bookmark == null) return View("Error");
+
+            var url = collection["Url"][0];
+            var title = collection["Title"][0];
+            var image = collection["Image"][0];
+
+            if (!string.IsNullOrEmpty(url) && !bookmark.Url.Equals(url))
+            {
+              bookmark.Url = url; 
+            }
+            if (!string.IsNullOrEmpty(title) && !bookmark.Title.Equals(title))
+            {
+              bookmark.Title = title; 
+            }
+            if (!string.IsNullOrEmpty(image) && !bookmark.Image.Equals(image))
+            {
+              bookmark.Image = image; 
+            }
+
+            if (!bookmark.IsValid()) return View("Error");
+
+            _bookmarkRepository.Update(bookmark);
+
+            return RedirectToAction(nameof(Details), "Bookmarks", new { guid = bookmark.Guid });
+        }
+        catch
+        {
+            return View();
+        }
+    }
+
+    // GET: BookmarkController/Delete/5
+    public ActionResult Delete(string guid)
+    {
+        var bookmark = _bookmarkRepository.Read(guid);
+
+        if (bookmark == null)
+        {
+          return View("Error");
+        }
+        else
+        {
+          ViewBag.Username = bookmark.Username;
+          return View("Delete", bookmark);
+        }
+    }
+    
+    // POST: BookmarkController/Delete/5
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Delete(string guid, IFormCollection collection)
+    {
+        try
+        {
+            _bookmarkRepository.Delete(guid);
+            return RedirectToAction(nameof(Index));
+        }
+        catch
+        {
+            return View();
+        }
     }
 
     // GET: BookmarksController/Hydrate
@@ -144,50 +219,6 @@ namespace reffffound.Controllers
       {
         return View("Error");
       }
-    }
-
-    
-    // GET: BookmarkController/Edit/5
-    public ActionResult Edit(string guid)
-    {
-        var bm = _bookmarkRepository.Read(guid);
-        return View("Edit", bm);
-    }
-
-    // POST: BookmarkController/Edit/5
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult Edit(string guid, IFormCollection collection)
-    {
-        try
-        {
-            return RedirectToAction(nameof(Index));
-        }
-        catch
-        {
-            return View();
-        }
-    }
-
-    // GET: BookmarkController/Delete/5
-    public ActionResult Delete(string guid)
-    {
-        return View();
-    }
-    
-    // POST: BookmarkController/Delete/5
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult Delete(int id, IFormCollection collection)
-    {
-        try
-        {
-            return RedirectToAction(nameof(Index));
-        }
-        catch
-        {
-            return View();
-        }
     }
     
   }

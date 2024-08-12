@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
+using System.Security.Policy;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace reffffound.Models
@@ -33,12 +35,64 @@ namespace reffffound.Models
         [Description("Deprecated")]
         public string FullUrl { get; set; }
 
+        [Description()]
+        public string Username{ get; set;}
+
         public override string ToString()
         {
             return Id + ", " + Guid + ", " + Url + ", " + Title + ", " + Image + ", " + Timestamp + ", " + Savedby +
                    ", " + Usercontext + ", " + FullUrl
                    + ", " + Context1link + ", " + Context1img + ", " + Context2img + ", " + Context2link + ", " +
                    Context3img + ", " + Context3link;
+        }
+
+        public Bookmark FromCollection(IFormCollection collection)
+        {
+          var bookmark = new Bookmark();
+
+          var url = collection["Url"][0] ?? "";
+          var title = collection["Title"][0] ?? "";
+          var image = collection["Image"][0] ?? "";
+          var usercontext = collection["Usercontext"][0] ?? "";
+
+          bookmark.Url = url;
+          bookmark.Title = title;
+          bookmark.Image = image;
+          bookmark.Usercontext = usercontext;
+
+          SetUsername();
+
+          return bookmark;
+        }
+
+        /// <summary>
+        /// Cheks if current Data state is valid to Create or Update a bookmark
+        /// </summary>
+        /// <returns></returns>
+        public bool IsValid()
+        {
+          if (string.IsNullOrWhiteSpace(Url)) return false;
+          if (string.IsNullOrWhiteSpace(Title)) return false;
+          if (Title.Length > 64) return false;
+          if (string.IsNullOrWhiteSpace(Image)) return false;
+
+          return true;
+        }
+
+        public void SetUsername()
+        {
+          if (!string.IsNullOrWhiteSpace(Usercontext))
+          {
+            var userscontexts = Usercontext.Replace(" ", "").Split(',');
+            if(userscontexts.Any())
+            {
+              string username = userscontexts[0].ToString();
+              if(!string.IsNullOrWhiteSpace(username))
+              {
+                this.Username = username;
+              }
+            }
+          }
         }
     }
 }

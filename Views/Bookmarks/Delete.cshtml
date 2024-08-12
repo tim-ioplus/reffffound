@@ -3,7 +3,6 @@
     ViewData["Title"] = "Bookmarks Details..";
 }
 <h4>Delete Bookmark</h4>
-<h5>@Model.Guid</h5>
 <hr />
 <div class="assets">
     <blockquote class="bookmarkblock">
@@ -38,7 +37,8 @@
 
     </blockquote>
 </div>
-<form asp-action="Delete">
+
+<form asp-controller="Bookmarks" asp-action="Edit" asp-route-guid="@Model.Guid">
 	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 	<div class="form-group" style="display:none">
 		<label asp-for="Usercontext" class="control-label"></label>
@@ -49,8 +49,7 @@
 		<label asp-for="Guid" class="control-label"></label>
 		<input asp-for="Guid" class="form-control" />
 		<span asp-validation-for="Guid" class="text-danger"></span>
-	</div>
-	-->
+	</div>-->
 	<div class="form-group" style="display:none">
 		<label asp-for="Url" class="control-label"></label>
 		<input asp-for="Url" class="form-control" value="@Model.Url" />
@@ -65,6 +64,7 @@
 		<label asp-for="Image" class="control-label"></label>
 		<input asp-for="Image" class="form-control" value="@Model.Image" />
 		<span asp-validation-for="Image" class="text-danger"></span>
+		<image style="max-width:500px;height:auto;" src="@Model.Image"></image>
 	</div>
 	<!--
 	<div class="form-group">
@@ -119,13 +119,13 @@
 	</div>
 	-->
 	<div class="form-group">
-		<span class="text-danger">Attention: Bookmark will be deleted forever!</span>
+		<span class="text-danger">Attention: Bookmark will be deleted forever!</span><br />
 		<input style="margin-top:24px" type="submit" value="Delete" class="btn btn-primary" />
 	</div>
 </form>
 
 <div class="staticmenu">
-	<a asp-action="List" asp-controller="Bookmarks" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="1">>Back to List</a>
-	<a asp-action="Edit" asp-route-id="@Model.Guid">Edit (e)</a> |
+	<a asp-action="List" asp-controller="Bookmarks" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="1">Back to List</a>|
+	<a asp-action="Edit" asp-route-guid="@Model.Guid" asp-route-username="@ViewBag.Username">Edit (e)</a>|
 	<a>Delete (d)</a>
 </div>
