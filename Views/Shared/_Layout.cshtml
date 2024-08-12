@@ -44,21 +44,11 @@
                             <partial name="_LoginPartial" />
                         </div>
                         <div id="menu-context" class="">
-                            <ul style="margin:0;padding:0;line-height:12px;list-style-type: none;">
-                                <li class="nav-item"><a class="nav-link text" asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                                <li class="nav-item"><a class="nav-link text" asp-area="" asp-controller="Home" asp-action="Screensaver">Screensaver</a></li>
-                                <li class="nav-item"><a class="nav-link text" asp-area="" asp-controller="Home" asp-action="Mobile">Mobile</a></li>
-                                <li class="nav-item"><a class="nav-link text" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                            </ul>
+							<partial name="_ContextMenuPartial" />
                         </div>
 
                         <div id="menu-legal" style="font-size:10px; margin-top:20px;">
-                            <ul style="margin:0;padding:0;line-height:6px;list-style-type: none;">                            
-                                <li class="nav-item"><a class="nav-link text" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
-                                <li class="nav-item"><a class="nav-link text" asp-area="" asp-controller="Home" asp-action="Terms">Terms of Service</a>
-                                <li class="nav-item"><a class="nav-link text" asp-area="" asp-controller="Home" asp-action="ChangeLog">Change Log</a>
-                                <li class="nav-item"><a class="nav-link text" asp-area="" asp-controller="Home" asp-action="Feed">Feed</a>
-                            </ul>
+							<partial name="_LegalMenuPartial" />
                         </div>
                                             
                         <div id="menu-ads">
