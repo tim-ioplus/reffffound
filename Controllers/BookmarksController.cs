@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using reffffound.Data;
 using reffffound.Models;
 
@@ -38,7 +39,7 @@ namespace reffffound.Controllers
     }
 
     // GET: Bookmarks/5
-    public ActionResult Details(string guid)
+    public ActionResult Details(string guid, string referAction ="", string referUsername="", int referPage=0)
     {
       if (string.IsNullOrWhiteSpace(guid)) return View("Error");
       var miv = ModelState.IsValid;
@@ -46,6 +47,9 @@ namespace reffffound.Controllers
       var bookmark = _bookmarkRepository.Read(guid);
       if (bookmark == null || string.IsNullOrWhiteSpace(bookmark.Guid)) return View("Error");
 
+      ViewBag.ReferAction = referAction;
+      ViewBag.ReferUsername = referUsername;
+      ViewBag.ReferPage = referPage;
       ViewBag.Username = bookmark.Username;
 
       return View("Detail", bookmark);

@@ -72,13 +72,33 @@ its ffffound - long lost, now refound :)
 * ~~css: fix txt position for current pagenum in pagination~~
 * ~~all Database - queries mit .AddParameterWithValue > kein stringgebaue~~
 * ~~Fix Bug in 'Update()' Method where bookmark.Title is being overwritten with Value from bookmark.Guid*~~
-* static float menu
- * feed: top(t)
- * userpage: top (t), Post(p)
- * adminpage: plus hydrate(h)
+ 
+### v .6
 
+* ~~add partial pages for Context menu, Legal menu~~
+* ~~fix sql command string bug in List statement~~
+* ~~Add Views and Functionality~~
+ * ~~Edit bookmark~~
+ * ~~Delete Bookmark~~
+ * ~~Create Bookmark and Validate Input in Data Model class~~
+* ~~remove View 'Old List'~~
+* ~~fix paging with negative number for Index, List, 404~~
+* ~~static float menu~~
+ * ~~feed (index) for all: tile(v) [non actionable], top(t), previous(p), next (n)~~
+ * ~~list (list) for user: create (c), tile(v), top(t), previous(p), next (n)~~
+ * ~~detail: edit (e), delete (d)~~
+ * ~~for Detail View: add dynamic menu item 'Back to list' linking to indexfeed or to userlist~~
+ * ~~adminpage: all from List page plus hydrate(h)~~
+ * ~~fix broken link: 404 page to feed~~
+ * ~~dont display guid on edit/delete pages~~ 
+ * ~~Use stronger Action text on Edit/Delete inputs for better Clarity of Actions~~
 
-### v 0.6 - 0.9
+### v .7
+
+* 'save' functionality for bookmarks of other Users
+* Add validation Message in Create View for invalid inputs
+
+### v 0.8 - 0.9
 
 * partial views (activeUsers..) füllen
   * fill dbo.ContentUsers with testusers
