@@ -35,7 +35,7 @@ namespace reffffound.Models
         [Description("Deprecated")]
         public string FullUrl { get; set; }
 
-        [Description()]
+        [Description("Only temporary Property, not being saved persistent to the Database.")]
         public string Username{ get; set;}
 
         public override string ToString()
@@ -66,17 +66,37 @@ namespace reffffound.Models
         }
 
         /// <summary>
-        /// Cheks if current Data state is valid to Create or Update a bookmark
+        /// Checks if current Data state is valid to Create or Update a bookmark
+        /// Provides a message to the frontend in case something is invalid.
         /// </summary>
         /// <returns></returns>
-        public bool IsValid()
+        public bool IsValid(out string validationMessage)
         {
-          if (string.IsNullOrWhiteSpace(Url)) return false;
-          if (string.IsNullOrWhiteSpace(Title)) return false;
-          if (Title.Length > 64) return false;
-          if (string.IsNullOrWhiteSpace(Image)) return false;
+          bool isValid = true;
+          validationMessage = string.Empty;
 
-          return true;
+          if (string.IsNullOrWhiteSpace(Url))
+          {
+            validationMessage = "Please provide an Url to link your bookmark to.";
+            isValid=false;
+          }
+          if (string.IsNullOrWhiteSpace(Title)) 
+          {
+            validationMessage = "Please provide a Title for your Bookmark.";
+            isValid=false;
+          }
+          if (Title.Length > 64) 
+          {
+            validationMessage = "Please shorten your title to maximum 64 charaters.";
+            isValid=false;
+          }
+          if (string.IsNullOrWhiteSpace(Image)) 
+          {
+            validationMessage = "Please provide link to your bookmarked Image.";
+            isValid=false;
+          }
+
+          return isValid;
         }
 
         public void SetUsername()

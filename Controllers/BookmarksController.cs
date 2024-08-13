@@ -79,7 +79,7 @@ namespace reffffound.Controllers
         ViewBag.NextPage = page + 1;
 
         ViewBag.Username = username;
-        ViewBag.IsAdminUser = username.Equals("koelleforniadreamin");
+        ViewBag.IsAdminUser = UserHelperService.IsAdmin(username);
 
         return View("List", usersBookmarks);
       }
@@ -116,12 +116,15 @@ namespace reffffound.Controllers
     public ActionResult Create(IFormCollection collection)
     {
       if(!_showUserFunctions) return RedirectToAction(nameof(FeedNullFour), "Bookmarks", new {username="", filter="", page=1 });
+      ViewBag.ShowValidationMessage = false;
 
       try
       {
         var bookmark = new Bookmark().FromCollection(collection);
-        if(!bookmark.IsValid())
+        if(!bookmark.IsValid(out string validationMessage))
         {
+          ViewBag.ShowValidationMessage = true;
+          ViewBag.ValidatioNMessage = validationMessage;
           return View("Create", bookmark);
         }
 
@@ -180,7 +183,13 @@ namespace reffffound.Controllers
               bookmark.Image = image; 
             }
 
-            if (!bookmark.IsValid()) return View("Error");
+            if(!bookmark.IsValid(out string validationMessage))
+            {
+              ViewBag.ShowValidationMessage = true;
+              ViewBag.ValidatioNMessage = validationMessage;
+
+              return View("Edit", bookmark); 
+            }
 
             _bookmarkRepository.Update(bookmark);
 
