@@ -127,3 +127,16 @@ h6 {}
     background-color:lightgreen;
 }
 
+.menupartial {
+  margin-top: 18px;
+}
+.menupartial ul {
+    list-style-type:none;
+}
+
+#menu-activeuser{}
+#menu-signin{}
+#menu-context{}
+#menu-legal {
+  font-size: 12px;
+}

@@ -95,7 +95,11 @@ its ffffound - long lost, now refound :)
 
 ### v .7
 
-* 'save' functionality for bookmarks of other Users
+* block links:
+ * [x] register: ".. is invitation based service. If you like to receive an invitation you can contact us"
+ * [x] login: ".. if you have received an invite, please use the direct link provided."
+* [x] css cleanup for menu items
+* for Release/Production Environment or without login hide the followingFunctions: Create, Edit, Delete, Hydrate
 * Add validation Message in Create View for invalid inputs
 
 ### v 0.8 - 0.9
@@ -109,7 +113,7 @@ its ffffound - long lost, now refound :)
  * 10 posts (5x2)
 * View Detail inkl Kontextuser
  * die letzten 5 (5x1) Posts
-
+* dynamische pagination: in indexfeed, in userfeed
 
 ## v x.y
 * On users feed page list in sidebar
@@ -122,4 +126,5 @@ its ffffound - long lost, now refound :)
 	* jwt mit .net core:
 	* https://learn.microsoft.com/de-de/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-8.0
 * Save bookmark for logged in users
-* dynamische pagination: in indexfeed, in userfeed
+* 'save' functionality for bookmarks of other Users
+
