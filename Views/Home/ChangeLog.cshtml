@@ -3,18 +3,24 @@
 }
 <div class="assets">
   <h3 class="">Change Log</h3>
-	<!-- -->
+  	<!-- -->
 	<blockquote class="bookmarkblock">
 		<p class="bookmarkheader">
-			<h4 class="versionwip">Version 0.7 - 07.08.2024</h4>
+			<h4 class="versionwip">Version 0.8 - 13.08.2024</h4>
 			<ul class="versionbullets">
-			  <li>For all Database Queries use AddParameterWithValue, no stringbuilding of parameter</li>
-			  <li>Fix Bug in 'Update()' Method where bookmark.Title is being overwritten with Value from bookmark.Guid</li>
-			  <li>Update 'About' Page with Description, Link, Graphic</li>
+			  <li>block links</li>
+			  <ul>
+				  <li>register: ".. is invitation based service. If you like to receive an invitation you can contact us"</li>
+				  <li>login: ".. if you have received an invite, please use the direct link provided."</li>
+			  </ul>
+			  <li>css cleanup for menu items </li>
+			  <li>for Release/Production Environment or without login hide the following Functions: Create, Edit, Delete, Hydrate</li>
+			  <li>Add validation Message in Create- and Edit-View for invalid inputs</li>
+			  <li>Create and use Helper Service für User/Identity Tasks</li>
 			<ul>
 		</p>
 	</blockquote>
-  <!-- -->
+	<!-- -->
 	<blockquote class="bookmarkblock">
 		<p class="bookmarkheader">
 			<h4 class="version">Version 0.7 - 12.08.2024</h4>
@@ -35,7 +41,17 @@
 			</<ul>
 		</p>
 	</blockquote>
-
+		<!-- -->
+	<blockquote class="bookmarkblock">
+		<p class="bookmarkheader">
+			<h4 class="versionwip">Version 0.65 - 07.08.2024</h4>
+			<ul class="versionbullets">
+			  <li>For all Database Queries use AddParameterWithValue, no stringbuilding of parameter</li>
+			  <li>Fix Bug in 'Update()' Method where bookmark.Title is being overwritten with Value from bookmark.Guid</li>
+			  <li>Update 'About' Page with Description, Link, Graphic</li>
+			<ul>
+		</p>
+	</blockquote>
   <blockquote class="bookmarkblock">
     <p class="bookmarkheader">
       <h4 class="version">Version 0.6 - 06.08.2024</h4>

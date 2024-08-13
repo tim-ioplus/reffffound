@@ -5,14 +5,14 @@ its ffffound - long lost, now refound :)
 ## Backlog items
 
 ### v .1 ok
-- *RE:ffffound logo > Y*
-- view Feed:, mindestens 2 seitig (20stück), keine kontextbilder(?) > Y
-	- link 'saved by' user auf /bookmarks/guid > Y
-- *View Detail: einzelbild, keine kontextbilder (rechts), keine kontextuser > Y*
-- *View: Aktive Nutzer,  hardkodierten > Y*
-- *Feeddaten, Userdaten hardkodiert > Y*
-- *kontextmenus: log/register mit pop up > Y*
-- *Bonus: Userfeeds > Y*
+
+* * view Feed:, mindestens 2 seitig (20stück), keine kontextbilder(!) [x]
+	* * link 'saved by' user auf /bookmarks/guid [x]
+* * View Detail: einzelbild, keine kontextbilder (rechts), keine kontextuser > [x]
+* * View: Aktive Nutzer,  hardkodierten [x]
+* * Feeddaten, Userdaten hardkodiert [x]
+* * Userfeeds [x]
+* * RE:ffffound logo [x]
 
 
 ### v .2 ==ok==
@@ -22,90 +22,90 @@ its ffffound - long lost, now refound :)
 ![alt text](Documentation/20240521175852.png)
 
 ### v .25
-* ~~Unitttests für Models (zB. Timestamp parsing) > Y/2: mit TestController~~ 
-* ~~CRUDLIST fähig für Posts > 3/4 >> Update/Put NOK issue '#6/#?/#9'> Y~~
-* ~~Feeddaten, userdaten hardkodiert > Y~~
-* ~~Guid bei post erzeugt #8 > Y~~
+* * Unitttests für Models (zB. Timestamp parsing) > Y/2: mit TestController [x]  
+* * CRUDLIST fähig für Posts > 3/4 >> Update/Put NOK issue '#6/#?/#9'> Y [x] 
+* * Feeddaten, userdaten hardkodiert > Y [x] 
+* * Guid bei post erzeugt #8 > Y [x] 
 
 ### v .30 ==ok==
-* ~~angular version: use observables > Y~~
+* * angular version: use observables > Y [x] 
 
 ### v .xy ng Version nok
-* ~~Frontend an Api angebunden > Y~~
-	* ~~https://www.npmjs.com/package/ts-sync-request~~
-	* ~~https://stackoverflow.com/questions/62296092/how-to-make-synchronous-http-request-in-angular-8-or-9-make-a-request-and-wait~~
-* ~~Daten aus Api hardkodiert~~
-* ~~CORS Fehler korrigiert > N~~ 
+* * Frontend an Api angebunden > Y [x] 
+	* * https://www.npmjs.com/package/ts-sync-request [x] 
+	* * https://stackoverflow.com/questions/62296092/how-to-make-synchronous-http-request-in-angular-8-or-9-make-a-request-and-wait [x] 
+* * Daten aus Api hardkodiert [x] 
+* * CORS Fehler korrigiert > N [x]  
 *  api gehostet
 
 ### v .3 ==ok==
-* ~~Api an DB (Mongo? > SQL) angebunden~~
-* ~~Daten read an FE~~
+* * Api an DB (Mongo? > SQL) angebunden [x] 
+* * Daten read an FE [x] 
 
 ### v .4 ==ok==
-* ~~Daten write aus Front End: Posts~~
-*  ~~Index Feed inkl Kontextbilder~~
-* ~~Create Bookmark mit username via ViewBags~~
-* ~~incl header logo bmp~~
-* ~~fix css~~
-  * ~~a:color~~
-  * ~~font-type > serifiger~~
-  * ~~link zu Flag Image more subtle~~
-  * ~~fix blockquote position~~
-  * ~~fix container position to left~~
-* ~~text: fix title~~
-* ~~Bookmark-element im feed: add 'Quoted from', link to url~~
-* ~~Fix timestamp bug where current minutes saved as month~~
-* ~~Hydrate() -> testdaten Create()..~~
-* ~~Hydrate()~~
-  * ~~generate timestamp from wihtin last 3 months and overwrite timestamps~~
+* * Daten write aus Front End: Posts [x] 
+* * Index Feed inkl Kontextbilder [x] 
+* * Create Bookmark mit username via ViewBags [x] 
+* * incl header logo bmp [x] 
+* * fix css [x] 
+  * * a:color [x] 
+  * * font-type > serifiger [x] 
+  * * link zu Flag Image more subtle [x] 
+  * * fix blockquote position [x] 
+  * * fix container position to left [x] 
+* * text: fix title [x] 
+* * Bookmark-element im feed: add 'Quoted from', link to url [x] 
+* * Fix timestamp bug where current minutes saved as month [x] 
+* * Hydrate() -> testdaten Create().. [x] 
+* * Hydrate() [x] 
+  * * generate timestamp from wihtin last 3 months and overwrite timestamps [x] 
 
  
 ### v .5
 
-* ~~connection string & credentials in appsettings.json~~
-* ~~feed navigation: previous- & next- buttons without 'full-pagination'~~
- * ~~include 'Last Post' logic to mark the end of feed~~
- * ~~add variety to Last Post to create a funny moment and communicate my crafty intentions~~ 
-* ~~update end-of-feed View as own errror view. incl links to prev/next feed pages~~
-* ~~css: difference in blockquote position index & list~~
-* ~~css: fix txt position for current pagenum in pagination~~
-* ~~all Database - queries mit .AddParameterWithValue > kein stringgebaue~~
-* ~~Fix Bug in 'Update()' Method where bookmark.Title is being overwritten with Value from bookmark.Guid*~~
+* * connection string & credentials in appsettings.json [x] 
+* * feed navigation: previous- & next- buttons without 'full-pagination' [x] 
+ * * include 'Last Post' logic to mark the end of feed [x] 
+ * * add variety to Last Post to create a funny moment and communicate my crafty intentions [x]  
+* * update end-of-feed View as own errror view. incl links to prev/next feed pages [x] 
+* * css: difference in blockquote position index & list [x] 
+* * css: fix txt position for current pagenum in pagination [x] 
+* * all Database - queries mit .AddParameterWithValue > kein stringgebaue [x] 
+* * Fix Bug in 'Update()' Method where bookmark.Title is being overwritten with Value from bookmark.Guid* [x] 
  
-### v .6
+### v .6-0.7
 
-* ~~add partial pages for Context menu, Legal menu~~
-* ~~fix sql command string bug in List statement~~
-* ~~Add Views and Functionality~~
- * ~~Edit bookmark~~
- * ~~Delete Bookmark~~
- * ~~Create Bookmark and Validate Input in Data Model class~~
-* ~~remove View 'Old List'~~
-* ~~fix paging with negative number for Index, List, 404~~
-* ~~static float menu~~
- * ~~feed (index) for all: tile(v) [non actionable], top(t), previous(p), next (n)~~
- * ~~list (list) for user: create (c), tile(v), top(t), previous(p), next (n)~~
- * ~~detail: edit (e), delete (d)~~
- * ~~for Detail View: add dynamic menu item 'Back to list' linking to indexfeed or to userlist~~
- * ~~adminpage: all from List page plus hydrate(h)~~
- * ~~fix broken link: 404 page to feed~~
- * ~~dont display guid on edit/delete pages~~ 
- * ~~Use stronger Action text on Edit/Delete inputs for better Clarity of Actions~~
+* * add partial pages for Context menu, Legal menu [x] 
+* * fix sql command string bug in List statement [x] 
+* * Add Views and Functionality [x] 
+  * * Edit bookmark [x] 
+  * * Delete Bookmark [x] 
+  * * Create Bookmark and Validate Input in Data Model class [x] 
+* * remove unused Backup View 'OldList' [x] 
+* * fix paging with negative number for Index, List, 404 [x] 
+* * static float menu [x] 
+  * * feed (index) for all: tile(v) [non actionable], top(t), previous(p), next (n) [x] 
+  * * list (list) for user: create (c), tile(v), top(t), previous(p), next (n) [x] 
+  * * detail: edit (e), delete (d) [x] 
+  * * for Detail View: add dynamic menu item 'Back to list' linking to indexfeed or to userlist [x] 
+* * adminpage: all from List page plus hydrate(h) [x] 
+* * fix broken link: 404 page to feed [x] 
+* * dont display guid on edit/delete pages [x]  
+* * Use stronger Action text on Edit/Delete inputs for better Clarity of Actions [x] 
 
-### v .7
+### v .8
+* * block links
+  * * register: ".. is invitation based service. If you like to receive an invitation you can contact us" [x]
+  * * login: ".. if you have received an invite, please use the direct link provided." [x]
+* * css cleanup for menu items [x]
+* * for Release/Production Environment or without login hide the following Functions: Create, Edit, Delete, Hydrate [x] 
+* * Add validation Message in Create- and Edit-View for invalid inputs [x]
+* * Create and use Helper Service für User/Identity Tasks [x]
 
-block links:
-- [x] register: ".. is invitation based service. If you like to receive an invitation you can contact us"
-- [x] login: ".. if you have received an invite, please use the direct link provided." 
-- [x] css cleanup for menu items 
-- [x] for Release/Production Environment or without login hide the followingFunctions: Create, Edit, Delete, Hydrate
-- [ ] Add validation Message in Create View for invalid inputs
-
-### v 0.8 - 0.9
+### v 0.9 - 0.9
 
 * partial views (activeUsers..) füllen
-  * fill dbo.ContentUsers with testusers
+  * fill dbo.ContentUsers with alphausers
   * on Bookmarks/Create increase Count property for posting Users by 
 * in 'Bookmarks/Create' fill Title Field automaticlly > UrlField.onChange() request 
 * Load spinner for images
