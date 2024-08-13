@@ -77,13 +77,17 @@
 </div>
 
 <div class="staticmenu">
-	<a asp-controller="Bookmarks" asp-action="Create" asp-route-username="@ViewBag.Username">Create (c)</a>
+	@if(@ViewBag.ShowUserFunctions)
+	{
+		<a asp-controller="Bookmarks" asp-action="Create" asp-route-username="@ViewBag.Username">Create (c)</a>
+	}
+
 	<a class="inactive" href="javascript:void(0);" onmousedown="" onclick="return false;">tile(v)</a>
 	<a class="inactive" href="javascript:void(0);" onmousedown="" onclick="return false;">top(t)</a>
 	<a class="" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="@ViewBag.PreviousPage">previous (p)</a>
 	<a class="" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="@ViewBag.NextPage">next (n)</a>
 	<!-- use UserManager and Role -->
-	@if(ViewBag.IsAdminUser)
+	@if(@ViewBag.ShowUserFunctions && @ViewBag.IsAdminUser)
 	{
 		<a class="nav-link text" title="Hydrate Database" asp-area="" asp-controller="Bookmarks" asp-action="Hydrate">Hydrate</a>
 	}

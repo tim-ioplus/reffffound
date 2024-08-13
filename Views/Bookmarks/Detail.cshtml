@@ -37,9 +37,13 @@
 </div>
 
 <div class="staticmenu">
-	<a asp-controller="Bookmarks" asp-action="@ViewBag.ReferAction" asp-route-username="@ViewBag.ReferUsername" asp-route-page="@ViewBag.ReferPage">Back to List</a>|
-	<a asp-controller="Bookmarks" asp-action="Edit" asp-route-guid="@Model.Guid" asp-route-username="@ViewBag.Username">Edit (e)</a>|
-	<a asp-controller="Bookmarks" asp-action="Delete" asp-route-guid="@Model.Guid" asp-route-username="@ViewBag.Username">Delete (d)</a>
+	<a asp-controller="Bookmarks" asp-action="@ViewBag.ReferAction" asp-route-username="@ViewBag.ReferUsername" asp-route-page="@ViewBag.ReferPage">Back to List</a>
+
+	@if(ViewBag.ShowUserFunctions)
+	{
+		<a asp-controller="Bookmarks" asp-action="Edit" asp-route-guid="@Model.Guid" asp-route-username="@ViewBag.Username">Edit (e)</a>
+		<a asp-controller="Bookmarks" asp-action="Delete" asp-route-guid="@Model.Guid" asp-route-username="@ViewBag.Username">Delete (d)</a>
+	}
 </div>
 
 

@@ -10,6 +10,7 @@ namespace reffffound.Controllers
     private readonly ApplicationDbContext _context;
     private BookmarkRepository _bookmarkRepository;
     private UserRepository _userRepository;
+    private bool _showUserFunctions;
 
     public BookmarksController(ApplicationDbContext context, IConfiguration configuration)
     {
@@ -17,6 +18,8 @@ namespace reffffound.Controllers
       var connectionString = configuration["ConnectionStrings:DataConnection"] ?? "";
       _bookmarkRepository = new BookmarkRepository(_context, connectionString);
       _userRepository = new UserRepository(_context, connectionString);
+
+      _showUserFunctions = configuration["ASPNETCORE_ENVIRONMENT"].Equals("Development");
     }
     // GET: Bookmarks/index/1
     public ActionResult Index(int page = 1)
@@ -47,6 +50,8 @@ namespace reffffound.Controllers
       var bookmark = _bookmarkRepository.Read(guid);
       if (bookmark == null || string.IsNullOrWhiteSpace(bookmark.Guid)) return View("Error");
 
+      ViewBag.ShowUserFunctions = _showUserFunctions;
+
       ViewBag.ReferAction = referAction;
       ViewBag.ReferUsername = referUsername;
       ViewBag.ReferPage = referPage;
@@ -66,6 +71,8 @@ namespace reffffound.Controllers
       }
       else
       {
+        ViewBag.ShowUserFunctions = _showUserFunctions;
+
         page = page < 1 ? 1 : page; 
         ViewBag.PreviousPage = page > 1 ? page - 1 : 1;
         ViewBag.CurrentPage = page;
@@ -96,6 +103,8 @@ namespace reffffound.Controllers
     // GET: Bookmarks/Create/Username
     public ActionResult Create(string username)
     {
+      if(!_showUserFunctions) return RedirectToAction(nameof(FeedNullFour), "Bookmarks", new {username="", filter="", page=1 });
+
       ViewBag.Username = username;
       return View("Create");
     }
@@ -106,6 +115,8 @@ namespace reffffound.Controllers
     [ValidateAntiForgeryToken]
     public ActionResult Create(IFormCollection collection)
     {
+      if(!_showUserFunctions) return RedirectToAction(nameof(FeedNullFour), "Bookmarks", new {username="", filter="", page=1 });
+
       try
       {
         var bookmark = new Bookmark().FromCollection(collection);
@@ -131,6 +142,7 @@ namespace reffffound.Controllers
     // GET: BookmarkController/Edit/5
     public ActionResult Edit(string guid)
     {
+      if(!_showUserFunctions) return RedirectToAction(nameof(FeedNullFour), "Bookmarks", new {username="", filter="", page=1 });
         if(String.IsNullOrWhiteSpace(guid)) return View("Error");
 
         var bm = _bookmarkRepository.Read(guid);
@@ -144,6 +156,7 @@ namespace reffffound.Controllers
     [ValidateAntiForgeryToken]
     public ActionResult Edit(string guid, IFormCollection collection)
     {
+      if(!_showUserFunctions) return RedirectToAction(nameof(FeedNullFour), "Bookmarks", new {username="", filter="", page=1 });
         try
         {
             if(String.IsNullOrWhiteSpace(guid)) return View("Error");
@@ -182,6 +195,7 @@ namespace reffffound.Controllers
     // GET: BookmarkController/Delete/5
     public ActionResult Delete(string guid)
     {
+      if(!_showUserFunctions) return RedirectToAction(nameof(FeedNullFour), "Bookmarks", new {username="", filter="", page=1 });
         var bookmark = _bookmarkRepository.Read(guid);
 
         if (bookmark == null)
@@ -200,6 +214,7 @@ namespace reffffound.Controllers
     [ValidateAntiForgeryToken]
     public ActionResult Delete(string guid, IFormCollection collection)
     {
+      if(!_showUserFunctions) return RedirectToAction(nameof(FeedNullFour), "Bookmarks", new {username="", filter="", page=1 });
         try
         {
             _bookmarkRepository.Delete(guid);
@@ -214,6 +229,7 @@ namespace reffffound.Controllers
     // GET: BookmarksController/Hydrate
     public ActionResult Hydrate()
     {
+      if(!_showUserFunctions) return RedirectToAction(nameof(FeedNullFour), "Bookmarks", new {username="", filter="", page=1 });
       bool success = _bookmarkRepository.Hydrate();
       if (success)
       {

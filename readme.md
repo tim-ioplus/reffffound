@@ -95,12 +95,12 @@ its ffffound - long lost, now refound :)
 
 ### v .7
 
-* block links:
- * [x] register: ".. is invitation based service. If you like to receive an invitation you can contact us"
- * [x] login: ".. if you have received an invite, please use the direct link provided."
-* [x] css cleanup for menu items
-* for Release/Production Environment or without login hide the followingFunctions: Create, Edit, Delete, Hydrate
-* Add validation Message in Create View for invalid inputs
+block links:
+- [x] register: ".. is invitation based service. If you like to receive an invitation you can contact us"
+- [x] login: ".. if you have received an invite, please use the direct link provided." 
+- [x] css cleanup for menu items 
+- [x] for Release/Production Environment or without login hide the followingFunctions: Create, Edit, Delete, Hydrate
+- [ ] Add validation Message in Create View for invalid inputs
 
 ### v 0.8 - 0.9
 
