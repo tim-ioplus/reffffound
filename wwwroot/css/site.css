@@ -140,3 +140,12 @@ h6 {}
 #menu-legal {
   font-size: 12px;
 }
+
+.pagination a, .pagination span
+{
+    margin-left:12px;
+}
+.pagination .current
+{
+    text-decoration:none;
+}

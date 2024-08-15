@@ -65,14 +65,11 @@
 </div>
 
 <div class="pagination">
-    <p class="pagination component">
-        <a class="nav-link text-dark" asp-area=""
-            asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="1">First</a>
-        <a class="nav-link text-dark" asp-area=""
-            asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="@ViewBag.Previous">Previous</a>
-        <span class="nav-link text-dark">@ViewBag.CurrentPage</span>
-        <a class="nav-link text-dark" asp-area=""
-            asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="@ViewBag.NextPage">Next</a>
+	<p class="pagination componentTodo">
+        <a class="@ViewBag.PaginationFirstCss" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="1">First</a>
+        <a class="" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="@ViewBag.Previous">Previous</a>
+        <a class="current">@ViewBag.CurrentPage</a>
+        <a class="" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="@ViewBag.NextPage">Next</a>
     </p>
 </div>
 

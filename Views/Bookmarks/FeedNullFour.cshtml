@@ -3,9 +3,6 @@
     ViewData["Title"] = "Feed Null Four..";
 }
 
-<a class="nav-link" asp-area=""
-   asp-controller="Bookmarks" asp-action="@ViewBag.NextAction" asp-route-username="@ViewBag.Username">Go back to Feed</a>
-
 <div class="assets">
     <blockquote class="bookmarkblock">
 
@@ -35,99 +32,10 @@
 
     </blockquote>
 </div>
-<!-- 
-<div>
-    <h4>Bookmark</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Guid)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Guid)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Url)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Url)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Savedby)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Savedby)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Timestamp)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Timestamp)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Context1link)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Context1link)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Context1img)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Context1img)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Context2link)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Context2link)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Context2img)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Context2img)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Context3link)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Context3link)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Context3img)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Context3img)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Usercontext)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Usercontext)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FullUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FullUrl)
-        </dd>
-    </dl>
+
+<div class="pagination">
+	<p class="pagination componentTodo">
+	  <a class="nav-link" asp-area=""
+		 asp-controller="Bookmarks" asp-action="@ViewBag.NextAction" asp-route-username="@ViewBag.Username">Go back to Feed</a>
+   </p>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
--->

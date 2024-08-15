@@ -93,7 +93,7 @@ its ffffound - long lost, now refound :)
 * * dont display guid on edit/delete pages [x]  
 * * Use stronger Action text on Edit/Delete inputs for better Clarity of Actions [x] 
 
-### v .8
+### v .8 ==ok==
 * * block links
   * * register: ".. is invitation based service. If you like to receive an invitation you can contact us" [x]
   * * login: ".. if you have received an invite, please use the direct link provided." [x]
@@ -102,7 +102,16 @@ its ffffound - long lost, now refound :)
 * * Add validation Message in Create- and Edit-View for invalid inputs [x]
 * * Create and use Helper Service für User/Identity Tasks [x]
 
-### v 0.9 - 0.9
+
+### v .9
+*  * move database hosting to azure [x] 
+*  * add new roles, users for app access to azure [ ] 
+*  * fix style for pagination links, style for 'First' link dynamic [x] 
+*  * on 404 page move 'Back to List/feed' Link to bottom in pagination area [x] 
+*  * move app hosting to azure [ ]
+
+   * [ ] 
+### v 0.9x - 0.9
 
 * partial views (activeUsers..) füllen
   * fill dbo.ContentUsers with alphausers

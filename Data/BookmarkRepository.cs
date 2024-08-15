@@ -31,26 +31,33 @@ namespace reffffound.Data
 
     private SqlConnection GetConnection()
     {
-      var connectionString = _connectionString != null ? _connectionString : "";
+      if(_connectionString.Contains("database.windows.net"))
+        {
+          return new SqlConnection(_connectionString);
+        }
+      else
+        {
+          var connectionString = _connectionString != null ? _connectionString : "";
 
-      var _settings = new Dictionary<string, string>();
+          var _settings = new Dictionary<string, string>();
 
-      foreach (string setting in connectionString.Split(";"))
-      {
-        var settingKV = setting.Split("=");
-        _settings.Add(settingKV[0], settingKV[1]);
-      }
+          foreach (string setting in connectionString.Split(";"))
+          {
+            var settingKV = setting.Split("=");
+            _settings.Add(settingKV[0], settingKV[1]);
+          }
 
-      SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-      builder.DataSource = _settings["Server"];
-      builder.InitialCatalog = _settings["Database"];
-      builder.UserID = _settings["User"];
-      builder.Password = _settings["Password"];
+          SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder( );
+          builder.DataSource = _settings["Server"];
+          builder.InitialCatalog = _settings["Database"];
+          builder.UserID = _settings["User"];
+          builder.Password = _settings["Password"];
 
-      builder.MultipleActiveResultSets = bool.Parse(_settings["MultipleActiveResultSets"]); //true
-      builder.TrustServerCertificate = bool.Parse(_settings["TrustedConnection"]); //true;
+          builder.MultipleActiveResultSets = bool.Parse(_settings["MultipleActiveResultSets"]); //true
+          builder.TrustServerCertificate = bool.Parse(_settings["TrustedConnection"]); //true;
 
-      return new SqlConnection(builder.ConnectionString);
+          return new SqlConnection(builder.ConnectionString);
+        }
     }
 
     public void Create(Bookmark bookmark)

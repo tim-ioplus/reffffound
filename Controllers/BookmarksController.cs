@@ -15,7 +15,7 @@ namespace reffffound.Controllers
     public BookmarksController(ApplicationDbContext context, IConfiguration configuration)
     {
       _context = context;
-      var connectionString = configuration["ConnectionStrings:DataConnection"] ?? "";
+      var connectionString = configuration["ConnectionStrings:AzureConnection"] ?? configuration["ConnectionStrings:DataConnection"] ?? "";
       _bookmarkRepository = new BookmarkRepository(_context, connectionString);
       _userRepository = new UserRepository(_context, connectionString);
 
@@ -30,6 +30,7 @@ namespace reffffound.Controllers
       ViewBag.PreviousPage = page > 1 ? page - 1 : 1;
       ViewBag.CurrentPage = page;
       ViewBag.NextPage = page + 1;
+      ViewBag.PaginationFirstCss = (page == 1 || page == 0) ? "current" : "";
 
       if (bookmarks.Count == 0)
       {
@@ -77,6 +78,7 @@ namespace reffffound.Controllers
         ViewBag.PreviousPage = page > 1 ? page - 1 : 1;
         ViewBag.CurrentPage = page;
         ViewBag.NextPage = page + 1;
+        ViewBag.PaginationFirstCss = (page == 1 || page == 0) ? "current" : "";
 
         ViewBag.Username = username;
         ViewBag.IsAdminUser = UserHelperService.IsAdmin(username);

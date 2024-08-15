@@ -64,11 +64,11 @@
 </div>
 
 <div class="pagination">
-	<p class="pagination component">
-		<a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Index" asp-route-page="1">First</a>
-		<a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Index" asp-route-page="@ViewBag.PreviousPage">Previous</a>
-		<span class="nav-link text-dark">@ViewBag.CurrentPage</span>
-		<a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Index" asp-route-page="@ViewBag.NextPage">Next</a>
+	<p class="pagination componentTodo">
+		<a class="@ViewBag.PaginationFirstCss" asp-area="" asp-controller="Bookmarks" asp-action="Index" asp-route-page="1">First</a>
+		<a class="" asp-area="" asp-controller="Bookmarks" asp-action="Index" asp-route-page="@ViewBag.PreviousPage">Previous</a>
+		<a class="">@ViewBag.CurrentPage</a>
+		<a class="" asp-area="" asp-controller="Bookmarks" asp-action="Index" asp-route-page="@ViewBag.NextPage">Next</a>
 	</p>
 </div>
 
