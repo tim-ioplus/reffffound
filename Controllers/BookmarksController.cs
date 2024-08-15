@@ -15,7 +15,7 @@ namespace reffffound.Controllers
     public BookmarksController(ApplicationDbContext context, IConfiguration configuration)
     {
       _context = context;
-      var connectionString = configuration["ConnectionStrings:AzureConnection"] ?? configuration["ConnectionStrings:DataConnection"] ?? "";
+      var connectionString = configuration["ConnectionStrings:AzureSqlConnection"] ?? configuration["ConnectionStrings:DataConnection"] ?? "";
       _bookmarkRepository = new BookmarkRepository(_context, connectionString);
       _userRepository = new UserRepository(_context, connectionString);
 
