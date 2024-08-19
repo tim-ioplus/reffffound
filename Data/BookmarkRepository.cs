@@ -158,16 +158,18 @@ namespace reffffound.Data
 
     public List<Bookmark> ReadThreeContextBookmarks(string username, string timestamp)
     {
+      if(string.IsNullOrWhiteSpace(username)) throw new ArgumentNullException("Argument 'username' is null, empty or whitespace");
+      if(string.IsNullOrWhiteSpace(timestamp)) throw new ArgumentNullException("Argument 'timestamp' is null, empty or whitespace");
+
       var bookmarks = new List<Bookmark>();
 
       try
       {
         using (SqlConnection connection = GetConnection())
         {
-          var sql = $"SELECT TOP 3 Guid, Image FROM [dbo].[Findlings] WHERE Usercontext LIKE @username% AND timestamp < @timestamp ORDER BY RAND() ";
+          var sql = $"SELECT TOP 3 Guid, Image FROM [dbo].[Findlings] WHERE Usercontext LIKE '" + username + "%' AND timestamp < @timestamp ORDER BY RAND() ";
           using (SqlCommand command = new SqlCommand(sql, connection))
           {
-            command.Parameters.AddWithValue("@username", username);
             command.Parameters.AddWithValue("@timestamp", timestamp);
 
             connection.Open();
