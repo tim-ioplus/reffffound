@@ -74,13 +74,15 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 	<script>
+		var downtimeMessage = "Attention: Current Downtimes of The Internet Archive's AWS Services affecting our service. See https://x.com/internetarchive/status/1662999547138945030 for more Information. Thank you for your Patience.";
+
 		const alertedCookieValue = document.cookie
 			.split("; ")
 			.find((row) => row.startsWith("alerted="))
 			?.split("=")[1];
 
-		if (alertedCookieValue == '' || alertedCookieValue == 'false') {
-			alert("Attention: Current Downtimes of The Internet Archive's AWS Services affecting our service. See https://x.com/internetarchive/status/1662999547138945030 for more Information. Thank you for your Patience.");
+		if (document.cookie == '' || alertedCookieValue == undefined || alertedCookieValue == 'false') {
+			alert(downtimeMessage);
 			document.cookie = "alerted=true; SameSite=None; Secure";
 		}
 
