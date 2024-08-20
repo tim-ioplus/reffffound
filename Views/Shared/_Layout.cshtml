@@ -24,7 +24,7 @@
                     <td valign="top">
                         <div class="title">
 							<h1>RE:FFFFOUND!</h1>
-                            <h2>image bookmarking</h2>							.
+                            <h2>image bookmarking</h2>
                         </div>
                     </td>
                 </tr>
@@ -73,5 +73,18 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+	<script>
+		const alertedCookieValue = document.cookie
+			.split("; ")
+			.find((row) => row.startsWith("alerted="))
+			?.split("=")[1];
+
+		if (alertedCookieValue == '' || alertedCookieValue == 'false') {
+			alert("Attention: Current Downtimes of The Internet Archive's AWS Services affecting our service. See https://x.com/internetarchive/status/1662999547138945030 for more Information. Thank you for your Patience.");
+			document.cookie = "alerted=true; SameSite=None; Secure";
+		}
+
+
+	</script>
 </body>
 </html>

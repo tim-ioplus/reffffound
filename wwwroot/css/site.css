@@ -57,11 +57,10 @@ h6 {}
 {
 
 }
-.inactive, .inactive a:hover
-{
-    color:#f1f1f1;
-    text-decoration:none;
-    cursor:wait;
+.inactive, inactive a, .inactive a:hover {
+  color: #f1f1f1;
+  text-decoration: none;
+  cursor: wait;
 }
 
 .form-group, .form-group label, .form-group input, .form-group span {
