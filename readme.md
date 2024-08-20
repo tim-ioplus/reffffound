@@ -103,15 +103,21 @@ its ffffound - long lost, now refound :)
 * * Create and use Helper Service für User/Identity Tasks [x]
 
 
-### v .9
-*  * move database hosting to azure [x] 
-*  * add new roles, users for app access to azure [ ] 
+### v 0.9 - 0.91
+
 *  * fix style for pagination links, style for 'First' link dynamic [x] 
 *  * on 404 page move 'Back to List/feed' Link to bottom in pagination area [x] 
-*  * move app hosting to azure [ ]
+*  * move app hosting to azure [x]
+*  * move database hosting to azure [x] 
+*  * fix sql parameter bug in Statement to Select Contextual Bookmarks [x]
+*  * add temporary aws downtime Message [x]
+*  * remove version log [x]
+ 
+###  v .9x
 
-   * [ ] 
-### v 0.9x - 0.9
+*  * add new roles, users for app access to azure [ ]
+
+### v 0.9y - 1.x
 
 * partial views (activeUsers..) füllen
   * fill dbo.ContentUsers with alphausers
