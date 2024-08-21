@@ -412,3 +412,11 @@ FodyWeavers.xsd
 *.bin
 *.v2
 obj/Debug/net8.0/reffffound.sourcelink.json
+.vs/reffffoundSolution/DesignTimeBuild/.dtbcache.v2
+.vs/reffffoundSolution/v17/.futdcache.v2
+.vs/reffffoundSolution/v17/.suo
+.vs/reffffoundSolution/v17/DocumentLayout.json
+obj/Debug/net8.0/reffffound.AssemblyInfo.cs
+obj/Debug/net8.0/reffffound.AssemblyInfoInputs.cache
+obj/Debug/net8.0/reffffound.assets.cache
+obj/Debug/net8.0/reffffound.GeneratedMSBuildEditorConfig.editorconfig
