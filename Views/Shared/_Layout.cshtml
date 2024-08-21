@@ -37,7 +37,7 @@
                 <td style="width=150px;vertical-align: top;">
                     <div class="left-side">
                         <div id="menu-activeusers" class="menupartial">
-                            <partial name="_ActiveUsersPartial" />
+							@await Component.InvokeAsync("ActiveUsers")
                         </div>
                         <div id="menu-signin" class="menupartial">
                             <partial name="_LoginPartial" />

@@ -1,0 +1,16 @@
+@model Dictionary<string, string>
+
+<div>
+	<!-- Your view component content -->
+	<i>recent active Users</i>
+	<ul>
+	@foreach (var kv in Model)
+	{
+	  <li>
+		  <a class="" style="display:contents;" asp-area=""
+			  asp-controller="Bookmarks" asp-action="List" asp-route-username="@kv.Key" asp-route-filter="post" asp-route-page="1">@kv.Key (@kv.Value)</a>
+	  </li>
+
+	}
+	</ul>
+</div>
