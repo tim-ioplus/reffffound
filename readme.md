@@ -112,14 +112,25 @@ its ffffound - long lost, now refound :)
 *  * fix sql parameter bug in Statement to Select Contextual Bookmarks [x]
 *  * add temporary aws downtime Message [x]
 *  * remove version log [x]
- 
-###  v .9x
 
-*  * add new roles, users for app access to azure [ ]
 
-### v 0.9y - 1.x
+### v 0.92
 
-* partial views (activeUsers..) füllen
+*  * dynamic filling of partial View for User Activity [x]
+   
+### v 1.0
+
+* * encode email adress on pages: contact, flag content [x]
+* * update content Imprint, Terms of Service [x]
+* * fix layout on About page [x]
+* * show cookie Banner [x]
+* * remove aws Downtime Message [x]
+
+
+### v 1.xy
+
+* add new roles, users for app access to azure 
+* for partial views..
   * fill dbo.ContentUsers with alphausers
   * on Bookmarks/Create increase Count property for posting Users by 
 * in 'Bookmarks/Create' fill Title Field automaticlly > UrlField.onChange() request 
