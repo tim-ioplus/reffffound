@@ -2,5 +2,16 @@
     ViewData["Title"] = "Contact";
 }
 
+<div class="contentcontextlegal">
+
 <h1>@ViewData["Title"]</h1>
-<p>Contact us via <a href="mailto:f@reffffound.com">f@reffffound.com</a> .</p>
+<p>Contact us via Email <a id="contactlink" href="mailto:mail@site.tld" onclick="showContactMail()">Show EMail</a>.</p>
+</div>
+<script>
+	function showContactMail() {
+		var encEmail = "aGVsbG9yZWZmZmZvdW5kQGlvcGx1cy5kZQ==";
+		const sendlink = document.getElementById("contactlink");
+		sendlink.setAttribute("href", "mailto:".concat(atob(encEmail)));
+		sendlink.innerHTML = "".concat(atob(encEmail));
+	}
+</script>

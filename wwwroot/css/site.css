@@ -58,7 +58,7 @@ h6 {}
 
 }
 .inactive, inactive a, .inactive a:hover {
-  color: #f1f1f1;
+  color: #212529;
   text-decoration: none;
   cursor: wait;
 }
@@ -147,4 +147,8 @@ h6 {}
 .pagination .current
 {
     text-decoration:none;
+}
+
+.contentcontextlegal {
+  margin: 5px 5px 50px 37px;
 }

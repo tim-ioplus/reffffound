@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Data.SqlClient;
+using reffffound.Data;
 using reffffound.Models;
 public static class UserHelperService
 {
+  
   private static readonly List<ContentUser> _initUsers = new List<ContentUser>()
   {
     new ContentUser(){Id=100, Name="koelleforniadreamin", Role=Role.Administrator },

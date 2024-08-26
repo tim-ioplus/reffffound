@@ -13,12 +13,7 @@ namespace reffffound.Components.ActiveUsersViewComponent
     }
     public IViewComponentResult Invoke()
     {
-        var model = _userService.GetActiveUsers(); /*new Dictionary<string, string>
-          {
-            { "MagicNumberMonk", "23" },
-            { "Univierse", "42" }
-          };*/
-        // Populate your model as needed
+        var model = _userService.GetActiveUsers();
         return View("Default", model);
     }
   }

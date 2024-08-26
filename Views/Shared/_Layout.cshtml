@@ -9,6 +9,13 @@
 </head>
 <body>
     <header>
+		<div id="cookieNotice" class="" style="position:absolute;left:190px;top:0px;z-index:999;max-width:500px; height:auto;border:2px solid magenta;">
+			<div class="content-wrap" style="background-color:magenta;color:#fff;padding:1px 1px 1px 5px;">Cookie Consent <span href="#" style="float:right;" onclick="acceptCookieConsent()">X</span></div>
+			<div class="content-wrap" style="background:#fff;padding:5px 5px 5px 5px;">
+					<span>We use cookies to enable correct functionality of our service. We do not use cookies to measure or record user interactions or to share Information with any third parties.
+						By continuing to use our website, you agree to our  <a class="" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>. <a href="#" onclick="acceptCookieConsent();">Accept</a></span>
+			</div>
+		</div>
         <div class="container">
             <table>
                 <tr>
@@ -68,25 +75,16 @@
         &copy; 2024 - WebApplication1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </div>
 </footer>
--->
+	-->
+	
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 	<script>
-		var downtimeMessage = "Attention: Current Downtimes of The Internet Archive's AWS Services affecting our service. See https://x.com/internetarchive/status/1662999547138945030 for more Information. Thank you for your Patience.";
-
-		const alertedCookieValue = document.cookie
-			.split("; ")
-			.find((row) => row.startsWith("alerted="))
-			?.split("=")[1];
-
-		if (document.cookie == '' || alertedCookieValue == undefined || alertedCookieValue == 'false') {
-			alert(downtimeMessage);
-			document.cookie = "alerted=true; SameSite=None; Secure";
-		}
-
 
 	</script>
+	
 </body>
 </html>
