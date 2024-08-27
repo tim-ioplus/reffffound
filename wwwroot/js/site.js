@@ -35,7 +35,9 @@
 		}
 
 		var cc = getCookie('user_cookie_consent');
-		if (cc == 1) { document.getElementById("cookieNotice").style.display = "none"; }
+
+if (cc == 1) { document.getElementById("cookieNotice").style.display = "none"; }
+else { document.getElementById("cookieNotice").style.display = "block"; }
 
 		// Set cookie consent
 		function acceptCookieConsent() {
