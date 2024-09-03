@@ -53,6 +53,8 @@ namespace reffffound.Data
             return new SqlConnection(builder.ConnectionString);
         }
 
+
+
         public List<ContentUser> ReadActive()
         {
             var contentUsers = new List<ContentUser>();

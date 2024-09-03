@@ -12,6 +12,9 @@ using System.Text;
 using NuGet.Packaging.Signing;
 using NuGet.Versioning;
 using Microsoft.IdentityModel.Protocols.Configuration;
+using Newtonsoft.Json.Linq;
+using static Azure.Core.HttpHeader;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace reffffound.Data
 {
@@ -156,7 +159,7 @@ namespace reffffound.Data
       return bookmark;
     }
 
-    public List<Bookmark> ReadThreeContextBookmarks(string username, string timestamp)
+    public List<Bookmark> ReadThreeContextBookmarks(string username, string timestamp, List<string>? usedGuids)
     {
       if(string.IsNullOrWhiteSpace(username)) throw new ArgumentNullException("Argument 'username' is null, empty or whitespace");
       if(string.IsNullOrWhiteSpace(timestamp)) throw new ArgumentNullException("Argument 'timestamp' is null, empty or whitespace");
@@ -167,9 +170,17 @@ namespace reffffound.Data
       {
         using (SqlConnection connection = GetConnection())
         {
-          var sql = $"SELECT TOP 3 Guid, Image FROM [dbo].[Findlings] WHERE Usercontext LIKE '" + username + "%' AND timestamp < @timestamp ORDER BY RAND() ";
+          string usedGuidText = "''";
+          if(usedGuids != null && usedGuids.Any())
+          {
+            var usedGuidList = usedGuids.ConvertAll(g => "\'" + g + "\'");
+		        usedGuidText = string.Join(",", usedGuidList); 
+          }
+
+          var sql = $"SELECT TOP 3 Guid, Image FROM [dbo].[Findlings] WHERE Guid NOT IN ({usedGuidText}) AND @username IN (SELECT value FROM STRING_SPLIT(Usercontext, ',', 1) WHERE ordinal=1) AND timestamp < @timestamp ORDER BY NEWID()";
           using (SqlCommand command = new SqlCommand(sql, connection))
           {
+            command.Parameters.AddWithValue("@username", username);
             command.Parameters.AddWithValue("@timestamp", timestamp);
 
             connection.Open();
@@ -198,8 +209,14 @@ namespace reffffound.Data
     {
       return List("", "", page);
     }
-
     public List<Bookmark> List(string username = "", string filter = "post", int page = 1)
+    {
+      var bookmarks = _List(username, filter, page);
+      AddContext(bookmarks);
+
+      return bookmarks;
+    }
+    private List<Bookmark> _List(string username = "", string filter = "post", int page = 1)
     {
       var bookmarks = new List<Bookmark>();
       try
@@ -474,7 +491,7 @@ namespace reffffound.Data
         var savedBookmark = Read(bookmark.Guid);
         if (savedBookmark == null)
         {
-          var bookmarkWithContext = AddContext(bookmark);
+          var bookmarkWithContext = bookmark;//AddContext(bookmark);
 
           if (updateTimestamp)
           {
@@ -502,18 +519,29 @@ namespace reffffound.Data
 
     public List<Bookmark> AddContext(List<Bookmark> bookmarks)
     {
+      var usedGuidsByUser = new Dictionary<string, List<string>>();
+      
       foreach (var bookmark in bookmarks)
       {
-        AddContext(bookmark);
+        var usedGuidsForUser = usedGuidsByUser.GetValueOrDefault(bookmark.Username);
+
+        usedGuidsForUser ??= [];
+        AddContext(bookmark, usedGuidsForUser);
+
+        if(!string.IsNullOrWhiteSpace(bookmark.Context1link)) usedGuidsForUser.Add(bookmark.Context1link);
+        if(!string.IsNullOrWhiteSpace(bookmark.Context2link)) usedGuidsForUser.Add(bookmark.Context2link);
+        if(!string.IsNullOrWhiteSpace(bookmark.Context3link)) usedGuidsForUser.Add(bookmark.Context3link);
+
+        usedGuidsByUser[bookmark.Username] = usedGuidsForUser;
       }
 
       return bookmarks;
     }
 
-    public Bookmark AddContext(Bookmark bookmark)
+    public Bookmark AddContext(Bookmark bookmark, List<string>? usedGuids = null)
     {
       var user = bookmark.Usercontext.Replace(" ", "").Split(",").First();
-      var contextBookmarks = ReadThreeContextBookmarks(user, bookmark.Timestamp);
+      var contextBookmarks = ReadThreeContextBookmarks(user, bookmark.Timestamp, usedGuids);
 
       if (contextBookmarks.Count >= 1)
       {

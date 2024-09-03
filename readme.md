@@ -126,13 +126,23 @@ its ffffound - long lost, now refound :)
 * * show cookie Banner [x]
 * * remove aws Downtime Message [x]
 
+### v 1.1
 
+* fix recommendation links [x]
+  * recommendation appear on sidebar in global (index) and user (List) feeds
+  * 0 <= n <= 3 recommmendations per post
+  * recommendations predate the recommending post
+  * each post only recommends from its own user
+  * no repeatitions on current page per user
+  * recommendations are not sorted
+* partial views
+  * on bookmark Create increase Count property for posting Users  
+
+  
 ### v 1.xy
 
+* fill dbo.ContentUsers with alphausers
 * add new roles, users for app access to azure 
-* for partial views..
-  * fill dbo.ContentUsers with alphausers
-  * on Bookmarks/Create increase Count property for posting Users by 
 * in 'Bookmarks/Create' fill Title Field automaticlly > UrlField.onChange() request 
 * Load spinner for images
 * View Detail inkl Kontextbilder

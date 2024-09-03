@@ -21,6 +21,7 @@ namespace reffffound.Controllers
 
       _showUserFunctions = configuration["ASPNETCORE_ENVIRONMENT"].Equals("Development");
     }
+
     // GET: Bookmarks/index/1
     public ActionResult Index(int page = 1)
     {
@@ -132,7 +133,6 @@ namespace reffffound.Controllers
 
         bookmark.Guid = Guid.NewGuid().ToString();
         bookmark.Timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        bookmark = _bookmarkRepository.AddContext(bookmark);
 
         _bookmarkRepository.Create(bookmark);
 
