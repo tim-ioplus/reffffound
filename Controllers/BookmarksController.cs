@@ -252,5 +252,32 @@ namespace reffffound.Controllers
       }
     }
     
+    // GET: BookmarksController/UpdateUsercounts
+    public ActionResult UpdateUsercounts()
+    {
+      if(!_showUserFunctions) return RedirectToAction(nameof(FeedNullFour), "Bookmarks", new {username="", filter="", page=1 });
+      var success = false;
+      var users = _userRepository.List();
+      if (users.Any())
+      {
+        foreach (var user in users)
+        {
+          int count = _bookmarkRepository.GetCount(user.Name);
+          user.Count = count;
+          _userRepository.Update(user);
+        }
+
+        success = true;
+      }
+      
+      if (success)
+      {
+        return RedirectToAction(nameof(Index), "Bookmarks");
+      }
+      else
+      {
+        return View("Error");
+      }
+    }
   }
 }

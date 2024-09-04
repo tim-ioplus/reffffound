@@ -137,6 +137,7 @@ its ffffound - long lost, now refound :)
   * recommendations are not sorted
 * partial views
   * on bookmark Create increase Count property for posting Users  
+* on admin functions hydrate, UpdateUsers return to Users feed noch index feed
 
   
 ### v 1.xy

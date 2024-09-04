@@ -177,7 +177,7 @@ namespace reffffound.Data
 		        usedGuidText = string.Join(",", usedGuidList); 
           }
 
-          var sql = $"SELECT TOP 3 Guid, Image FROM [dbo].[Findlings] WHERE Guid NOT IN ({usedGuidText}) AND @username IN (SELECT value FROM STRING_SPLIT(Usercontext, ',', 1) WHERE ordinal=1) AND timestamp < @timestamp ORDER BY NEWID()";
+          var sql = $"SELECT TOP 3 Guid, Image FROM [dbo].[Findlings] WHERE Guid NOT IN ({usedGuidText}) AND @username = (SELECT value FROM STRING_SPLIT(Usercontext, ',', 1) WHERE ordinal=1) AND timestamp < @timestamp ORDER BY NEWID()";
           using (SqlCommand command = new SqlCommand(sql, connection))
           {
             command.Parameters.AddWithValue("@username", username);
@@ -562,6 +562,38 @@ namespace reffffound.Data
       }
 
       return bookmark;
+    }
+
+    internal int GetCount(string username)
+    {
+      int count = 0;
+      try
+      {
+        using (var connection = GetConnection())
+        {
+          var sql = "Select count(*) from dbo.Findlings where '@username' = (SELECT value FROM STRING_SPLIT(Usercontext, ',', 1) where ordinal = 1)";
+
+          using (var command = new SqlCommand(sql, connection))
+          {
+            command.Parameters.AddWithValue("username", username);
+            connection.Open();
+
+            using (var reader = command.ExecuteReader())
+            {
+              while (reader.Read())
+              {
+                count = reader.GetInt32(0);
+              }
+            }
+          }
+        }
+      }
+      catch (Exception ex)
+      {
+        throw ex;
+      }
+
+      return count;
     }
   }
 }

@@ -53,9 +53,74 @@ namespace reffffound.Data
             return new SqlConnection(builder.ConnectionString);
         }
 
+        public ContentUser Read(string username)
+        {
+            var contentUser = new ContentUser();
 
+            try
+            {
+                using (SqlConnection connection = GetConnection())
+                {
+                    var sql = "SELECT * FROM dbo.ContentUsers where Name = @username";
 
-        public List<ContentUser> ReadActive()
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("username", username);
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                contentUser = Parse(reader);                                
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return contentUser;
+        }
+
+    public void Update(ContentUser contentUser)
+      {
+      try
+      {
+        using (SqlConnection connection = GetConnection())
+        {
+          string sql = $@"UPDATE [dbo].[ContentUsers]
+                   SET [Name] = @name
+                      ,[EMail] = @email
+                      ,[Role] = @role
+                      ,[Link] = @link
+                      ,[Count] = @count
+                      WHERE [Id] = @id";
+
+          using (SqlCommand command = new SqlCommand(sql, connection))
+          {
+            command.Parameters.AddWithValue("@name", contentUser.Name);
+            command.Parameters.AddWithValue("@email", contentUser.Email);
+            command.Parameters.AddWithValue("@role", contentUser.Role);
+            command.Parameters.AddWithValue("@link", contentUser.Link);
+            command.Parameters.AddWithValue("@count", contentUser.Count);
+            command.Parameters.AddWithValue("@id", contentUser.Id);
+
+            connection.Open();
+            command.ExecuteNonQuery();
+          }
+        }
+      }
+      catch (Exception ex)
+      {
+        throw ex;
+      }
+      }
+
+        public List<ContentUser> GetTopTenActiveUsers()
         {
             var contentUsers = new List<ContentUser>();
 
@@ -63,7 +128,38 @@ namespace reffffound.Data
             {
                 using (SqlConnection connection = GetConnection())
                 {
-                    String sql = string.Format("SELECT TOP 10 * FROM dbo.ContentUsers Order BY Count DESC");
+                    var sql = "SELECT Top 10 * FROM dbo.ContentUsers Order BY Count DESC";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var contentUser = Parse(reader);
+                                contentUsers.Add(contentUser);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return contentUsers;
+        }
+        public List<ContentUser> List()
+        {
+            var contentUsers = new List<ContentUser>();
+
+            try
+            {
+                using (SqlConnection connection = GetConnection())
+                {
+                    var sql = "SELECT * FROM dbo.ContentUsers Order BY Count DESC";
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
