@@ -127,14 +127,18 @@ namespace reffffound.Controllers
         if(!bookmark.IsValid(out string validationMessage))
         {
           ViewBag.ShowValidationMessage = true;
-          ViewBag.ValidatioNMessage = validationMessage;
+          ViewBag.ValidationMessage = validationMessage;
           return View("Create", bookmark);
         }
 
         bookmark.Guid = Guid.NewGuid().ToString();
         bookmark.Timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-
+        
         _bookmarkRepository.Create(bookmark);
+
+        var user = _userRepository.Read(bookmark.Username);
+        user.Count += 1;
+        _userRepository.Update(user);
 
         return RedirectToAction(nameof(Details), "Bookmarks", new { guid = bookmark.Guid });
       }

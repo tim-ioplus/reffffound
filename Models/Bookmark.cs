@@ -60,7 +60,7 @@ namespace reffffound.Models
           bookmark.Image = image;
           bookmark.Usercontext = usercontext;
 
-          SetUsername();
+          bookmark.SetUsername();
 
           return bookmark;
         }
