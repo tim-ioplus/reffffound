@@ -571,7 +571,7 @@ namespace reffffound.Data
       {
         using (var connection = GetConnection())
         {
-          var sql = "Select count(*) from dbo.Findlings where '@username' = (SELECT value FROM STRING_SPLIT(Usercontext, ',', 1) where ordinal = 1)";
+          var sql = "Select count(*) from dbo.Findlings where @username = (SELECT value FROM STRING_SPLIT(Usercontext, ',', 1) where ordinal = 1)";
 
           using (var command = new SqlCommand(sql, connection))
           {

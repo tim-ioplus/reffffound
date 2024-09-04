@@ -19,38 +19,46 @@ namespace reffffound.Data
         public string ContentRootPath = "";
         public bool Hydrated = false;
         private readonly IConfiguration _configuration;
+        private string _connectionString;
         private ApplicationDbContext _context;
         private SqlConnection _DbConnection;
 
         public UserRepository(ApplicationDbContext context, string connectionString)
         {
             _context = context;
-            //_DbConnection = GetConnection();
+            _connectionString = connectionString;
         }
 
 
         private SqlConnection GetConnection()
         {
-            var connectionString = _configuration != null ? _configuration["ConnectionStrings:SqlConnection"]
-                    : "Server=DESKTOP-JQTJ275\\SQLEXPRESS;Database=reffffound;TrustedConnection=true;MultipleActiveResultSets=true;User=appsu;Password=appsu3000";
-            var _settings = new Dictionary<string, string>();
-
-            foreach (string setting in connectionString.Split(";"))
+          if(_connectionString.Contains("database.windows.net"))
             {
+              return new SqlConnection(_connectionString);
+            }
+          else
+            {
+              var connectionString = _connectionString != null ? _connectionString : "";
+
+              var _settings = new Dictionary<string, string>();
+
+              foreach (string setting in connectionString.Split(";"))
+              {
                 var settingKV = setting.Split("=");
                 _settings.Add(settingKV[0], settingKV[1]);
+              }
+
+              SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder( );
+              builder.DataSource = _settings["Server"];
+              builder.InitialCatalog = _settings["Database"];
+              builder.UserID = _settings["User"];
+              builder.Password = _settings["Password"];
+
+              builder.MultipleActiveResultSets = bool.Parse(_settings["MultipleActiveResultSets"]); //true
+              builder.TrustServerCertificate = bool.Parse(_settings["TrustedConnection"]); //true;
+
+              return new SqlConnection(builder.ConnectionString);
             }
-
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = _settings["Server"]; //"DESKTOP-JQTJ275\\SQLEXPRESS";
-            builder.InitialCatalog = _settings["Database"]; //"reffffound";
-            builder.UserID = _settings["User"]; //"appsu";
-            builder.Password = _settings["Password"]; //"appsu3000";
-            
-            builder.MultipleActiveResultSets = bool.Parse(_settings["MultipleActiveResultSets"]); //true
-            builder.TrustServerCertificate = bool.Parse(_settings["TrustedConnection"]); //true;
-
-            return new SqlConnection(builder.ConnectionString);
         }
 
         public ContentUser Read(string username)
@@ -190,12 +198,16 @@ namespace reffffound.Data
             var contentUser = new ContentUser();
 
             int id = reader.GetInt32(0);
-            string email = reader.GetString(1);
-            string link = reader.GetString(2);
-            int count = reader.GetInt32(3);
+            string name = reader.GetString(1);
+            string email = reader.GetString(2);
+            string role = reader.GetString(3);
+            string link = reader.GetString(4);
+            int count = reader.GetInt32(5);
 
             contentUser.Id = id;
+            contentUser.Name = name;
             contentUser.Email = email;
+            contentUser.Role = role;
             contentUser.Link = link;
             contentUser.Count = count;
 
