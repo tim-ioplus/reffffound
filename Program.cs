@@ -18,6 +18,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IBookmarkService, BookmarkService>();
 builder.Services.AddSingleton(builder.Configuration);
 
 

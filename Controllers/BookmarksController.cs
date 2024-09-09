@@ -32,6 +32,9 @@ namespace reffffound.Controllers
       ViewBag.CurrentPage = page;
       ViewBag.NextPage = page + 1;
       ViewBag.PaginationFirstCss = (page == 1 || page == 0) ? "current" : "";
+      ViewBag.Action = "Index";
+      ViewBag.Filter = "";
+      ViewBag.Username = "";
 
       if (bookmarks.Count == 0)
       {
@@ -80,6 +83,8 @@ namespace reffffound.Controllers
         ViewBag.CurrentPage = page;
         ViewBag.NextPage = page + 1;
         ViewBag.PaginationFirstCss = (page == 1 || page == 0) ? "current" : "";
+        ViewBag.Action = "List";
+        ViewBag.Filter = filter;
 
         ViewBag.Username = username;
         ViewBag.IsAdminUser = UserHelperService.IsAdmin(username);

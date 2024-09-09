@@ -13,15 +13,14 @@ using NuGet.Packaging.Signing;
 
 namespace reffffound.Data
 {
-    public class UserRepository
+    public class UserRepository : DataRepository
     {
         private List<ContentUser> _contentUsers = [];
         public string ContentRootPath = "";
         public bool Hydrated = false;
         private readonly IConfiguration _configuration;
-        private string _connectionString;
         private ApplicationDbContext _context;
-        private SqlConnection _DbConnection;
+        private string _connectionString;
 
         public UserRepository(ApplicationDbContext context, string connectionString)
         {
@@ -29,36 +28,9 @@ namespace reffffound.Data
             _connectionString = connectionString;
         }
 
-
-        private SqlConnection GetConnection()
+        public UserRepository(string connectionString)
         {
-          if(_connectionString.Contains("database.windows.net"))
-            {
-              return new SqlConnection(_connectionString);
-            }
-          else
-            {
-              var connectionString = _connectionString != null ? _connectionString : "";
-
-              var _settings = new Dictionary<string, string>();
-
-              foreach (string setting in connectionString.Split(";"))
-              {
-                var settingKV = setting.Split("=");
-                _settings.Add(settingKV[0], settingKV[1]);
-              }
-
-              SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder( );
-              builder.DataSource = _settings["Server"];
-              builder.InitialCatalog = _settings["Database"];
-              builder.UserID = _settings["User"];
-              builder.Password = _settings["Password"];
-
-              builder.MultipleActiveResultSets = bool.Parse(_settings["MultipleActiveResultSets"]); //true
-              builder.TrustServerCertificate = bool.Parse(_settings["TrustedConnection"]); //true;
-
-              return new SqlConnection(builder.ConnectionString);
-            }
+            _connectionString = connectionString;
         }
 
         public ContentUser Read(string username)
@@ -67,7 +39,7 @@ namespace reffffound.Data
 
             try
             {
-                using (SqlConnection connection = GetConnection())
+                using (SqlConnection connection = GetConnection(_connectionString))
                 {
                     var sql = "SELECT * FROM dbo.ContentUsers where Name = @username";
 
@@ -98,7 +70,7 @@ namespace reffffound.Data
       {
       try
       {
-        using (SqlConnection connection = GetConnection())
+        using (SqlConnection connection = GetConnection(_connectionString))
         {
           string sql = $@"UPDATE [dbo].[ContentUsers]
                    SET [Name] = @name
@@ -134,7 +106,7 @@ namespace reffffound.Data
 
             try
             {
-                using (SqlConnection connection = GetConnection())
+                using (SqlConnection connection = GetConnection(_connectionString))
                 {
                     var sql = "SELECT Top 10 * FROM dbo.ContentUsers Order BY Count DESC";
 
@@ -165,7 +137,7 @@ namespace reffffound.Data
 
             try
             {
-                using (SqlConnection connection = GetConnection())
+                using (SqlConnection connection = GetConnection(_connectionString))
                 {
                     var sql = "SELECT * FROM dbo.ContentUsers Order BY Count DESC";
 

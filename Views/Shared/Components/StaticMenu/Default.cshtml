@@ -1,0 +1,21 @@
+@model int 
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<div class="staticmenu">
+	@if (@ViewBag.ShowUserFunctions)
+	{
+		<a asp-controller="Bookmarks" asp-action="Create" asp-route-username="@ViewBag.Username">Create (c)</a>
+	}
+
+	<a class="inactive" href="javascript:void(0);" onmousedown="" onclick="return false;">tile(v)</a>
+	<a class="inactive" href="javascript:void(0);" onmousedown="" onclick="return false;">top(t)</a>
+	<a class="" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="@ViewBag.PreviousPage">previous (p)</a>
+	<a class="" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="@ViewBag.NextPage">next (n)</a>
+	<!-- use UserManager and Role -->
+	@if (@ViewBag.ShowUserFunctions && @ViewBag.IsAdminUser)
+	{
+		<a class="nav-link text" title="Hydrate Database" asp-area="" asp-controller="Bookmarks" asp-action="Hydrate" asp-route-username="@ViewBag.Username">Hydrate</a>
+		<a class="nav-link text" title="Update Usercounts" asp-area="" asp-controller="Bookmarks" asp-action="UpdateUsercounts" asp-route-username="@ViewBag.Username">Update Usercounts</a>
+	}
+</div>

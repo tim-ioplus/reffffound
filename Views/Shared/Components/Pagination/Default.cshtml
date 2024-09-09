@@ -1,0 +1,31 @@
+@model int 
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div class="pagination">
+	<p class="pagination componentTodo">
+		<a class="" asp-area="" asp-controller="Bookmarks" asp-action="@ViewBag.Action" asp-route-username="@ViewBag.Username" asp-route-filter="@ViewBag.Filter" asp-route-page="@ViewBag.Previous">Previous</a>
+			<a class="" asp-area="" asp-controller="Bookmarks" asp-action="@ViewBag.Action" asp-route-username="@ViewBag.Username" asp-route-filter="@ViewBag.Filter" asp-route-page="@ViewBag.NextPage">Next</a>
+		</p>
+</div>
+
+<br />
+
+<div class="pagination">
+	<p class="pagination componentTodo">
+	@for(int p=1; p<=Model; p++)
+	{
+		@if(p == ViewBag.CurrentPage)
+		{
+			<a class="" style="color:fuchsia;text-decoration:none;">@p</a>
+		}
+		else
+		{
+			<a class="" asp-area="" asp-controller="Bookmarks" asp-action="@ViewBag.Action" asp-route-username="@ViewBag.Username"
+				   asp-route-filter="@ViewBag.Filter" asp-route-page="@p">@p</a>
+		}
+		<i>&nbsp;</i>
+	}
+	</p>
+</div>

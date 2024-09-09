@@ -138,10 +138,11 @@ its ffffound - long lost, now refound :)
 * partial views
   * on bookmark Create increase Count property for posting Users  
 * on admin functions hydrate, UpdateUsers return to Users feed noch index feed
+* update 'About' page with scfreenshot of original fffffound
 
   
 ### v 1.xy
-
+* fix display of validation message on bookmark Create
 * fill dbo.ContentUsers with alphausers
 * add new roles, users for app access to azure 
 * in 'Bookmarks/Create' fill Title Field automaticlly > UrlField.onChange() request 

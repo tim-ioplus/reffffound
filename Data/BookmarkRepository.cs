@@ -18,12 +18,11 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace reffffound.Data
 {
-  public class BookmarkRepository
+  public class BookmarkRepository : DataRepository
   {
     public string ContentRootPath = "";
+    private ApplicationDbContext? _context;
     private string _connectionString;
-    private ApplicationDbContext _context;
-    private SqlConnection _DbConnection;
 
     public BookmarkRepository(ApplicationDbContext context, string connectionString)
     {
@@ -31,38 +30,11 @@ namespace reffffound.Data
       _connectionString = connectionString;
     }
 
-
-    private SqlConnection GetConnection()
+    public BookmarkRepository(string connectionString)
     {
-      if(_connectionString.Contains("database.windows.net"))
-        {
-          return new SqlConnection(_connectionString);
-        }
-      else
-        {
-          var connectionString = _connectionString != null ? _connectionString : "";
-
-          var _settings = new Dictionary<string, string>();
-
-          foreach (string setting in connectionString.Split(";"))
-          {
-            var settingKV = setting.Split("=");
-            _settings.Add(settingKV[0], settingKV[1]);
-          }
-
-          SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder( );
-          builder.DataSource = _settings["Server"];
-          builder.InitialCatalog = _settings["Database"];
-          builder.UserID = _settings["User"];
-          builder.Password = _settings["Password"];
-
-          builder.MultipleActiveResultSets = bool.Parse(_settings["MultipleActiveResultSets"]); //true
-          builder.TrustServerCertificate = bool.Parse(_settings["TrustedConnection"]); //true;
-
-          return new SqlConnection(builder.ConnectionString);
-        }
+       _connectionString = connectionString;
     }
-
+    
     public void Create(Bookmark bookmark)
     {
       if (string.IsNullOrWhiteSpace(bookmark.Guid)) throw new NoNullAllowedException();
@@ -76,7 +48,7 @@ namespace reffffound.Data
 
       try
       {
-        using (SqlConnection connection = GetConnection())
+        using (SqlConnection connection = GetConnection(_connectionString))
         {
           string sql = $@"INSERT INTO[dbo].[Findlings] ([Guid], [Url]
                 , [Title]
@@ -132,7 +104,7 @@ namespace reffffound.Data
 
       try
       {
-        using (SqlConnection connection = GetConnection())
+        using (SqlConnection connection = GetConnection(_connectionString))
         {
           String sql = string.Format("SELECT * FROM dbo.Findlings Where Guid = @guid");
 
@@ -168,7 +140,7 @@ namespace reffffound.Data
 
       try
       {
-        using (SqlConnection connection = GetConnection())
+        using (SqlConnection connection = GetConnection(_connectionString))
         {
           string usedGuidText = "''";
           if(usedGuids != null && usedGuids.Any())
@@ -205,10 +177,23 @@ namespace reffffound.Data
       return bookmarks;
     }
 
+    /// <summary>
+    /// Listing the 10 Bookmarks on the given page
+    /// </summary>
+    /// <param name="page"></param>
+    /// <returns></returns>
     public List<Bookmark> List(int page)
     {
       return List("", "", page);
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="username"></param>
+    /// <param name="filter"></param>
+    /// <param name="page"></param>
+    /// <returns></returns>
     public List<Bookmark> List(string username = "", string filter = "post", int page = 1)
     {
       var bookmarks = _List(username, filter, page);
@@ -221,7 +206,7 @@ namespace reffffound.Data
       var bookmarks = new List<Bookmark>();
       try
       {
-        using (SqlConnection connection = GetConnection())
+        using (SqlConnection connection = GetConnection(_connectionString))
         {
           string sql = "";
           int skip = page > 0 ? ((page - 1) * 10) : 0;
@@ -270,7 +255,7 @@ namespace reffffound.Data
     {
       try
       {
-        using (SqlConnection connection = GetConnection())
+        using (SqlConnection connection = GetConnection(_connectionString))
         {
           string sql = $@"UPDATE [dbo].[Findlings]
                    SET [Guid] = @guid
@@ -324,7 +309,7 @@ namespace reffffound.Data
 
       try
       {
-        using (SqlConnection connection = GetConnection())
+        using (SqlConnection connection = GetConnection(_connectionString))
         {
           String sql = string.Format("Delete FROM dbo.Findlings Where Guid = @guid");
 
@@ -342,8 +327,6 @@ namespace reffffound.Data
         throw ex;
       }
     }
-
-
 
     #region Helper
     private Bookmark Parse(SqlDataReader reader)
@@ -412,7 +395,7 @@ namespace reffffound.Data
       DateTime timestamp = DateTime.MinValue;
       try
       {
-        using (SqlConnection connection = GetConnection())
+        using (SqlConnection connection = GetConnection(_connectionString))
         {
           String sql = string.Format("SELECT TOP 1 [Timestamp] FROM [dbo].[Findlings] ORDER BY Timestamp desc");
 
@@ -564,18 +547,34 @@ namespace reffffound.Data
       return bookmark;
     }
 
+    /// <summary>
+    /// Return the amount of bookmarked Images in the Database
+    /// a) the total amount
+    /// b) for the given username
+    /// </summary>
+    /// <param name="username"></param>
+    /// <returns></returns>
     internal int GetCount(string username)
     {
       int count = 0;
       try
       {
-        using (var connection = GetConnection())
+        using (SqlConnection connection = GetConnection(_connectionString))
         {
-          var sql = "Select count(*) from dbo.Findlings where @username = (SELECT value FROM STRING_SPLIT(Usercontext, ',', 1) where ordinal = 1)";
+          var sql = "Select count(*) from dbo.Findlings";
+
+          if(!string.IsNullOrWhiteSpace(username))
+          {
+            sql += " where @username = (SELECT value FROM STRING_SPLIT(Usercontext, ',', 1) where ordinal = 1)";
+          }
 
           using (var command = new SqlCommand(sql, connection))
           {
-            command.Parameters.AddWithValue("username", username);
+            if(!string.IsNullOrWhiteSpace(username))
+            {
+              command.Parameters.AddWithValue("username", username);
+            }
+
             connection.Open();
 
             using (var reader = command.ExecuteReader())

@@ -61,15 +61,10 @@
 	</blockquote>
   }
 </div>
+<hr color="fuchsia"/>
+@await Component.InvokeAsync("Pagination")
+<hr color="cyan"/>
 
-<div class="pagination">
-	<p class="pagination componentTodo">
-        <a class="@ViewBag.PaginationFirstCss" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="1">First</a>
-        <a class="" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="@ViewBag.Previous">Previous</a>
-        <a class="current">@ViewBag.CurrentPage</a>
-        <a class="" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="@ViewBag.NextPage">Next</a>
-    </p>
-</div>
 
 <div class="staticmenu">
 	@if(@ViewBag.ShowUserFunctions)

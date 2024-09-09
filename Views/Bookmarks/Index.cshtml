@@ -60,16 +60,9 @@
 	</blockquote>
   }
 </div>
-
-<div class="pagination">
-	<p class="pagination componentTodo">
-		<a class="@ViewBag.PaginationFirstCss" asp-area="" asp-controller="Bookmarks" asp-action="Index" asp-route-page="1">First</a>
-		<a class="" asp-area="" asp-controller="Bookmarks" asp-action="Index" asp-route-page="@ViewBag.PreviousPage">Previous</a>
-		<a class="">@ViewBag.CurrentPage</a>
-		<a class="" asp-area="" asp-controller="Bookmarks" asp-action="Index" asp-route-page="@ViewBag.NextPage">Next</a>
-	</p>
-</div>
-
+<hr color="fuchsia" />
+@await Component.InvokeAsync("Pagination")
+<hr color="cyan" />
 <div class="staticmenu">
 	<a class="inactive" href="javascript:void(0);" onmousedown="" onclick="return false;">tile(v)</a>
 	<a class="inactive" href="javascript:void(0);" onmousedown="" onclick="return false;">top(t)</a>
