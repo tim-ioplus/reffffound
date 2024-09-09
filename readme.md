@@ -145,18 +145,19 @@ its ffffound - long lost, now refound :)
 
 ### v1.3
 
-* dynamische pagination: in indexfeed, in userfeed
-* 'As a user navigating the bookmarks, i'd' like to have more Information about the site's content size so its easier for me to know where i am and where to go next.'
+* dynamische pagination: in indexfeed, in userfeed [x]
+* 'As a user navigating the bookmarks, i'd' like to have more Information about the site's content size so its easier for me to know where i am and where to go next.' [x]
   * Show links to navigate forward and backward in content
   * Show current oage number amog all page numbers
   * move pagination to own Component
-* 'As an user i'd like to see who are the recent posting users an how much they are posting to give me an idea of the activity on the platform'
+* 'As an user i'd like to see who are the recent posting users an how much they are posting to give me an idea of the activity on the platform' [x]
   * show user name sand post count on sidebar
   * move User-View into own Compoenent
  
 ### v 1.4 
 
-* update 'About' page with scfreenshot of original fffffound
+* update 'About' page with screenshot of original fffffound [x]
+* parse Posting title from Url (alpha) [x]
   
 ### v 1.xy
 * fix display of validation message on bookmark Create

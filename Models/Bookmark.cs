@@ -56,6 +56,10 @@ namespace reffffound.Models
           var usercontext = collection["Usercontext"][0] ?? "";
 
           bookmark.Url = url;
+          if(!string.IsNullOrWhiteSpace(bookmark.Url) && string.IsNullOrWhiteSpace(title))
+          {
+            title = GetTitleFromUrl(bookmark.Url);
+          }
           bookmark.Title = title;
           bookmark.Image = image;
           bookmark.Usercontext = usercontext;
@@ -65,12 +69,45 @@ namespace reffffound.Models
           return bookmark;
         }
 
-        /// <summary>
-        /// Checks if current Data state is valid to Create or Update a bookmark
-        /// Provides a message to the frontend in case something is invalid.
-        /// </summary>
-        /// <returns></returns>
-        public bool IsValid(out string validationMessage)
+    private string GetTitleFromUrl(string url)
+    {
+      string titlepart = "";
+      var partsplits = url.Split('/');
+      var lastPart = partsplits[partsplits.Length - 1];
+      if(lastPart.Contains("?"))
+      {
+          var sitesplits = lastPart.Split("?");
+          lastPart = sitesplits[0];
+      }
+
+      if(lastPart.Contains("#"))
+      {
+          var segmentsplits = lastPart.Split("#");
+          lastPart = segmentsplits[0];
+      }
+
+      titlepart = lastPart;
+
+      var site_urltext = titlepart.Replace("_", " ").Replace("-", " ").Trim();
+      var site_domaintext = "";
+
+      var domainsplit = url.Split("www.")?[1].Split(".")?[0];
+      if(!string.IsNullOrWhiteSpace(domainsplit))
+      {
+        site_domaintext = domainsplit + " - ";
+      }
+
+      string titletext = site_domaintext + site_urltext;
+
+      return titletext;
+    }
+
+    /// <summary>
+    /// Checks if current Data state is valid to Create or Update a bookmark
+    /// Provides a message to the frontend in case something is invalid.
+    /// </summary>
+    /// <returns></returns>
+    public bool IsValid(out string validationMessage)
         {
           bool isValid = true;
           validationMessage = string.Empty;
