@@ -7,7 +7,7 @@ using System.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("AzureSqlConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString("DataConnection") ?? throw new InvalidOperationException("Default Connection string 'DataConnection' not found.");
 if(string.IsNullOrEmpty(connectionString)) throw new InvalidConfigurationException("Data Connection String is missing");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

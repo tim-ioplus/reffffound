@@ -24,6 +24,11 @@ public static class UserHelperService
     return _initUsers.Any(cu =>
       cu.Name.Equals(username) && cu.Role.Equals(role));
   }
+
+  public static string GetRole(string username)
+  {
+    return IsAdmin(username) ? Role.Administrator : Role.User;
+  }
 }
 
 public static class Role

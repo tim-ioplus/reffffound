@@ -79,8 +79,10 @@
 	<!-- use UserManager and Role -->
 	@if(@ViewBag.ShowUserFunctions && @ViewBag.IsAdminUser)
 	{
-		<a class="nav-link text" title="Hydrate Database" asp-area="" asp-controller="Bookmarks" asp-action="Hydrate" asp-route-username="@ViewBag.Username">Hydrate</a>
+		<!--<a class="nav-link text" title="Hydrate Database" asp-area="" asp-controller="Bookmarks" asp-action="Hydrate" asp-route-username="@ViewBag.Username">Hydrate</a> -->
+		<a class="nav-link text" title="Hydrate Database" asp-area="" asp-controller="Bookmarks" asp-action="Hydrate">Hydrate</a>
 		<a class="nav-link text" title="Update Usercounts" asp-area="" asp-controller="Bookmarks" asp-action="UpdateUsercounts" asp-route-username="@ViewBag.Username">Update Usercounts</a>
+		<a class="nav-link text" title="Update Usernames" asp-area="" asp-controller="Bookmarks" asp-action="UpdateUsernames" asp-route-username="@ViewBag.Username">Update Usernames</a>
 	}
 </div>
 

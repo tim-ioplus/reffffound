@@ -54,6 +54,7 @@ namespace reffffound.Models
           var title = collection["Title"][0] ?? "";
           var image = collection["Image"][0] ?? "";
           var usercontext = collection["Usercontext"][0] ?? "";
+          var username = usercontext;
 
           bookmark.Url = url;
           if(!string.IsNullOrWhiteSpace(bookmark.Url) && string.IsNullOrWhiteSpace(title))
@@ -63,6 +64,7 @@ namespace reffffound.Models
           bookmark.Title = title;
           bookmark.Image = image;
           bookmark.Usercontext = usercontext;
+          bookmark.Username = username;
 
           bookmark.SetUsername();
 
