@@ -157,22 +157,26 @@ its ffffound - long lost, now refound :)
 ### v 1.4 
 
 * update 'About' page with screenshot of original fffffound [x]
-* parse Posting title from Url (alpha) [x]
-  
-### v 1.xy
+* on creating Bookmark, parse Posting title from Url (alpha) [x]
+
+### v 1.5
+
+* save backup data from azure [x]
+* cleanup data [x]
+* restore data locally [x]
+* create Hydrate view to upload bulkfile for Bookmarks [x]
+   * Insert bookmark if guid not posted yet
+	* Update POsting count for bokmarks users
+
+### v x.y
+
+* on Detail View incl recommendations
+ * from posting User: 10 posts (selection method: last 10)
+ * from 10 reposting Users: 5 posts (seleciton method: last 5)
 * fix display of validation message on bookmark Create
-* fill dbo.ContentUsers with alphausers
-* add new roles, users for app access to azure 
 * in 'Bookmarks/Create' fill Title Field automaticlly > UrlField.onChange() request 
 * Load spinner for images
-* View Detail inkl Kontextbilder
- * 10 posts (5x2)
-* View Detail inkl Kontextuser
- * die letzten 5 (5x1) Posts
-
-
-## v x.y
-* On users feed page list in sidebar
+* * On users feed page list in sidebar
   * pageusers favourite Top10 users > users who pageuser favourited the most
   * pageusers 10 most recent followers (first establish basic pub>sub model)
 * self hosting Images > azure blobs? 
