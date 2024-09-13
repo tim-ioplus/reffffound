@@ -10,7 +10,7 @@
 	<label for="file">Select a file:</label>
 	@if(ViewBag.ValidationMessage != "")
 	{
-		<p class="alert">@ViewBag.ValidationMessage</p>
+		<p class="danger">@ViewBag.ValidationMessage</p>
 	}
 	<input type="file" name="file" id="file" />
 	<br />

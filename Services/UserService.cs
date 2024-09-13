@@ -1,6 +1,7 @@
 using Microsoft.Data.SqlClient;
+using reffffound.Data;
 
-namespace reffffound.Data
+namespace reffffound.Services
 {
 	public interface IUserService
 	{
@@ -12,7 +13,9 @@ namespace reffffound.Data
 		public string ContentRootPath = "";
 		private string _connectionString;
 		private SqlConnection _DbConnection;
+		private UserRepository _userRepository;
 
+		[Obsolete]
 		public UserService(IConfiguration configuration)
 		{
 			_connectionString = configuration["ConnectionStrings:AzureSqlConnection"] ?? configuration["ConnectionStrings:DataConnection"] ?? "";
@@ -20,17 +23,18 @@ namespace reffffound.Data
 		public UserService(string connectionString)
 		{
 			_connectionString = connectionString;
+			_userRepository = new UserRepository(_connectionString);
 		}
 
 		public IDictionary<string, string> GetActiveUsers()
 		{
-			var activeUsers = new Dictionary<string, string>( );
+			var activeUsers = new Dictionary<string, string>();
 
-			var topTenUsers = new UserRepository( _connectionString ).GetTopTenActiveUsers( );
+			var topTenUsers = _userRepository.GetTopTenActiveUsers();
 
 			foreach (var user in topTenUsers)
 			{
-				activeUsers.Add( user.Name, user.Count + "" );
+				activeUsers.Add( user.Name, user.Count + "");
 			}
 
 			return activeUsers;
@@ -38,13 +42,13 @@ namespace reffffound.Data
 
 		public void IncreaseBookmarkCount(string username)
 		{
-			var userRepository = new UserRepository( _connectionString );
+			var userRepository = new UserRepository(_connectionString);
 
-			var user = userRepository.Read( username );
+			var user = userRepository.Read(username);
 			if (user != null)
 			{
 				user.Count++;
-				userRepository.Update( user );
+				userRepository.Update(user);
 			}
 		}
 	}

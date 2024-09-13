@@ -21,15 +21,7 @@ namespace reffffound.Data
 		public string ContentRootPath = "";
 		public bool Hydrated = false;
 		private readonly IConfiguration _configuration;
-		private ApplicationDbContext _context;
 		private string _connectionString;
-
-		public UserRepository(ApplicationDbContext context, string connectionString)
-		{
-			_context = context;
-			_connectionString = connectionString;
-		}
-
 		public UserRepository(string connectionString)
 		{
 			_connectionString = connectionString;

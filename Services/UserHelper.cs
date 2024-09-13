@@ -2,13 +2,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.SqlClient;
 using reffffound.Data;
 using reffffound.Models;
-public static class UserHelperService
+public static class UserHelper
 {
   
   private static readonly List<ContentUser> _initUsers = new List<ContentUser>()
   {
     new ContentUser(){Id=100, Name="koelleforniadreamin", Role=Role.Administrator },
-    new ContentUser(){Id=101, Name="hypetype", Role= Role.User }
     };
 
   public static bool IsAdmin(string username)

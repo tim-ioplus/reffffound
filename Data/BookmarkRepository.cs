@@ -21,14 +21,7 @@ namespace reffffound.Data
 	public class BookmarkRepository : DataRepository
 	{
 		public string ContentRootPath = "";
-		private ApplicationDbContext? _context;
 		private string _connectionString;
-
-		public BookmarkRepository(ApplicationDbContext context, string connectionString)
-		{
-			_context = context;
-			_connectionString = connectionString;
-		}
 
 		public BookmarkRepository(string connectionString)
 		{
@@ -179,41 +172,8 @@ namespace reffffound.Data
 			return bookmarks;
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public List<Bookmark> ListAll()
-		{
-			var bookmarks = _List( "", "", 0, true );
-			return bookmarks;
-		}
-
-		/// <summary>
-		/// Listing the 10 Bookmarks on the given page
-		/// </summary>
-		/// <param name="page"></param>
-		/// <returns></returns>
-		public List<Bookmark> List(int page)
-		{
-			return List( "", "", page );
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="username"></param>
-		/// <param name="filter"></param>
-		/// <param name="page"></param>
-		/// <returns></returns>
-		public List<Bookmark> List(string username = "", string filter = "post", int page = 1)
-		{
-			var bookmarks = _List( username, filter, page );
-			AddContext( bookmarks );
-
-			return bookmarks;
-		}
-		private List<Bookmark> _List(string username = "", string filter = "post", int page = 1, bool listall = false)
+		
+		public List<Bookmark> List(string username = "", string filter = "post", int page = 1, bool listall = false)
 		{
 			var bookmarks = new List<Bookmark>( );
 			try
@@ -394,25 +354,7 @@ namespace reffffound.Data
 			return bookmark;
 		}
 
-		public Bookmark GetFeedNullFour(string username = "", string filter = "", int page = 0)
-		{
-			var bookmark = new Bookmark( );
-			bookmark.Guid = "";
-			bookmark.Savedby = 0;
-			bookmark.Usercontext = "";
-			bookmark.Timestamp = new List<string>( ) { "Eternity", "Someday", "Soon", "In a while", "Aeons ago", "In the past", "In the future" }.ElementAt( new Random( ).Next( 0, 7 ) );
-			bookmark.Title = "This is the end..";
-			bookmark.Url = "NoUrl";
-			bookmark.Image = new List<string>( )
-				{
-				"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fp1.pxfuel.com%2Fpreview%2F528%2F171%2F802%2Fthe-end-sand-end-beach.jpg&f=1&nofb=1&ipt=c02ebd78bbd57fa507556d98bf73fa9f5f5e0ccd71f26767d9e248250ba4ed2c&ipo=images",
-				"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F3991792%2Fpexels-photo-3991792.jpeg%3Fauto%3Dcompress%26cs%3Dtinysrgb%26h%3D750%26w%3D1260&f=1&nofb=1&ipt=ea924ac3b14d8f3d424975543d9165a19c0f58f739cea23d44cb110ccedfe06c&ipo=images",
-				"https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.publicdomainpictures.net%2Fpictures%2F190000%2Fvelka%2Fthe-end-title.jpg&f=1&nofb=1&ipt=54b622a92e13962a19ec827c67b50d8e5738ef2b3f91dd2316054a22abd6a34d&ipo=images",
-				"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F1888004%2Fpexels-photo-1888004.jpeg%3Fcs%3Dsrgb%26dl%3Dletters-on-yellow-tiles-forming-the-end-text-1888004.jpg%26fm%3Djpg&f=1&nofb=1&ipt=871760771f4feffe7295a577a694c6c64d73b401127fa43da6c7ee5eaea7039c&ipo=images"
-				}.ElementAt( new Random( ).Next( 0, 4 ) );
-
-			return bookmark;
-		}
+		
 
 		private DateTime GetLastPostingTimestamp()
 		{
@@ -524,52 +466,7 @@ namespace reffffound.Data
 
 		#endregion
 
-		public List<Bookmark> AddContext(List<Bookmark> bookmarks)
-		{
-			var usedGuidsByUser = new Dictionary<string, List<string>>( );
-
-			foreach (var bookmark in bookmarks)
-			{
-				var usedGuidsForUser = usedGuidsByUser.GetValueOrDefault( bookmark.Username );
-
-				usedGuidsForUser ??= [];
-				AddContext( bookmark, usedGuidsForUser );
-
-				if (!string.IsNullOrWhiteSpace( bookmark.Context1link )) usedGuidsForUser.Add( bookmark.Context1link );
-				if (!string.IsNullOrWhiteSpace( bookmark.Context2link )) usedGuidsForUser.Add( bookmark.Context2link );
-				if (!string.IsNullOrWhiteSpace( bookmark.Context3link )) usedGuidsForUser.Add( bookmark.Context3link );
-
-				usedGuidsByUser[bookmark.Username] = usedGuidsForUser;
-			}
-
-			return bookmarks;
-		}
-
-		public Bookmark AddContext(Bookmark bookmark, List<string>? usedGuids = null)
-		{
-			var user = bookmark.Usercontext.Replace( " ", "" ).Split( "," ).First( );
-			var contextBookmarks = ReadThreeContextBookmarks( user, bookmark.Timestamp, usedGuids );
-
-			if (contextBookmarks.Count >= 1)
-			{
-				bookmark.Context1img = contextBookmarks.ElementAt( 0 ).Image;
-				bookmark.Context1link = contextBookmarks.ElementAt( 0 ).Guid ?? "";
-			}
-
-			if (contextBookmarks.Count >= 2)
-			{
-				bookmark.Context2img = contextBookmarks.ElementAt( 1 ).Image ?? "";
-				bookmark.Context2link = contextBookmarks.ElementAt( 1 ).Guid ?? "";
-			}
-
-			if (contextBookmarks.Count == 3)
-			{
-				bookmark.Context3img = contextBookmarks.ElementAt( 2 ).Image ?? "";
-				bookmark.Context3link = contextBookmarks.ElementAt( 2 ).Guid ?? "";
-			}
-
-			return bookmark;
-		}
+		
 
 		/// <summary>
 		/// Return the amount of bookmarked Images in the Database

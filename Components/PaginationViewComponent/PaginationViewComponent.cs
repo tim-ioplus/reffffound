@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using reffffound.Data;
+using reffffound.Services;
 
 namespace reffffound.Components.PaginationViewComponent
 {
-  public class PaginationViewComponent : ViewComponent
+	public class PaginationViewComponent : ViewComponent
   {
     private IBookmarkService _bookmarkService;
 
