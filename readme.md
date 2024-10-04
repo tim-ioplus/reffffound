@@ -168,6 +168,13 @@ its ffffound - long lost, now refound :)
    * Insert bookmark if guid not posted yet
 	* Update POsting count for bokmarks users
 
+
+### v 1.6
+* on Detail View incl recommendations
+ * from posting User: 10 posts (selection method: last 5 plus 5 random)
+* fix double guid parameter on within Links on 'List'-pages
+
+
 ### v x.y
 
 * on Detail View incl recommendations
@@ -176,7 +183,7 @@ its ffffound - long lost, now refound :)
 * fix display of validation message on bookmark Create
 * in 'Bookmarks/Create' fill Title Field automaticlly > UrlField.onChange() request 
 * Load spinner for images
-* * On users feed page list in sidebar
+  * On users feed page list in sidebar
   * pageusers favourite Top10 users > users who pageuser favourited the most
   * pageusers 10 most recent followers (first establish basic pub>sub model)
 * self hosting Images > azure blobs? 
@@ -187,4 +194,6 @@ its ffffound - long lost, now refound :)
 	* https://learn.microsoft.com/de-de/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-8.0
 * Save bookmark for logged in users
 * 'save' functionality for bookmarks of other Users
+* move all bitmaps to hosting
+* move all bitmaps to cdn
 

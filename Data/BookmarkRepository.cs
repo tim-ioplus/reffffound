@@ -354,6 +354,16 @@ namespace reffffound.Data
 			return bookmark;
 		}
 
+		private Bookmark ParseRelatedView(SqlDataReader reader)
+		{
+			int id = reader.GetInt32( 0 );
+			string relatedGuid = reader.GetString( 1 );
+			string image = reader.GetString( 2 );
+			var bookmark = new Bookmark( ) { Id = id, Guid = relatedGuid, Image = image };
+
+			return bookmark;
+		}
+
 		
 
 		private DateTime GetLastPostingTimestamp()
@@ -514,6 +524,60 @@ namespace reffffound.Data
 			}
 
 			return count;
+		}
+
+		public List<Bookmark> GetUsersRelatedBookmarks(string username, string guid)
+		{
+			var bookmarks = new List<Bookmark>();
+
+			try
+			{
+				using (SqlConnection connection = GetConnection( _connectionString ))
+				{
+					var sql = "Select Top 5 Id, Guid, Image from [dbo].[Bookmarks] where Username = @username AND Guid != @guid ORDER BY Timestamp desc";
+
+					using (var command = new SqlCommand( sql, connection ))
+					{
+						command.Parameters.AddWithValue( "username", username );
+						command.Parameters.AddWithValue( "guid", guid );
+
+						connection.Open( );
+						using (SqlDataReader reader = command.ExecuteReader())
+						{
+							while (reader.Read())
+							{
+								Bookmark bookmark = ParseRelatedView(reader);
+								bookmarks.Add( bookmark );
+							}
+						}
+					}
+
+					sql =
+						"Select Top 5 Id, Guid, Image from [dbo].[Bookmarks] where Username = @username AND Guid != @guid " +
+						"AND Id NOT IN ("+ string.Join(',', bookmarks.Select(b => b.Id)) + ") ORDER BY NEWID()";
+
+					using(var command = new SqlCommand(sql, connection))
+					{
+						command.Parameters.AddWithValue( "username", username );
+						command.Parameters.AddWithValue( "guid", guid );
+
+						using(SqlDataReader reader = command.ExecuteReader())
+						{
+							while(reader.Read())
+							{
+								Bookmark bookmark = ParseRelatedView(reader);
+								bookmarks.Add( bookmark );
+							}
+						}
+					}
+				}
+			}
+			catch(Exception ex)
+			{
+				throw ex;
+			}
+
+			return bookmarks;
 		}
 	}
 }

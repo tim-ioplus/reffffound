@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Protocols.Configuration;
 using reffffound.Data;
 using reffffound.Services;
@@ -20,8 +21,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IBookmarkService, BookmarkService>();
-builder.Services.AddSingleton(builder.Configuration);
 
+builder.Services.AddSingleton(builder.Configuration);
 
 builder.Services.AddControllersWithViews();
 

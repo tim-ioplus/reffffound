@@ -16,6 +16,7 @@ namespace reffffound.Services
 
 		int GetPageCount(string username);
 		int GetBookmarkCount(string username);
+		List<Bookmark> GetUsersRelatedBookmarks(string username, string guid);
 	}
 
 	public class BookmarkService : IBookmarkService
@@ -23,6 +24,12 @@ namespace reffffound.Services
 		private string _connectionString;
 		private BookmarkRepository _bookmarkRepository;
 
+		[Obsolete]
+		public BookmarkService(IConfiguration configuration)
+		{
+			_connectionString = configuration["ConnectionStrings:AzureSqlConnection"] ?? configuration["ConnectionStrings:DataConnection"] ?? "";
+			_bookmarkRepository = new BookmarkRepository( _connectionString );
+		}
 		public BookmarkService(string connectionString)
 		{
 			_connectionString = connectionString;
@@ -351,6 +358,21 @@ namespace reffffound.Services
 					_userRepository.Create( user );
 				}
 			}
+		}
+
+		/// <summary>
+		/// Loads the 10 Related 
+		/// </summary>
+		/// <param name="username"></param>
+		/// <param name="guid"></param>
+		/// <returns></returns>
+		public List<Bookmark> GetUsersRelatedBookmarks(string username, string guid)
+		{
+			var model = new List<Bookmark>();
+
+			model = _bookmarkRepository.GetUsersRelatedBookmarks(username, guid);
+
+			return model;
 		}
 
 		#endregion

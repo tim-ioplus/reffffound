@@ -19,6 +19,7 @@ namespace reffffound.Services
 		public UserService(IConfiguration configuration)
 		{
 			_connectionString = configuration["ConnectionStrings:AzureSqlConnection"] ?? configuration["ConnectionStrings:DataConnection"] ?? "";
+			_userRepository = new UserRepository(_connectionString);
 		}
 		public UserService(string connectionString)
 		{

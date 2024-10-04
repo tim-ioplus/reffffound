@@ -61,6 +61,7 @@ namespace reffffound.Controllers
 			ViewBag.ReferUsername = referUsername;
 			ViewBag.ReferPage = referPage;
 			ViewBag.Username = bookmark.Username;
+			ViewBag.Guid = guid;
 
 			return View("Detail", bookmark);
 		}
