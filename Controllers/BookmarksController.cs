@@ -77,7 +77,7 @@ namespace reffffound.Controllers
 			}
 			else
 			{
-				ViewBag.ShowUserFunctions = _showUserFunctions;
+				ViewBag.ShowUserFunctions = User != null && User.Identity.IsAuthenticated && User.Identity.Name.Equals(username);
 
 				page = page < 1 ? 1 : page;
 				ViewBag.PreviousPage = page > 1 ? page - 1 : 1;

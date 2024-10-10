@@ -1,7 +1,8 @@
 @model IEnumerable<reffffound.Models.Bookmark>
 @using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@using reffffound.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 @{
 	ViewData["Title"] = "RE: FFFFOUND! image bookmarking";

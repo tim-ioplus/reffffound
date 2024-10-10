@@ -46,6 +46,7 @@
 
 	@if(ViewBag.ShowUserFunctions)
 	{
+		<a asp-controller="Bookmarks" asp-action="Create" asp-route-username="@ViewBag.Username">Create (c)</a>
 		<a asp-controller="Bookmarks" asp-action="Edit" asp-route-guid="@Model.Guid" asp-route-username="@ViewBag.Username">Edit (e)</a>
 		<a asp-controller="Bookmarks" asp-action="Delete" asp-route-guid="@Model.Guid" asp-route-username="@ViewBag.Username">Delete (d)</a>
 	}
