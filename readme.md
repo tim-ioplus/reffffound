@@ -170,16 +170,28 @@ its ffffound - long lost, now refound :)
 
 
 ### v 1.6
+
 * on Detail View incl recommendations
  * from posting User: 10 posts (selection method: last 5 plus 5 random)
 * fix double guid parameter on within Links on 'List'-pages
 
+ 
+### v 1.7
 
+* User Auth
+* 'found functionality': Save bookmark of other users for logged in users
+* switch to local sqlite database
+* adding docker containerizing capabilities
+* on Detail View of Bookmarks 
+ * add recommendations: links to posts from refounding Users 
+ * selection: from at most 10 reposting Users: select at most 5 posts (last 5) to link to beneathe main Post
+* include archive.org ddos message for bitmaps linked to archive.org wayback machine
+* fix bug in bookmark deletion
+
+  
 ### v x.y
 
-* on Detail View incl recommendations
- * from posting User: 10 posts (selection method: last 10)
- * from 10 reposting Users: 5 posts (seleciton method: last 5)
+
 * fix display of validation message on bookmark Create
 * in 'Bookmarks/Create' fill Title Field automaticlly > UrlField.onChange() request 
 * Load spinner for images
@@ -187,12 +199,6 @@ its ffffound - long lost, now refound :)
   * pageusers favourite Top10 users > users who pageuser favourited the most
   * pageusers 10 most recent followers (first establish basic pub>sub model)
 * self hosting Images > azure blobs? 
-* User Auth
-  * sicherung > simpler api key oder jwt?
-	* apikey: festerkeyhardcorediert wird bei jedem req in die payload gelgt und im controller abgefragt
-	* jwt mit .net core:
-	* https://learn.microsoft.com/de-de/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-8.0
-* Save bookmark for logged in users
 * 'save' functionality for bookmarks of other Users
 * move all bitmaps to hosting
 * move all bitmaps to cdn
