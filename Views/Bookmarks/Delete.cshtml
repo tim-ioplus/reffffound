@@ -38,11 +38,11 @@
     </blockquote>
 </div>
 
-<form asp-controller="Bookmarks" asp-action="Edit" asp-route-guid="@Model.Guid">
+<form asp-controller="Bookmarks" asp-action="Delete" asp-route-guid="@Model.Guid">
 	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 	<div class="form-group" style="display:none">
-		<label asp-for="Usercontext" class="control-label"></label>
-		<input asp-for="Usercontext" class="form-control" value="@ViewBag.Username" />
+		<label asp-for="Username" class="control-label"></label>
+		<input asp-for="Username" class="form-control" value="@ViewBag.Username" />
 		<!-- <span asp-validation-for="" class="text-danger"></span> -->
 	</div>
 	<!--<div class="form-group">
@@ -120,7 +120,7 @@
 	-->
 	<div class="form-group">
 		<span class="text-danger">Attention: Bookmark will be deleted forever!</span><br />
-		<input style="margin-top:24px" type="submit" value="Delete Bookmark" class="btn btn-primary" />
+		<input class="btn btn-primary" style="margin-top:24px; background:var(--bs-danger);" type="submit" value="Delete Bookmark" />
 	</div>
 </form>
 
