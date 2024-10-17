@@ -1,0 +1,36 @@
+@*
+	//
+	// Users Context View
+	//
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+	// <div class="related-xs" style="margin-left:18px; margin:18px;"></div>
+	//border-left:1px solid #f0f0f0;padding-left:18px;
+*@
+@model Dictionary<string,List<reffffound.Models.Bookmark>>
+
+<div style="max-width:auto;height:auto;margin-top:24px;clear:initial;float:none;">
+
+	@foreach (var userBookmarks in Model)
+	{
+		<span> @userBookmarks.Key.ToString() latest posts </span> <br />
+		@foreach (Bookmark bookmark in userBookmarks.Value)
+		{
+			<div style="margin:0px 20px 20px 0px;float:left;width:170px;">
+				<table>
+					<tbody>
+						<tr>
+							<td width="168" height="168" align="center">
+								<a class="" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid">
+									<image style="max-width:148px;max-height:148px;height:auto;" src="@bookmark.Image"></image>
+								</a>
+							</td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		}
+
+		<div style="clear:both;"><br /></div>
+	}
+</div>

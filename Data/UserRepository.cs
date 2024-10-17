@@ -229,6 +229,57 @@ namespace reffffound.Data
 			return contentUser;
 		}
 
+		public List<AspNetUser> ReadAspNetUsers()
+		{
+			var aspNetUsers = new List<AspNetUser>( );
+
+			try
+			{
+				using (SqlConnection connection = GetConnection( _connectionString ))
+				{
+					var sql = "SELECT * FROM dbo.AspNetUsers";
+
+					using (SqlCommand command = new SqlCommand( sql, connection ))
+					{
+						connection.Open( );
+						using (SqlDataReader reader = command.ExecuteReader( ))
+						{
+							while (reader.Read( ))
+							{
+								var aspNetUser = new AspNetUser
+								  {
+										Id = reader["Id"].ToString(),
+										UserName = reader["UserName"].ToString(),
+										NormalizedUserName = reader["NormalizedUserName"] as string,
+										Email = reader["Email"] as string,
+										NormalizedEmail = reader["NormalizedEmail"] as string,
+										EmailConfirmed = (bool)reader["EmailConfirmed"],
+										PasswordHash = reader["PasswordHash"] as string,
+										SecurityStamp = reader["SecurityStamp"] as string,
+										ConcurrencyStamp = reader["ConcurrencyStamp"] as string,
+										PhoneNumber = reader["PhoneNumber"] as string,
+										PhoneNumberConfirmed = (bool)reader["PhoneNumberConfirmed"],
+										TwoFactorEnabled = (bool)reader["TwoFactorEnabled"],
+										LockoutEnd = reader["LockoutEnd"] as DateTimeOffset?,
+										LockoutEnabled = (bool)reader["LockoutEnabled"],
+										AccessFailedCount = (int)reader["AccessFailedCount"]
+								  };
+
+
+								aspNetUsers.Add( aspNetUser );
+							}
+						}
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				throw ex;
+			}
+
+			return aspNetUsers;
+		}
+
 		#endregion
 
 

@@ -1,13 +1,9 @@
 using Microsoft.Data.SqlClient;
 using reffffound.Data;
+using reffffound.Models;
 
 namespace reffffound.Services
 {
-	public interface IUserService
-	{
-		public IDictionary<string, string> GetActiveUsers();
-
-	}
 	public class UserService : IUserService
 	{
 		public string ContentRootPath = "";
@@ -25,6 +21,25 @@ namespace reffffound.Services
 		{
 			_connectionString = connectionString;
 			_userRepository = new UserRepository(_connectionString);
+		}
+
+		public void Create(ContentUser contentUser)
+		{
+			_userRepository.Create(contentUser);
+		}
+
+		public void Delete(ContentUser contentUser)
+		{
+			_userRepository.Delete(contentUser.Id);
+		}
+
+		public ContentUser Read(string username)
+		{
+			return _userRepository.Read(username);
+		}
+		public void Update(ContentUser contentUser)
+		{
+			_userRepository.Update(contentUser);
 		}
 
 		public IDictionary<string, string> GetActiveUsers()
@@ -49,6 +64,18 @@ namespace reffffound.Services
 			if (user != null)
 			{
 				user.Count++;
+				userRepository.Update(user);
+			}
+		}
+
+		public void DecreaseBookmarkCount(string username)
+		{
+			var userRepository = new UserRepository(_connectionString);
+
+			var user = userRepository.Read(username);
+			if (user != null)
+			{
+				user.Count--;
 				userRepository.Update(user);
 			}
 		}
