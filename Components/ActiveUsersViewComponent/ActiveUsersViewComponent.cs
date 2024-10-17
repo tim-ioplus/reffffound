@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using reffffound.Data;
 using reffffound.Services;
 
 namespace reffffound.Components.ActiveUsersViewComponent
@@ -7,9 +8,9 @@ namespace reffffound.Components.ActiveUsersViewComponent
 	{
 		private readonly IUserService _userService;
 
-		public ActiveUsersViewComponent(IUserService userService)
+		public ActiveUsersViewComponent(IUserService userService, ApplicationDbContext context)
 		{
-			_userService = userService;
+			_userService = new UserContextService(context);
 		}
 		public IViewComponentResult Invoke()
 		{

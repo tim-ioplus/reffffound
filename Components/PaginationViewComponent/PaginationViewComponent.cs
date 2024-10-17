@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using reffffound.Data;
 using reffffound.Services;
 
 namespace reffffound.Components.PaginationViewComponent
@@ -8,10 +9,10 @@ namespace reffffound.Components.PaginationViewComponent
   {
     private IBookmarkService _bookmarkService;
 
-    public PaginationViewComponent(IBookmarkService bookmarkService)
-    {
-      _bookmarkService = bookmarkService;
-    }
+    public PaginationViewComponent(ApplicationDbContext applicationDbContext)
+		{
+			_bookmarkService = new BookmarkContextService(applicationDbContext);
+		}
 
     public IViewComponentResult Invoke()
     {

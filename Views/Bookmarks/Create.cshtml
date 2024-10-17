@@ -19,12 +19,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Url" class="control-label"></label>
-                <input asp-for="Url" class="form-control" />
+                <input id="urlinput" asp-for="Url" class="form-control" />
                 <span asp-validation-for="Url" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
+                <input id="titleinput" asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -95,3 +95,20 @@
 </div>
 
 
+@section Scripts {
+	<script>
+		$(document).ready(function() {
+			// Add a click event listener to the button
+			$("#urlinput").change(function() {
+				// Change the text content of the paragraph when the button is clicked
+				var urlInput = document.getElementById('urlinput');
+				var urlToGetTitle = urlInput.value;
+				document.getElementById('titleinput').value = "Titelvorschlag wird generiert..";
+
+				document.getElementById('urlinput').disabled = true;
+				alert('url : ' + urlToGetTitle);
+				document.getElementById('urlinput').disabled = false;
+			});
+		});
+	</script>
+}

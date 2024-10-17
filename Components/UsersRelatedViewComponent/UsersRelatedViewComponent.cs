@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using reffffound.Data;
 using reffffound.Services;
 
 namespace reffffound.Components.UsersRelatedViewComponent
@@ -7,9 +8,9 @@ namespace reffffound.Components.UsersRelatedViewComponent
 	{
 		private IBookmarkService _bookmarkService;
 
-		public UsersRelatedViewComponent(IBookmarkService bookmarkService)
+		public UsersRelatedViewComponent(ApplicationDbContext applicationDbContext)
 		{
-			_bookmarkService = bookmarkService;
+			_bookmarkService = new BookmarkContextService( applicationDbContext );
 		}
 
 		public IViewComponentResult Invoke()
