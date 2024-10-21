@@ -190,14 +190,19 @@ namespace reffffound.Data
 					{
 						if (!string.IsNullOrEmpty( username ))
 						{
-							if (filter == "" || filter == "post")
+							if (filter == "" || filter == "feed")
 							{
-								sql = "SELECT * FROM [dbo].[Bookmarks] WHERE Usercontext LIKE '" + username + "%' ORDER BY ID desc OFFSET @skip ROWS Fetch FIRST 10 ROWS ONLY;";
+								sql = "SELECT * FROM [dbo].[Bookmarks] WHERE Username = '@username' OR Usercontext LIKE '%" + username + "%' ORDER BY ID desc OFFSET @skip ROWS Fetch FIRST 10 ROWS ONLY;";
+
+							}
+							else if (filter == "post")
+							{
+								sql = "SELECT * FROM [dbo].[Bookmarks] WHERE Username = '@username' ORDER BY ID desc OFFSET @skip ROWS Fetch FIRST 10 ROWS ONLY;";
 
 							}
 							else if (filter == "found")
 							{
-								sql = "SELECT * FROM [dbo].[Bookmarks] WHERE Usercontext LIKE '" + username + "%' ORDER  BY ID desc OFFSET @skip ROWS Fetch FIRST 10 ROWS ONLY;";
+								sql = "SELECT * FROM [dbo].[Bookmarks] WHERE Username != '@username' AND Usercontext LIKE '%" + username + "%' ORDER  BY ID desc OFFSET @skip ROWS Fetch FIRST 10 ROWS ONLY;";
 							}
 						}
 						else
@@ -212,6 +217,11 @@ namespace reffffound.Data
 						{
 							int skip = page > 0 ? ((page - 1) * 10) : 0;
 							command.Parameters.AddWithValue( "@skip", skip );
+						}
+
+						if(!string.IsNullOrEmpty(username))
+						{
+							command.Parameters.AddWithValue("@username", username);
 						}
 
 						connection.Open( );
@@ -485,7 +495,7 @@ namespace reffffound.Data
 		/// </summary>
 		/// <param name="username"></param>
 		/// <returns></returns>
-		internal int GetCount(string username)
+		internal int GetCount(string username, string filter)
 		{
 			int count = 0;
 			try
@@ -496,7 +506,19 @@ namespace reffffound.Data
 
 					if (!string.IsNullOrWhiteSpace( username ))
 					{
-						sql += " where Username = @username";
+						if(filter == "feed")
+						{
+							sql += " where Username = @username ur Usercontext Contains (@username)";
+						}
+						else if(filter == "post")
+						{
+							sql += " where Username = @username";
+						}
+						else if(filter == "found")
+						{
+							sql += " where Username = @username";
+						}
+						
 					}
 
 					using (var command = new SqlCommand( sql, connection ))

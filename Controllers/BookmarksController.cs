@@ -5,6 +5,7 @@ using NuGet.Versioning;
 using reffffound.Data;
 using reffffound.Models;
 using reffffound.Services;
+using System.ComponentModel.Design;
 
 namespace reffffound.Controllers
 {
@@ -96,7 +97,7 @@ namespace reffffound.Controllers
 		}
 
 		// GET: Bookmarks/List/username/filter/1
-		public ActionResult List(string username, string filter = "post", int page = 1)
+		public ActionResult List(string username, string filter = "", int page = 1)
 		{
 			var usersBookmarks = _bookmarkService.List( username, filter, page );
 
@@ -118,6 +119,10 @@ namespace reffffound.Controllers
 				ViewBag.PaginationFirstCss = (page == 1 || page == 0) ? "current" : "";
 				ViewBag.Action = "List";
 				ViewBag.Filter = filter;
+
+				ViewBag.FeedLinkCss = filter == "feed" ? "currentFilter" : "";
+				ViewBag.PostLinkCss = filter == "post" ? "currentFilter" : "";
+				ViewBag.FoundLinkCss = filter == "found" ? "currentFilter" : "";
 
 				return View( "List", usersBookmarks );
 			}

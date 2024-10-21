@@ -1,4 +1,4 @@
-﻿using reffffound.Data;
+using reffffound.Data;
 using reffffound.Models;
 
 namespace reffffound.Services
@@ -50,7 +50,7 @@ namespace reffffound.Services
 		}
 		public int GetBookmarkCount(string username = "")
 		{
-			var count = _bookmarkRepository.GetCount( username );
+			var count = _bookmarkRepository.GetCount( username, "");
 			return count;
 		}
 
@@ -167,7 +167,7 @@ namespace reffffound.Services
 			{
 				var userName = username.Trim( );
 				var userRole = UserHelper.GetRole( userName );
-				var userCount = _bookmarkRepository.GetCount( userName );
+				var userCount = _bookmarkRepository.GetCount( userName, "" );
 
 				var storedUser = _userRepository.Read( userName );
 				if (storedUser != null)

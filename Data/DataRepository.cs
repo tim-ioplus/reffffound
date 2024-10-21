@@ -2,12 +2,8 @@ using Microsoft.Data.SqlClient;
 
 namespace reffffound.Data
 {
-  public interface IDataRepository
-  {
-    SqlConnection? GetConnection(string connectionString);
-  }
-  public class DataRepository : IDataRepository
-  {
+	public class DataRepository : IDataRepository
+   {
     public SqlConnection? GetConnection(string connectionString)
     {
       if (string.IsNullOrWhiteSpace(connectionString)) return null;

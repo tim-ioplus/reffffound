@@ -16,7 +16,7 @@ namespace reffffound.Components.PaginationViewComponent
 
     public IViewComponentResult Invoke()
     {
-      int model_pagecount = _bookmarkService.GetPageCount(ViewBag.Username);
+      int model_pagecount = _bookmarkService.GetPageCount(ViewBag.Username, ViewBag.Filter);
 
       return View("Default", model_pagecount);
     }

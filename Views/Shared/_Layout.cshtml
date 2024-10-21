@@ -31,7 +31,17 @@
                     <td valign="top">
                         <div class="title">
 							<h1>RE:FFFFOUND!</h1>
-                            <h2>your daily astethic fix</h2>
+							@if(ViewBag.Action=="List")
+							{
+								<h2>@ViewBag.Username 's aestethic fix</h2>
+								<a class="@ViewBag.FeedLinkCss" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="" asp-route-page="1"> Feed </a> @HtmlEncoder.Encode(" ")
+								<a class="@ViewBag.PostLinkCss" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="1">Only posts</a> @HtmlEncoder.Encode(" ")
+								<a class="@ViewBag.FoundLinkCss" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="found" asp-route-page="1">Only founds</a> @HtmlEncoder.Encode(" ")
+							}
+							else
+							{
+								<h2>your daily aestethic fix</h2>						
+							}							
                         </div>
                     </td>
                 </tr>

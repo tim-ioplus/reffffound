@@ -149,6 +149,11 @@ h6 {}
     text-decoration:none;
 }
 
+.currentFilter
+{
+	 text-decoration: none;
+}
+
 .contentcontextlegal {
-  margin: 5px 5px 50px 37px;
+	margin: 5px 5px 50px 37px;
 }

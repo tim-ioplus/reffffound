@@ -14,9 +14,8 @@ namespace reffffound.Services
 		List<Bookmark> ListAll();
 		List<Bookmark> List(int page);
 		List<Bookmark> List(string username, string filter, int page);
-
-		int GetPageCount(string username);
-		int GetBookmarkCount(string username);
+		int GetPageCount(string username, string filter);
+		int GetBookmarkCount(string username, string filter);
 		List<Bookmark> GetUsersRelatedBookmarks(string username, string guid);
 		IDictionary<string,List<Bookmark>> GetUsersContextBookmarks(string username, string usercontext, string identityUserName="");
 		void Save(string guidToSave, string name);

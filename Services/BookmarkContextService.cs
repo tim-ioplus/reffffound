@@ -72,7 +72,7 @@ namespace reffffound.Services
 		{
 			return List( "", "", page );
 		}
-		public List<Bookmark> List(string username, string filter = "post", int page = 1)
+		public List<Bookmark> List(string username, string filter = "", int page = 1)
 		{
 			var bookmarks = new List<Bookmark>( );
 
@@ -87,7 +87,12 @@ namespace reffffound.Services
 				}
 				else if (filter.Equals( "found" ))
 				{
-					bookmarks = _data.Where( b => !b.Username.Equals( username ) && !b.Usercontext.Contains( username ) )
+					bookmarks = _data.Where( b => !b.Username.Equals( username ) && b.Usercontext.Contains( username ) )
+						.OrderByDescending( b => b.Timestamp ).Skip( skip ).Take( 10 ).ToList( );
+				}
+				else
+				{
+					bookmarks = _data.Where( b => b.Username.Equals( username ) || b.Usercontext.Contains( username ) )
 						.OrderByDescending( b => b.Timestamp ).Skip( skip ).Take( 10 ).ToList( );
 				}
 			}
@@ -101,7 +106,7 @@ namespace reffffound.Services
 			return bookmarks;
 		}
 
-		public int GetBookmarkCount(string username)
+		public int GetBookmarkCount(string username, string filter)
 		{
 			int count = 0;
 			if (string.IsNullOrWhiteSpace( username ))
@@ -110,15 +115,27 @@ namespace reffffound.Services
 			}
 			else
 			{
-				count = _data.Count( x => x.Username == username );
+				if (filter == "feed")
+				{
+					count = _data.Count( x => x.Username == username || x.Usercontext.Contains(username));
+				}
+				else if (filter == "post")
+				{
+					count = _data.Count( x => x.Username == username );
+				}
+				else if (filter == "found")
+				{
+					count = _data.Count( x => x.Username != username && x.Usercontext.Contains( username ) );
+				}
+
 			}
 
 			return count;
 		}
 
-		public int GetPageCount(string username)
+		public int GetPageCount(string username, string filter)
 		{
-			int bookmarkCount = GetBookmarkCount( username );
+			int bookmarkCount = GetBookmarkCount( username, filter );
 			int count = (int)Math.Ceiling( bookmarkCount / 10.0 );
 
 			return count;
@@ -141,7 +158,7 @@ namespace reffffound.Services
 		public IDictionary<string, List<Bookmark>> GetUsersContextBookmarks(string username, string usercontext, string activeIdentityUserName)
 		{
 			var contextBookmarks = new Dictionary<string, List<Bookmark>>( );
-			var userContextNames = usercontext.Replace( " ", "" ).Split( ',' ).Where( u => u != username && u != activeIdentityUserName).Take(10).ToList( );
+			var userContextNames = usercontext.Replace( " ", "" ).Split( ',' ).Where( u => u != username && u != activeIdentityUserName ).Take( 10 ).ToList( );
 
 			foreach (var userContextName in userContextNames)
 			{
