@@ -177,14 +177,14 @@ namespace reffffound.Services
 			return bookmark;
 		}
 
-		public int GetPageCount(string username)
+		public int GetPageCount(string username, string filter)
 		{
-			return GetBookmarkCount( username ) / 10;
+			return GetBookmarkCount( username, filter) / 10;
 		}
 
-		public int GetBookmarkCount(string username)
+		public int GetBookmarkCount(string username, string filter)
 		{
-			return _bookmarkRepository.GetCount( username );
+			return _bookmarkRepository.GetCount( username, filter );
 		}
 
 		public List<Bookmark> GetUsersRelatedBookmarks(string username, string guid)
