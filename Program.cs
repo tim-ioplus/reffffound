@@ -61,7 +61,7 @@ app.MapControllerRoute(
 app.MapRazorPages( );
 
 // 
-if (true || isDocker)
+if (isDocker)
 {
 	using (var scope = app.Services.CreateScope( ))
 	{

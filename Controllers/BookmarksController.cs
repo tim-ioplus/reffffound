@@ -31,7 +31,7 @@ namespace reffffound.Controllers
 				_bookmarkService = new BookmarkService( connectionString );
 			}
 
-			if (configuration != null && !string.IsNullOrWhiteSpace( configuration["ASPNETCORE_ENVIRONMENT"] ))
+			if (false && configuration != null && !string.IsNullOrWhiteSpace( configuration["ASPNETCORE_ENVIRONMENT"] ))
 			{
 				_showUserFunctions = configuration["ASPNETCORE_ENVIRONMENT"].Equals( "Development" );
 			}
@@ -146,7 +146,7 @@ namespace reffffound.Controllers
 		// GET: Bookmarks/Create/Username
 		public ActionResult Create(string username)
 		{
-			if (!_showUserFunctions) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
+			if (!UserHelper.CanDo( User, _showUserFunctions )) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
 
 			ViewBag.Username = username;
 			return View( "Create" );
@@ -158,7 +158,7 @@ namespace reffffound.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Create(IFormCollection collection)
 		{
-			if (!_showUserFunctions) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
+			if (!UserHelper.CanDo( User, _showUserFunctions )) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
 			ViewBag.ShowValidationMessage = false;
 
 			try
@@ -186,6 +186,8 @@ namespace reffffound.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Save(IFormCollection collection)
 		{
+			if (!UserHelper.CanDo( User, false )) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
+
 			var guidToSave = collection["Guid"];
 
 			if (!string.IsNullOrWhiteSpace( guidToSave ))
@@ -207,6 +209,8 @@ namespace reffffound.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Forget(IFormCollection collection)
 		{
+			if (!UserHelper.CanDo( User, false )) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
+
 			var guidToForget = collection["Guid"];
 
 			if (!string.IsNullOrWhiteSpace( guidToForget ))
@@ -227,13 +231,20 @@ namespace reffffound.Controllers
 		// GET: BookmarkController/Edit/5
 		public ActionResult Edit(string guid)
 		{
-			if (!_showUserFunctions) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
+			if (!UserHelper.CanDo( User, _showUserFunctions )) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
 			if (String.IsNullOrWhiteSpace( guid )) return View( "Error" );
 
 			var bm = _bookmarkService.Read( guid );
-			ViewBag.Username = bm.Username;
 
-			return View( "Edit", bm );
+			if (bm != null && UserHelper.CanWrite( User, bm.Username ))
+			{
+				ViewBag.Username = bm.Username;
+				return View( "Edit", bm );
+			}
+			else
+			{
+				return RedirectToAction( nameof( Details ), "Bookmarks", new { guid } );
+			}
 		}
 
 		// POST: BookmarkController/Edit/5
@@ -241,23 +252,27 @@ namespace reffffound.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Edit(string guid, IFormCollection collection)
 		{
-			if (!_showUserFunctions) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
+			if (!UserHelper.CanDo( User, _showUserFunctions )) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
+
 			try
 			{
 				if (String.IsNullOrWhiteSpace( guid )) return View( "Error" );
 				var bookmark = _bookmarkService.Read( guid );
 				if (bookmark == null) return View( "Error" );
 
-				bookmark.UpdateFrom( collection );
-				if (!bookmark.IsValid( out string validationMessage ))
+				if (UserHelper.CanWrite( User, bookmark.Username ))
 				{
-					ViewBag.ShowValidationMessage = true;
-					ViewBag.ValidatioNMessage = validationMessage;
+					bookmark.UpdateFrom( collection );
+					if (!bookmark.IsValid( out string validationMessage ))
+					{
+						ViewBag.ShowValidationMessage = true;
+						ViewBag.ValidatioNMessage = validationMessage;
 
-					return View( "Edit", bookmark );
+						return View( "Edit", bookmark );
+					}
+
+					_bookmarkService.Update( bookmark );
 				}
-
-				_bookmarkService.Update( bookmark );
 
 				return RedirectToAction( nameof( Details ), "Bookmarks", new { guid = bookmark.Guid } );
 			}
@@ -270,7 +285,7 @@ namespace reffffound.Controllers
 		// GET: BookmarkController/Delete/5
 		public ActionResult Delete(string guid)
 		{
-			if (!_showUserFunctions) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
+			if (!UserHelper.CanDo( User, _showUserFunctions )) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
 			var bookmark = _bookmarkService.Read( guid );
 
 			if (bookmark == null)
@@ -279,8 +294,15 @@ namespace reffffound.Controllers
 			}
 			else
 			{
-				ViewBag.Username = bookmark.Username;
-				return View( "Delete", bookmark );
+				if (UserHelper.CanWrite( User, bookmark.Username ))
+				{
+					ViewBag.Username = bookmark.Username;
+					return View( "Delete", bookmark );
+				}
+				else
+				{
+					return RedirectToAction( nameof( Details ), "Bookmarks", new { guid = bookmark.Guid } );
+				}
 			}
 		}
 
@@ -289,7 +311,7 @@ namespace reffffound.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Delete(string guid, IFormCollection collection)
 		{
-			if (!_showUserFunctions) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
+			if (!UserHelper.CanDo( User, _showUserFunctions )) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
 
 			var username = collection["Username"];
 

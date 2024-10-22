@@ -56,12 +56,14 @@ namespace reffffound.Services
 		{
 			var toDelete = Read( guid );
 
-			var contentUserNames = toDelete.Usercontext.Replace( " ", "" ).Split( "," ).ToList( );
-			var userService = new UserContextService( _context );
-			contentUserNames.ForEach( un => userService.DecreaseBookmarkCount( un ) );
+			if (toDelete != null && toDelete.Username.Equals( username ))
+			{
+				var contentUserNames = toDelete.Usercontext.Replace( " ", "" ).Split( "," ).ToList( );
+				var userService = new UserContextService( _context );
+				contentUserNames.ForEach( un => userService.DecreaseBookmarkCount( un ) );
 
-			Delete( guid );
-
+				Delete( guid );
+			}
 		}
 		public List<Bookmark> ListAll()
 		{
@@ -117,7 +119,7 @@ namespace reffffound.Services
 			{
 				if (filter == "feed")
 				{
-					count = _data.Count( x => x.Username == username || x.Usercontext.Contains(username));
+					count = _data.Count( x => x.Username == username || x.Usercontext.Contains( username ) );
 				}
 				else if (filter == "post")
 				{
