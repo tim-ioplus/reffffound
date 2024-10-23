@@ -22,7 +22,7 @@ namespace reffffound.Controllers
 			var connectionString = configuration["ConnectionStrings:AzureSqlConnection"] ?? configuration["ConnectionStrings:DataConnection"] ?? "";
 			_connectionString = connectionString;
 
-			if (context.Bookmarks != null)
+			 if (context.Bookmarks != null)
 			{
 				_bookmarkService = new BookmarkContextService( context );
 			}

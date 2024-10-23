@@ -66,8 +66,6 @@ namespace reffffound.Models
 			bookmark.Image = image;
 			bookmark.Usercontext = usercontext;
 			bookmark.Username = username;
-
-			bookmark.SetUsername( );
 			bookmark.Savedby = 1;
 
 			bookmark.Guid = System.Guid.NewGuid( ).ToString( );
@@ -154,9 +152,9 @@ namespace reffffound.Models
 				validationMessage = "Please provide a Title for your Bookmark.";
 				isValid = false;
 			}
-			if (Title.Length > 64)
+			if (Title.Length > 256)
 			{
-				validationMessage = "Please shorten your title to maximum 64 charaters.";
+				validationMessage = "Please shorten your title to maximum 256 charaters.";
 				isValid = false;
 			}
 			if (string.IsNullOrWhiteSpace( Image ))
