@@ -32,58 +32,6 @@
                 <input asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
-            <!--
-            <div class="form-group">
-                <label asp-for="Savedby" class="control-label"></label>
-                <input asp-for="Savedby" class="form-control" />
-                <span asp-validation-for="Savedby" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Timestamp" class="control-label"></label>
-                <input asp-for="Timestamp" class="form-control" />
-                <span asp-validation-for="Timestamp" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Context1link" class="control-label"></label>
-                <input asp-for="Context1link" class="form-control" />
-                <span asp-validation-for="Context1link" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Context1img" class="control-label"></label>
-                <input asp-for="Context1img" class="form-control" />
-                <span asp-validation-for="Context1img" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Context2link" class="control-label"></label>
-                <input asp-for="Context2link" class="form-control" />
-                <span asp-validation-for="Context2link" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Context2img" class="control-label"></label>
-                <input asp-for="Context2img" class="form-control" />
-                <span asp-validation-for="Context2img" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Context3link" class="control-label"></label>
-                <input asp-for="Context3link" class="form-control" />
-                <span asp-validation-for="Context3link" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Context3img" class="control-label"></label>
-                <input asp-for="Context3img" class="form-control" />
-                <span asp-validation-for="Context3img" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Usercontext" class="control-label"></label>
-                <input asp-for="Usercontext" class="form-control" />
-                <span asp-validation-for="Usercontext" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FullUrl" class="control-label"></label>
-                <input asp-for="FullUrl" class="form-control" />
-                <span asp-validation-for="FullUrl" class="text-danger"></span>
-            </div>
-            -->
             <div class="form-group">
                 <input style="margin-top:24px" type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -93,23 +41,3 @@
 <div class="staticmenu">
 	<a asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="1">Back to List</a>
 </div>
-
-<!--
-	at section Scripts {
-	<script>
-		$(document).ready(function() {
-			// Add a click event listener to the button
-			$("#urlinput").change(function() {
-				// Change the text content of the paragraph when the button is clicked
-				var urlInput = document.getElementById('urlinput');
-				var urlToGetTitle = urlInput.value;
-				document.getElementById('titleinput').value = "Titelvorschlag wird generiert..";
-
-				document.getElementById('urlinput').disabled = true;
-				alert('url : ' + urlToGetTitle);
-				document.getElementById('urlinput').disabled = false;
-			});
-		});
-	</script>
-}
--->
