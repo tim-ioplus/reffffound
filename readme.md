@@ -1,205 +1,240 @@
-# REffffound
+# About - re: ffffound
 
-its ffffound - long lost, now refound :)
-
-## Backlog items
-
-### v .1 ok
-
-* * view Feed:, mindestens 2 seitig (20stück), keine kontextbilder(!) [x]
-	* * link 'saved by' user auf /bookmarks/guid [x]
-* * View Detail: einzelbild, keine kontextbilder (rechts), keine kontextuser > [x]
-* * View: Aktive Nutzer,  hardkodierten [x]
-* * Feeddaten, Userdaten hardkodiert [x]
-* * Userfeeds [x]
-* * RE:ffffound logo [x]
+Dies ist das Repository für die Webandwendung 're:ffffound' die auf reffffound.com zu erreichen ist 
+sowie weitere Hilfsservices.
 
 
-### v .2 ==ok==
+# re: ffffound
 
-* Testhosting, ng version
+'.. It is ffffound - long lost, now refound..'
+
+Diese Software ist eine Hommage und Weiterentwicklung der ursprünglichen 
+ffffound.com App. " the page to get your daily astetic fix".
+
+
+## Motivation - Problemstellung
+
+Visuelle Inhalte sind die wesentliche Kommunikationsform des modernen Internet-Konsumenten
+und -Benutzers und werden schon lange massenhaft auf vielen populären Platformen im Familien-, Freundes- oder Bekanntenkreis 
+verbreitet.
+
+Desweiteren gelangt auf der Jagd nach Clicks und Werbeeinblendungen jede App, jeder Dienst, jedes Inhaltliche Angebot, 
+irgendwann an den Punkt auch 'social media' zu werden und engagement zu forcieren.
+Damit wird jedem Besucher und Nutzer, ob er will oder nicht Reaktionen, Kommentare etc 
+mit angezeigt und deren 'Sentiment' mitkommuniziert. 
+
+Aber das wollen eventuell viele Besucher und Nutzer gar nicht.
+
+Sie haben das Bedürfnis diese Inhalte privat, ohne ihren sozialen Kontext, 
+ohne Kommentare, Reaktionen, Emotionen.. nur mit und für sich zu konsumieren. 
+
+Eine wichtige Eigenschaft des ursprünglichen ffffound.com: die Stille, 
+die Offenheit für ganz persönliche Interpretation und der Raum für ganz eigene Gedanken.
+
+Aber so ganz ohne Interaktion zwischen den Usern ging es dann auch nicht. 
+Es gab für angemeldete User zwei Möglichkeiten den 'found' und das 'follow'. 
+Beim 'found' kann man einen gefundenen Inhalt eines anderen Users speichern und 
+diesen so mit in die eigene Liste aufnehmen. Das 'follow' funktioniert als ein 'Super-found' und zeigt dem folgenden Nutzer alle Posts des gefolgten an in der eigenen Liste an.
+Beide Funktionen ermöglichen einem User die Wertschätzung 
+für einen Inhalt oder User öffentlich auszudrücken und dabei das persönlich Erleben des Inhaltes in der Privatsphäre zu behalten.
+
+
+## Hypothese
+
+Diese formulieren wir als Golden Circle da wir so sehr prägnant den Ursprung und Richtung dieses Projektes kommunizieren können:
+
+__Golden Circle__
+
+_Warum:_ 
+Menschen haben ein Bedürfnis nach visueller Anregung und Inspiration, das
+kann Ihnen helfen ihre Gedanken positiv zu verändern.
+
+_Wie:_
+Wir bieten einen Raum in dem Menschen ungestört neue oder ungewöhnliche 
+visuelle Eindrücke sammeln und sich so anregen lassen können.
+
+_Was:_ Diesen Raum bieten wir als Dienst an, der über einen Webbrowser erreichbar 
+und so für viele Menschen benutzbar ist.
+
+
+## Ziele
+
+1. den in der Hypothese beschriebenen Dienst in Anlehnung an das ursprunglichen ffffound.com beschreiben, implementieren und betreiben
+2. anhand der Implementierung zu lernen und Diese weiter zu entwickeln, verbessern und ergänzen
+3. herausfinden inwieweit es eine Zielgruppe für Besucher und Anwender gibt und wiese diese zu erreichen sind 
+4. herausfinden ob es ein tragfähiges Betriebsmodell gibt
  
-![alt text](Documentation/20240521175852.png)
 
-### v .25
-* * Unitttests für Models (zB. Timestamp parsing) > Y/2: mit TestController [x]  
-* * CRUDLIST fähig für Posts > 3/4 >> Update/Put NOK issue '#6/#?/#9'> Y [x] 
-* * Feeddaten, userdaten hardkodiert > Y [x] 
-* * Guid bei post erzeugt #8 > Y [x] 
+# Projektrahmen
 
-### v .30 ==ok==
-* * angular version: use observables > Y [x] 
+## Inhalte 
 
-### v .xy ng Version nok
-* * Frontend an Api angebunden > Y [x] 
-	* * https://www.npmjs.com/package/ts-sync-request [x] 
-	* * https://stackoverflow.com/questions/62296092/how-to-make-synchronous-http-request-in-angular-8-or-9-make-a-request-and-wait [x] 
-* * Daten aus Api hardkodiert [x] 
-* * CORS Fehler korrigiert > N [x]  
-*  api gehostet
+Benutzer können Ihre 'Lesezeichen des Internets' in Form von Links zu einem Bild und einer Webseite 
+mit einem Titel versehen und hochladen, den Besuchern und anderen Nutzern werden diese 'Lesezeichen' 
+in der gemeinsamen Liste angezeigt.
 
-### v .3 ==ok==
-* * Api an DB (Mongo? > SQL) angebunden [x] 
-* * Daten read an FE [x] 
+Wir arbeiten mit dem Ziel qualitative hochwertige Inhalte zu sammeln die auf eigenständig betriebenen Webseiten, Blogs, Bilderportalen oä. gehostet und gefunden wurden. 
+Wir wollen keine Links annehmen zu Seiten die: 
+- direkten Reaktionen Emojis, Emoticons auf Inhalte anbieten (Emotionalisierung)
+- persönliche Feeds erstellen (Ragebait)
+- die verlinkten Inhalte hinter einer Paywall verstecken ()
 
-### v .4 ==ok==
-* * Daten write aus Front End: Posts [x] 
-* * Index Feed inkl Kontextbilder [x] 
-* * Create Bookmark mit username via ViewBags [x] 
-* * incl header logo bmp [x] 
-* * fix css [x] 
-  * * a:color [x] 
-  * * font-type > serifiger [x] 
-  * * link zu Flag Image more subtle [x] 
-  * * fix blockquote position [x] 
-  * * fix container position to left [x] 
-* * text: fix title [x] 
-* * Bookmark-element im feed: add 'Quoted from', link to url [x] 
-* * Fix timestamp bug where current minutes saved as month [x] 
-* * Hydrate() -> testdaten Create().. [x] 
-* * Hydrate() [x] 
-  * * generate timestamp from wihtin last 3 months and overwrite timestamps [x] 
+Diese Kriterien werden noch ggf direkt beim hochladen geprüft und ggf blockiert oder 
+nachträglich moderiert. 
 
- 
-### v .5
+## Besucher und Anwender
 
-* * connection string & credentials in appsettings.json [x] 
-* * feed navigation: previous- & next- buttons without 'full-pagination' [x] 
- * * include 'Last Post' logic to mark the end of feed [x] 
- * * add variety to Last Post to create a funny moment and communicate my crafty intentions [x]  
-* * update end-of-feed View as own errror view. incl links to prev/next feed pages [x] 
-* * css: difference in blockquote position index & list [x] 
-* * css: fix txt position for current pagenum in pagination [x] 
-* * all Database - queries mit .AddParameterWithValue > kein stringgebaue [x] 
-* * Fix Bug in 'Update()' Method where bookmark.Title is being overwritten with Value from bookmark.Guid* [x] 
- 
-### v .6-0.7
+__Besucher:__ Personen die mit einem Browser die Seite aufrufen. Sie wollen die 
+geposteten Bilder aller User sehen, die geposteten Bilder einzelnen User zuordnen,
+die zugehörigen Links verfolgen.
 
-* * add partial pages for Context menu, Legal menu [x] 
-* * fix sql command string bug in List statement [x] 
-* * Add Views and Functionality [x] 
-  * * Edit bookmark [x] 
-  * * Delete Bookmark [x] 
-  * * Create Bookmark and Validate Input in Data Model class [x] 
-* * remove unused Backup View 'OldList' [x] 
-* * fix paging with negative number for Index, List, 404 [x] 
-* * static float menu [x] 
-  * * feed (index) for all: tile(v) [non actionable], top(t), previous(p), next (n) [x] 
-  * * list (list) for user: create (c), tile(v), top(t), previous(p), next (n) [x] 
-  * * detail: edit (e), delete (d) [x] 
-  * * for Detail View: add dynamic menu item 'Back to list' linking to indexfeed or to userlist [x] 
-* * adminpage: all from List page plus hydrate(h) [x] 
-* * fix broken link: 404 page to feed [x] 
-* * dont display guid on edit/delete pages [x]  
-* * Use stronger Action text on Edit/Delete inputs for better Clarity of Actions [x] 
+__User:__ Personen nicht nur sehen sondern auch beitragen möchten. Sie tun alles was ein Besucher tut 
+und zusätzlich wollen Sie: Bilder und Links zu der zugehörigen Seite posten, 
+eigene Posts korrigieren oder Löschen, ein Bild das jemand anderes gepostet hat für 
+den eigene Liste sichern.
 
-### v .8 ==ok==
-* * block links
-  * * register: ".. is invitation based service. If you like to receive an invitation you can contact us" [x]
-  * * login: ".. if you have received an invite, please use the direct link provided." [x]
-* * css cleanup for menu items [x]
-* * for Release/Production Environment or without login hide the following Functions: Create, Edit, Delete, Hydrate [x] 
-* * Add validation Message in Create- and Edit-View for invalid inputs [x]
-* * Create and use Helper Service für User/Identity Tasks [x]
+Der User und folgenden Anwendertypen benötigen einen Benutzerkonto. Dieses kann 
+mit der echten Person verbunden oder korellieren, muss es aber nicht. Seine 'reffffound-Perosne' 
+mit der echten person zu verbinden ist eine explizite Entscheidung und kann erfolgen über den: Benutzernamen, 
+oder dem persönlichen Link der zu einem Benutzerkonto eingetragen werden kann und öffentlich einsehbar ist.
+Desweiteren muss zu Betreibszwecken eine EMail Adresse angegeben werden, diese wird aber nicht veröffentlicht.
+
+__Power User:__ Personen die besonders viel Posten, viel mit Posts anderer User interagieren oder denen 
+die Abfolge Ihrer Posts besonders wichtig ist. Sie tun alles was ein User tut und zusätzlich wollen Sie: mehrere Posts gleichzeitig als 'Batch' hochladen, zB in einer Datendatei oder auch zeitpunkte 
+festlegen ab wann ein Post veröffentlicht wird.
+
+__Administrator:__ Personen die den Dienst hinsichtlich Inhalte, Sicherheit und Funktion verwalten, prüfen und warten. 
+Sie tun alles was ein Power user tut und zusätzlich wollen sie: jeden Post auch anderer User bearbeiten oder löschen können, Benutzerkonten verwalten, 
+Datenmigrationen vornehmen, Testdaten hochladen.
+
+## Oberflächen
+
+Die Oberflächen der ursprünglichen ffffound waren ein Key Selling Point der Anwendung und 
+ermöglichten einen guten Fokus auf die Inhalte.
+
+* klare Strukturen: Inhalts- und Funktionsbereiche sind durch rechteckige Blöcke voneinander abgegrenzt
+* grundlegende Formen: rechtecke, quadrate, Linien 
+* bekannte Interaktionselemente: vertikalen Listen, horizontale Aufzählungen, Linktexte 
+* statische Postionierungen: Elemente sind stets an der gleichen Stelle a ngeordnet und bewegen sich nicht 
+* Wiederholung: Quadrat mit 500px breite für das Bild eines Lesezeichens, Rechtecke mit 100px Breite für die Vorschau auf weiterführende Inhalte
+* einfache Farben: getöntes weiß als Hintergrundfarbe, blau markierte Linktexte, 
+schwarz als Farbe für Fließtext und grau als Farbe für Kontextinformoationen
+
+Auf diesen Ideen werden die Oberflächen auch weiterentwickelt ohne die ursprünglichen Qualitäten zu verlieren.
 
 
-### v 0.9 - 0.91
+# Entwicklung
 
-*  * fix style for pagination links, style for 'First' link dynamic [x] 
-*  * on 404 page move 'Back to List/feed' Link to bottom in pagination area [x] 
-*  * move app hosting to azure [x]
-*  * move database hosting to azure [x] 
-*  * fix sql parameter bug in Statement to Select Contextual Bookmarks [x]
-*  * add temporary aws downtime Message [x]
-*  * remove version log [x]
+## Modell  
 
+Entwickelt wird nach Modell SCRUM mit Kanban board und wöchentlichen releasezyklen, 
+das Board besteht aus folgenden fünf Spalten: 
 
-### v 0.92
+_1. Backlog:_ Anforderungsermittlung: festgehalten in Notizen und User-Stories mit Abnahmekriterien, falls nötig mit Artefakten wie Mockups, Diagrammen oä. angereichert.
+Mit zunehmder Priorität müssen die items hinreichender ausgearbeitet sein.
 
-*  * dynamic filling of partial View for User Activity [x]
-   
-### v 1.0
+_2. Todo:_ Items zur Implementierung   
 
-* * encode email adress on pages: contact, flag content [x]
-* * update content Imprint, Terms of Service [x]
-* * fix layout on About page [x]
-* * show cookie Banner [x]
-* * remove aws Downtime Message [x]
+_3. Doing:_ Items die aktuell implementiert werden 
 
-### v 1.1
+_4. Test:_ Enthält die Items die erfolgreich implementiert wurden 
 
-* fix recommendation links [x]
-  * recommendation appear on sidebar in global (index) and user (List) feeds
-  * 0 <= n <= 3 recommmendations per post
-  * recommendations predate the recommending post
-  * each post only recommends from its own user
-  * no repeatitions on current page per user
-  * recommendations are not sorted
+_5. Done:_ Enthält die Items die erfolgreich getestet wurden
+
+_Release_ Die erfolgreich getsteten Stories werden zum Ende jeder Woche in einem neuen Release build 
+veröffentlicht und deployed.
+
+_Versionierung:_ Die Versionierung erfolgt nach dem Schema '\{Appname\}-\{Jahr\}-\{Kalenderwoche\}'
+Sollte unter der Woche ein Patch update nötig sein, wir einfach ein Postfix '-\{Nummer\}' drangehangen. 
+Es wird mit 1 begonnen und für jedes Patch release hochgezählt.
 
 
-### v 1.2
+## Architektur
 
-* partial views
-  * on bookmark Create increase Count property for posting Users  
-* on admin functions hydrate, UpdateUsers return to Users feed noch index feed
+__Struktur__
 
-### v1.3
+Wir folgen dem klasssichen 'MVC-plus' Modell bei dem wir die Controller 
+Schicht um zwei zusätzliche Schichten Services und Repository sowie um Hilfsklassen erweitern.
+Im Vergleich zum reinen 'MVC' Modell erreichen wir dadurch Vorteile hinsichtlich Übersicht über die Gesamtstruktur, Klarheit zur Verantwortlichkeit einzelner Komponenten und Wiederverwendbarkeit von Logik. 
+Wichtig ist auch eine gute Flexibilität bei der Verwendung von Implementierungsarten, da wir in Zukunft zB. die 
+Ebene zur persistenten Datenspeicherung ändern wollen.
 
-* dynamische pagination: in indexfeed, in userfeed [x]
-* 'As a user navigating the bookmarks, i'd' like to have more Information about the site's content size so its easier for me to know where i am and where to go next.' [x]
-  * Show links to navigate forward and backward in content
-  * Show current oage number amog all page numbers
-  * move pagination to own Component
-* 'As an user i'd like to see who are the recent posting users an how much they are posting to give me an idea of the activity on the platform' [x]
-  * show user name sand post count on sidebar
-  * move User-View into own Compoenent
- 
-### v 1.4 
+__Model__
 
-* update 'About' page with screenshot of original fffffound [x]
-* on creating Bookmark, parse Posting title from Url (alpha) [x]
+Enthält Eigenschaften und Methoden des Geschäftsobjekts die sich auf das einzelne, instanzierte Objekt beziehen, 
+nur damit arbeiten und keine weiteren externen Logiken verwenden.
 
-### v 1.5
+Beispielhafte Beschreibung des Lesezeichen-Models 'Bookmark', das wesentlichen Geschäftsobjekt von reffffound:
 
-* save backup data from azure [x]
-* cleanup data [x]
-* restore data locally [x]
-* create Hydrate view to upload bulkfile for Bookmarks [x]
-   * Insert bookmark if guid not posted yet
-	* Update POsting count for bokmarks users
+1.Eigenschaften
+ a. Url: der Link zur Webseite der gespeichert wird 
+ b. Image: das Bild das zu diesem Link angezeigt wird
+ c. Titel: der Titeltext der zu diesem Link angezeigt wird
+ d. User: das Benutzername der Person die das Lesezeichen speichert
+ e. Timestamp: sekundengenauer Zeitpunkt wann das Lesezeichen gespeichert wurde
+ f. Usercontext: Benutzernamen der Personen die das Lesezeichen gespeichert bzw. anerkannt haben 
+2. Methoden:
+	a. Konstruktoren: CreateFromCollection,UpdateFromCollection, CreateFromCsvLine
+	b. Projektionen: ToString(), ToCsvSTring()
+	c. Validierungen: IsValid, DataEquals
+
+__View__
+
+Ansicht die über den Browser ausgeliefert wird, enthält nur Darstellungslogik.
+
+__Controller__
+
+Nimmt Interaktion aus den View entgegen gibt sie an die zuständigen Services weiter
+nimmt deren Ergebnis entgegen und erzeugt mit Diesen einen neue View die dem Anwender gezeigt wird.
+
+__Service__
+
+Nimmt Daten aus dem Controller entgegen verarbeitet Diese ggf und gibt Sie an ein oder mehr zuständige Repositories oder andere Schnittstellen 
+weiter um deren Ergebnisse ggf zu kombinieren, zu prüfen und an den Controller zurückzugeben.
+
+__Repository__
+
+Nimmt Parameter aus einem Service entgegen, ruft anhand deren Daten aus der zuständigen Datenschicht ab
+prüft diese ggf auf Korrektheit und gibt Sie an den Service zurück.
+
+## Coding Style
+
+Wir verwenden die Standardformatierungen und Empfehlungen der Visual Studio IDE sowie ggf von Resharper 
+und zur Verbesserung von Übersicht, Fehleranalyse und Testbarkeit beachten wir die folgenden Punkte:
+
+1. Methoden einer Schicht verwenden nur Methoden der gleichen oder einer unterliegenden Schicht
+
+2. Wenn Methoden aus unterliegenden Schichten aufgerufen werden, immer mit einem 'try catch' umfassen um Ausnahmefehler abzufangen und den kontrollierten Lauf der Software abzusichern
+
+3. Erzeugen im Programmcode einen 'Happy Path' bei dem sehr leicht dere erolgreiche ABlauf der Logic nachzuvolllziehen ist
+
+	3a. Standard ist Erfolgsfall: *if(daten == null) Daten verwenden*
+
+	3b. explizite Conditionals die Abweichnugen abfangen sind Fehlerfall: *else \{ Daten nicht vewenden \}*
 
 
-### v 1.6
 
-* on Detail View incl recommendations
- * from posting User: 10 posts (selection method: last 5 plus 5 random)
-* fix double guid parameter on within Links on 'List'-pages
+# Betrieb
 
- 
-### v 1.7
+Der Dienst bieten wir als webbasierte Anwendung, als 'Webseite', an, da wir für unser Ziel keine Resourcen eines Desktop Computers brauchen und 
+zudem über den Web-Browser für mehr Menschen leichter zugängig sind. Es wird noch weitere 'zuarbeitende' Anwendungen in der peripherie der 'reffffound' Webanwendung geben wird, 
+deren Software aber nicht direkt in der Webanendung laufen wird. 
 
-* User Auth
-* 'found functionality': Save bookmark of other users for logged in users
-* switch to local sqlite database
-* adding docker containerizing capabilities
-* on Detail View of Bookmarks 
- * add recommendations: links to posts from refounding Users 
- * selection: from at most 10 reposting Users: select at most 5 posts (last 5) to link to beneathe main Post
-* include archive.org ddos message for bitmaps linked to archive.org wayback machine
-* fix bug in bookmark deletion
+Desweiteren ist wichtig das keine ungeplanten Kosten in Rechnung gestellt bekommen, dies ist bei cloud modellen
+nur mit zusätzlichen einmaligen und täglixchen Kontrolltätigkeiten möglich. Dies wollen wir uns ersparen und auf die Anwendung konzentrieren.
 
-  
-### v x.y
+Daher hosten wir die Webanwendung bis auf weiteres on-premise auf einem 'Virtual Private Server'. Ggf bezahlen wir damit, zu Begin, Resourcen die wir nicht voll ausnutzen, 
+dieser Nachteil wird aber durch die Kostensicherheit, Einfachheit und 
+Konfigurationsfreiheit die uns dieses Modell bietet aufgewogen.
+
+# Umsetzung
+
+An dieser Stelle dokumentieren wir visuell den aktuellen Projektstand.
 
 
-* fix display of validation message on bookmark Create
-* in 'Bookmarks/Create' fill Title Field automaticlly > UrlField.onChange() request 
-* Load spinner for images
-  * On users feed page list in sidebar
-  * pageusers favourite Top10 users > users who pageuser favourited the most
-  * pageusers 10 most recent followers (first establish basic pub>sub model)
-* self hosting Images > azure blobs? 
-* 'save' functionality for bookmarks of other Users
-* move all bitmaps to hosting
-* move all bitmaps to cdn
-
+![indexerste](./Documentation/sc_index_erste.png)
+![indexkomplett](./Documentation/sc_index_ganze seite.jpeg)
+![Detailansicht](./Documentation/sc_reff_detail.jpeg)
+![Detailansicht mit Contextinhalten](./Documentation/sc_detail_context.jpeg)
+![About](./Documentation/sc_about.jpg)
+![Administrationsfunktionen](./Documentation/)
