@@ -233,8 +233,8 @@ An dieser Stelle dokumentieren wir visuell den aktuellen Projektstand.
 
 
 ![indexerste](./Documentation/sc_index_erste.png)
-![indexkomplett](./Documentation/sc_index_ganze seite.jpeg)
+![indexkomplett](./Documentation/sc_index_ganze_seite.jpeg)
 ![Detailansicht](./Documentation/sc_reff_detail.jpeg)
 ![Detailansicht mit Contextinhalten](./Documentation/sc_detail_context.jpeg)
-![About](./Documentation/sc_about.jpg)
+![About](./Documentation/sc_about.jpeg)
 ![Administrationsfunktionen](./Documentation/)
