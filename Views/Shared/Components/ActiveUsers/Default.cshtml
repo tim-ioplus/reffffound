@@ -7,10 +7,10 @@
 	@foreach (var kv in Model)
 	{
 	  <li>
-		  <a class="" style="display:contents;" asp-area=""
-			  asp-controller="Bookmarks" asp-action="List" asp-route-username="@kv.Key" asp-route-filter="feed" asp-route-page="1">@kv.Key (@kv.Value)</a>
+			<a class="" style="display:contents;" title="Click to see what @kv.Key posted from the web or found here."
+		    asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@kv.Key" asp-route-filter="feed"
+			asp-route-page="1">@kv.Key (@kv.Value)</a>
 	  </li>
-
 	}
 	</ul>
 </div>

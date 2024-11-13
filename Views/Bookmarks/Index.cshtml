@@ -12,7 +12,7 @@
 	  <blockquote class="bookmarkblock">
 	  <p class="bookmarkheader">
 		  <span class="quoted">Quoted From:</span>&nbsp;
-		  <span class="headerlink"><a target="_blank" href="@bookmark.Url">@bookmark.Title</a></span><br />
+				<span class="headerlink"><a target="_blank" title="@bookmark.Title on @bookmark.Url" href="@bookmark.Url">@bookmark.Title</a></span><br />
 		  <span class="headerurl">@bookmark.Url</span>
 	  </p>
 
@@ -21,7 +21,7 @@
 			<td style="width:500px;" valign="top">
 				<p class="bookmarkimage">
 					<a class="" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid" asp-route-referAction="Index" asp-route-referUsername="" asp-route-referPage="@ViewBag.CurrentPage">
-						<image style="max-width:500px;height:auto;" src="@bookmark.Image"></image>
+								<image style="max-width:500px;height:auto;" title="@bookmark.Title on @bookmark.Url" src="@bookmark.Image"></image>
 					</a>
 				</p>
 			</td>

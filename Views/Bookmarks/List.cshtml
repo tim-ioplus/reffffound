@@ -23,7 +23,7 @@
 		  <td style="width:500px;" valign="top">
 			  <p class="bookmarkimage">
 				  <a class="" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid" asp-route-referAction="List" asp-route-referUsername="@ViewBag.Username" asp-route-referPage="@ViewBag.CurrentPage">
-					  <image style="max-width:500px;height:auto;" src="@bookmark.Image"></image>
+					 <image style="max-width:500px;height:auto;" title="@bookmark.Title on @bookmark.Url" src="@bookmark.Image"></image>
 				  </a>
 			  </p>
 		  </td>
