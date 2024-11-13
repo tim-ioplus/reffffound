@@ -50,6 +50,11 @@ namespace reffffound.Services
 			_context.SaveChanges();
 		}
 
+		public List<ContentUser> List()
+		{
+			return _data.ToList();
+		}
+
 		public void IncreaseBookmarkCount(string username)
 		{
 			var userToUpdate = Read(username);
@@ -71,5 +76,6 @@ namespace reffffound.Services
 				Update(userToUpdate);
 			}
 		}
+
 	}
 }

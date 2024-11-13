@@ -6,6 +6,7 @@ namespace reffffound.Services
 	public interface IBookmarkService
 	{
 		void Create(Bookmark bookmark);
+		void Create(List<Bookmark> bookmarks);
 		Bookmark? Read(string guid);
 		void Update(Bookmark bookmark);
 		void Delete(string guid);
@@ -20,5 +21,7 @@ namespace reffffound.Services
 		IDictionary<string,List<Bookmark>> GetUsersContextBookmarks(string username, string usercontext, string identityUserName="");
 		void Save(string guidToSave, string name);
 		void Forget(string guidToForget, string name);
+		Bookmark GetLastPost(string key);
+		Bookmark GetFeedNullFour(string username, string filter, int page);
 	}
 }

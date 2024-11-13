@@ -41,6 +41,10 @@ namespace reffffound.Services
 		{
 			_userRepository.Update(contentUser);
 		}
+		public List<ContentUser> List()
+		{
+			throw new NotImplementedException( );
+		}
 
 		public IDictionary<string, string> GetActiveUsers()
 		{
@@ -79,5 +83,7 @@ namespace reffffound.Services
 				userRepository.Update(user);
 			}
 		}
+
+
 	}
 }

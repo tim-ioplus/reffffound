@@ -393,7 +393,8 @@ namespace reffffound.Data
 							while (reader.Read( ))
 							{
 								string timestring = reader.GetString( 0 );
-								timestamp = DateTime.ParseExact( timestring, "yyyy-MM-dd HH:mm:ss", null );
+								
+								timestamp = DateTime.ParseExact( timestring, DatetimeFormat.Standard, null );
 							}
 						}
 					}
@@ -410,6 +411,7 @@ namespace reffffound.Data
 		#endregion
 
 		#region Test und local data
+		[Obsolete("Test and mock data being provided by Upload")]
 		public List<Bookmark>? ListMockData()
 		{
 			var dataPath = Path.Combine( ContentRootPath, "Data/bookmarks.json" );
@@ -448,7 +450,7 @@ namespace reffffound.Data
 			if (mockData == null || mockData.Count == 0) return false;
 
 			var lastPostingTime = GetLastPostingTimestamp( );
-			var earliestTimestamp = lastPostingTime.AddHours( 1 );//new DateTime(2024,7,31,13,10,42).AddHours(1);
+			var earliestTimestamp = lastPostingTime.AddHours( 1 );
 			var justNowTimestamp = DateTime.Now.AddHours( -1 );
 			var diffTimespan = justNowTimestamp.Subtract( earliestTimestamp );
 
@@ -460,7 +462,7 @@ namespace reffffound.Data
 				var savedBookmark = Read( bookmark.Guid );
 				if (savedBookmark == null)
 				{
-					var bookmarkWithContext = bookmark;//AddContext(bookmark);
+					var bookmarkWithContext = bookmark;
 
 					if (updateTimestamp)
 					{
@@ -600,6 +602,11 @@ namespace reffffound.Data
 			}
 
 			return bookmarks;
+		}
+
+		internal Bookmark GetLastPost(string username)
+		{
+			throw new NotImplementedException( );
 		}
 	}
 }

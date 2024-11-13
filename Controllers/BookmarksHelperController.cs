@@ -8,7 +8,7 @@ namespace reffffound.Controllers
 	public class BookmarksHelperController : Controller
 	{
 		private IBookmarkService _bookmarkService;
-		private IBookmarkService _bookmarkContextService;
+		private IUserService _userService;
 		private string _connectionString;
 		private bool _showUserFunctions;
 		private ApplicationDbContext _context;
@@ -18,11 +18,15 @@ namespace reffffound.Controllers
 			_context = context;
 			var connectionString = configuration["ConnectionStrings:AzureSqlConnection"] ?? configuration["ConnectionStrings:DataConnection"] ?? "";
 			_connectionString = connectionString;
-
-			_bookmarkService = new BookmarkService(connectionString);
-			if(context.Database.EnsureCreated())
+			
+			if(context!= null && context.Bookmarks.Any() && context.ContentUsers.Any())
 			{
-				_bookmarkContextService = new BookmarkContextService(context);
+				_bookmarkService = new BookmarkContextService(context);
+				_userService = new UserContextService(context);
+			}
+			else
+			{
+				_bookmarkService = new BookmarkService(connectionString);
 			}
 
 			_showUserFunctions = configuration["ASPNETCORE_ENVIRONMENT"].Equals("Development");
@@ -60,9 +64,10 @@ namespace reffffound.Controllers
 					}
 				}
 
-				new BookmarkHelper(_connectionString).Hydrate(dataFile);
+				var bookmarks = new BookmarkHelper(_bookmarkService, _userService).ReadFromFile(dataFile);
+				_bookmarkService.Create(bookmarks);
 
-				return RedirectToAction(nameof(Index));
+				return RedirectToAction(nameof(Index), "Bookmarks");
 			}
 			catch
 			{
@@ -76,7 +81,7 @@ namespace reffffound.Controllers
 		{
 			if (!_showUserFunctions) return RedirectToAction(nameof(BookmarksController.FeedNullFour), "Bookmarks", new { username = "", filter = "", page = 1 });
 
-			if (new BookmarkHelper(_connectionString).UpdateUsercounts())
+			if (new BookmarkHelper(_bookmarkService, _userService).UpdateUsercounts())
 			{
 				return RedirectToAction(nameof(Index), "Bookmarks");
 			}
@@ -92,7 +97,7 @@ namespace reffffound.Controllers
 			if (!_showUserFunctions) return RedirectToAction(nameof(BookmarksController.FeedNullFour), "Bookmarks", new { username = "", filter = "", page = 1 });
 			var success = false;
 
-			success = new BookmarkHelper(_connectionString).UpdateUsernames();
+			success = new BookmarkHelper(_bookmarkService, _userService).UpdateUsernames();
 
 			if (success)
 			{
@@ -109,7 +114,7 @@ namespace reffffound.Controllers
 		{
 			if (!_showUserFunctions) return RedirectToAction(nameof(BookmarksController.FeedNullFour), "Bookmarks", new { username = "", filter = "", page = 1 });
 
-			bool success = new BookmarkHelper(_connectionString).HydrateMockData();
+			bool success = false;// _bookmarkService.HydrateMockData();
 			if (success)
 			{
 				return RedirectToAction(nameof(Index), "Bookmarks");
@@ -167,7 +172,6 @@ namespace reffffound.Controllers
 			var bookmarks = bookmarkService.ListAll();
 
 			
-
 			foreach (var dbBookmark in bookmarks)
 			{
 				if(!_context.Bookmarks.Any(cu => cu.Guid.Equals(dbBookmark.Guid)))

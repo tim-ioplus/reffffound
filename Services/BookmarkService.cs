@@ -207,5 +207,20 @@ namespace reffffound.Services
 		{
 			throw new NotImplementedException( );
 		}
+
+		public void Create(List<Bookmark> bookmarks)
+		{
+			throw new NotImplementedException( );
+		}
+
+		public Bookmark GetLastPost(string key)
+		{
+			throw new NotImplementedException( );
+		}
+
+		public Bookmark GetFeedNullFour(string username, string filter, int page)
+		{
+			throw new NotImplementedException( );
+		}
 	}
 }

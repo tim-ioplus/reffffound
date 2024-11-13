@@ -39,6 +39,19 @@ namespace reffffound.Models
 		[Description( "Only temporary Property, not being saved persistent to the Database." )]
 		public string Username { get; set; }
 
+		public Bookmark(string guid = "", string timestamp = "")
+		{
+			Guid = guid != "" ? guid : System.Guid.NewGuid( ).ToString( );
+			Timestamp = timestamp != "" ? timestamp : DateTime.Now.ToString( DatetimeFormat.Standard );
+
+			Savedby = 1;
+			Context1img = Context1link =
+			Context2img = Context2link =
+			Context3img = Context3link =
+			FullUrl = "";
+		}
+		
+
 		public override string ToString()
 		{
 			return Id + ", " + Guid + ", " + Url + ", " + Title + ", " + Image + ", " + Timestamp + ", " + Savedby +
@@ -47,37 +60,7 @@ namespace reffffound.Models
 					 Context3img + ", " + Context3link;
 		}
 
-		public Bookmark CreateFrom(IFormCollection collection)
-		{
-			var bookmark = new Bookmark( );
 
-			var url = collection["Url"][0] ?? "";
-			var title = collection["Title"][0] ?? "";
-			var image = collection["Image"][0] ?? "";
-			var usercontext = collection["Usercontext"][0] ?? "";
-			var username = usercontext;
-
-			bookmark.Url = url;
-			if (!string.IsNullOrWhiteSpace( bookmark.Url ) && string.IsNullOrWhiteSpace( title ))
-			{
-				title = GetTitleFromUrl( bookmark.Url );
-			}
-			bookmark.Title = title;
-			bookmark.Image = image;
-			bookmark.Usercontext = usercontext;
-			bookmark.Username = username;
-			bookmark.Savedby = 1;
-
-			bookmark.Guid = System.Guid.NewGuid( ).ToString( );
-			bookmark.Timestamp = DateTime.Now.ToString( "yyyy-MM-dd HH:mm:ss" );
-
-			bookmark.Context1img = bookmark.Context1link =
-			bookmark.Context2img = bookmark.Context2link =
-			bookmark.Context3img = bookmark.Context3link =
-			bookmark.FullUrl = "";
-
-			return bookmark;
-		}
 
 		public void UpdateFrom(IFormCollection collection)
 		{
@@ -99,38 +82,7 @@ namespace reffffound.Models
 			}
 		}
 
-		private string GetTitleFromUrl(string url)
-		{
-			string titlepart = "";
-			var partsplits = url.Split( '/' );
-			var lastPart = partsplits[partsplits.Length - 1];
-			if (lastPart.Contains( "?" ))
-			{
-				var sitesplits = lastPart.Split( "?" );
-				lastPart = sitesplits[0];
-			}
 
-			if (lastPart.Contains( "#" ))
-			{
-				var segmentsplits = lastPart.Split( "#" );
-				lastPart = segmentsplits[0];
-			}
-
-			titlepart = lastPart;
-
-			var site_urltext = titlepart.Replace( "_", " " ).Replace( "-", " " ).Trim( );
-			var site_domaintext = "";
-
-			var domainsplit = url.Split( "www." )?[1].Split( "." )?[0];
-			if (!string.IsNullOrWhiteSpace( domainsplit ))
-			{
-				site_domaintext = domainsplit + " - ";
-			}
-
-			string titletext = site_domaintext + site_urltext;
-
-			return titletext;
-		}
 
 		/// <summary>
 		/// Checks if current Data state is valid to Create or Update a bookmark
@@ -166,33 +118,19 @@ namespace reffffound.Models
 			return isValid;
 		}
 
-		public void SetUsername()
-		{
-			if (!string.IsNullOrWhiteSpace( Usercontext ))
-			{
-				var userscontexts = Usercontext.Replace( " ", "" ).Split( ',' );
-				if (userscontexts.Any( ))
-				{
-					string username = userscontexts[0].ToString( );
-					if (!string.IsNullOrWhiteSpace( username ))
-					{
-						this.Username = username;
-					}
-				}
-			}
-		}
-
 		public bool DataEquals(Bookmark bookmark)
 		{
-			if(bookmark == null) return false;
-			if(bookmark.Guid != this.Guid) return false;
-			if(bookmark.Url != this.Url) return false;
-			if(bookmark.Title != this.Title) return false;
-			if(bookmark.Image != this.Image) return false;
-			if(bookmark.Savedby != this.Savedby) return false;
-			if(bookmark.Timestamp != this.Timestamp) return false;
+			if (bookmark == null) return false;
+			if (bookmark.Guid != this.Guid) return false;
+			if (bookmark.Url != this.Url) return false;
+			if (bookmark.Title != this.Title) return false;
+			if (bookmark.Image != this.Image) return false;
+			if (bookmark.Savedby != this.Savedby) return false;
+			if (bookmark.Timestamp != this.Timestamp) return false;
+			if (bookmark.Username != this.Username) return false;
 
 			return true;
 		}
+
 	}
 }

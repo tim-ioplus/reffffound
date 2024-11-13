@@ -63,7 +63,7 @@
 
 	@if (ViewBag.ShowUserFunctions)
 	{
-		@if (ViewBag.UserHasPosted)
+		@if (ViewBag.UserHasPosted || ViewBag.ShowEditFunctions)
 		{
 			<a asp-controller="Bookmarks" asp-action="Edit" asp-route-guid="@Model.Guid" asp-route-username="@ViewBag.Username">Edit (e)</a>
 			<a asp-controller="Bookmarks" asp-action="Delete" asp-route-guid="@Model.Guid" asp-route-username="@Model.Username">Delete (d)</a>

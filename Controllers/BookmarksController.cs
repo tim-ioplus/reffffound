@@ -22,7 +22,7 @@ namespace reffffound.Controllers
 			var connectionString = configuration["ConnectionStrings:AzureSqlConnection"] ?? configuration["ConnectionStrings:DataConnection"] ?? "";
 			_connectionString = connectionString;
 
-			 if (context.Bookmarks != null)
+			if (context.Bookmarks != null)
 			{
 				_bookmarkService = new BookmarkContextService( context );
 			}
@@ -70,11 +70,11 @@ namespace reffffound.Controllers
 			var bookmark = _bookmarkService.Read( guid );
 			if (bookmark == null || string.IsNullOrWhiteSpace( bookmark.Guid )) return View( "Error" );
 
-			if (User.Identity != null && User.Identity.IsAuthenticated)
+			if (User.Identity != null && User.Identity.Name != null && User.Identity.IsAuthenticated)
 			{
 				ViewBag.ShowUserFunctions = true;
 				ViewBag.IdentityUserName = User.Identity.Name;
-				ViewBag.ShowEditFunctions = User.Identity.Name == bookmark.Username;
+				ViewBag.ShowEditFunctions = (User.Identity.Name == bookmark.Username || UserHelper.IsAdmin(User.Identity.Name));
 				ViewBag.UserHasPosted = bookmark.Username.Equals( User.Identity.Name );
 				ViewBag.UserHasSaved = !ViewBag.UserHasPosted &&
 												bookmark.Usercontext.Split( "," ).Any( x => x.Replace( " ", "" ).Equals( User.Identity.Name ) );
@@ -130,7 +130,7 @@ namespace reffffound.Controllers
 
 		public ActionResult FeedNullFour(string username = "", string filter = "", int page = 0)
 		{
-			var bookmark = new BookmarkHelper( _connectionString ).GetFeedNullFour( username, filter, page );
+			var bookmark = _bookmarkService.GetFeedNullFour( username, filter, page );
 			page = page < 1 ? 1 : page;
 			ViewBag.PreviousPage = page > 1 ? page - 1 : 1;
 			ViewBag.CurrentPage = page;
@@ -163,7 +163,7 @@ namespace reffffound.Controllers
 
 			try
 			{
-				var bookmark = new Bookmark( ).CreateFrom( collection );
+				var bookmark = new BookmarkHelper( _bookmarkService, null).CreateFrom( collection );
 				if (!bookmark.IsValid( out string validationMessage ))
 				{
 					ViewBag.ShowValidationMessage = true;

@@ -1,32 +1,33 @@
+using NuGet.Packaging.Signing;
 using reffffound.Data;
 using reffffound.Models;
 
 namespace reffffound.Services
 {
 	public class BookmarkHelper
-{
-	private string _connectionString;
-	private BookmarkRepository _bookmarkRepository;
-
-	public BookmarkHelper(string connectionString)
 	{
-			_connectionString = connectionString;
-			_bookmarkRepository = new BookmarkRepository(_connectionString);
-	}
+		[Obsolete( "Use _bookmarkService provided by Constructor", true )]
+		private BookmarkRepository _bookmarkRepository;
+		private IBookmarkService _bookmarkService;
+		private IUserService _userService;
+
+		public BookmarkHelper(IBookmarkService bookmarkService, IUserService userService = null)
+		{
+			_bookmarkService = bookmarkService;
+			_userService = userService;
+		}
 		public bool UpdateUsercounts()
 		{
 			bool success = false;
 
-			var userRepository = new UserRepository(_connectionString);
-
-			var users = userRepository.List( );
+			var users = _userService.List( );
 			if (users.Any( ))
 			{
 				foreach (var user in users)
 				{
 					int count = GetBookmarkCount( user.Name );
 					user.Count = count;
-					userRepository.Update( user );
+					_userService.Update( user );
 				}
 
 				success = true;
@@ -50,41 +51,23 @@ namespace reffffound.Services
 		}
 		public int GetBookmarkCount(string username = "")
 		{
-			var count = _bookmarkRepository.GetCount( username, "");
+			var count = _bookmarkService.GetBookmarkCount( username, "" );
 			return count;
 		}
 
-		public Bookmark GetFeedNullFour(string username = "", string filter = "", int page = 0)
-		{
-			var bookmark = new Bookmark( );
-			bookmark.Guid = "";
-			bookmark.Savedby = 0;
-			bookmark.Usercontext = "";
-			bookmark.Timestamp = new List<string>( ) { "Eternity", "Someday", "Soon", "In a while", "Aeons ago", "In the past", "In the future" }.ElementAt( new Random( ).Next( 0, 7 ) );
-			bookmark.Title = "This is the end..";
-			bookmark.Url = "NoUrl";
-			bookmark.Image = new List<string>( )
-				{
-				"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fp1.pxfuel.com%2Fpreview%2F528%2F171%2F802%2Fthe-end-sand-end-beach.jpg&f=1&nofb=1&ipt=c02ebd78bbd57fa507556d98bf73fa9f5f5e0ccd71f26767d9e248250ba4ed2c&ipo=images",
-				"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F3991792%2Fpexels-photo-3991792.jpeg%3Fauto%3Dcompress%26cs%3Dtinysrgb%26h%3D750%26w%3D1260&f=1&nofb=1&ipt=ea924ac3b14d8f3d424975543d9165a19c0f58f739cea23d44cb110ccedfe06c&ipo=images",
-				"https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.publicdomainpictures.net%2Fpictures%2F190000%2Fvelka%2Fthe-end-title.jpg&f=1&nofb=1&ipt=54b622a92e13962a19ec827c67b50d8e5738ef2b3f91dd2316054a22abd6a34d&ipo=images",
-				"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F1888004%2Fpexels-photo-1888004.jpeg%3Fcs%3Dsrgb%26dl%3Dletters-on-yellow-tiles-forming-the-end-text-1888004.jpg%26fm%3Djpg&f=1&nofb=1&ipt=871760771f4feffe7295a577a694c6c64d73b401127fa43da6c7ee5eaea7039c&ipo=images"
-				}.ElementAt( new Random( ).Next( 0, 4 ) );
 
-			return bookmark;
-		}
 		internal bool UpdateUsernames()
 		{
 			var success = false;
 
-			var bookmarks = _bookmarkRepository.List("", "", 0, true);
+			var bookmarks = _bookmarkService.ListAll( );
 			var usernames = new List<string>( );
 			if (bookmarks.Any( ))
 			{
 				foreach (var bookmark in bookmarks)
 				{
-					bookmark.SetUsername( );
-					_bookmarkRepository.Update( bookmark );
+					SetUsername( bookmark );
+					_bookmarkService.Update( bookmark );
 
 					if (!usernames.Contains( bookmark.Username ))
 					{
@@ -100,83 +83,312 @@ namespace reffffound.Services
 			return success;
 		}
 
-		public bool Hydrate(IFormFile dataFile)
+		/// <summary>
+		/// Older or incomplete Data may not include explicit Username yet.
+		/// Sets the  
+		/// </summary>
+		/// <param name="bookmark"></param>
+		public void SetUsername(Bookmark bookmark)
 		{
-			bool success = false;
-			var userService = new UserService( _connectionString );
+			if (string.IsNullOrWhiteSpace( bookmark.Username ) &&
+				!string.IsNullOrWhiteSpace( bookmark.Usercontext ))
+			{
+				var userscontexts = bookmark.Usercontext.Replace( " ", "" ).Split( ',' );
+				if (userscontexts.Any( ))
+				{
+					string username = userscontexts[0].ToString( );
+					if (!string.IsNullOrWhiteSpace( username ))
+					{
+						bookmark.Username = username;
+					}
+				}
+			}
+		}
+
+		public Bookmark CreateFrom(IFormCollection collection)
+		{
+			Bookmark bookmark = new Bookmark( );
+
+			var url = collection["Url"][0] ?? "";
+			var title = collection["Title"][0] ?? "";
+			var image = collection["Image"][0] ?? "";
+			var usercontext = collection["Usercontext"][0] ?? "";
+			var username = usercontext;
+
+			bookmark.Url = url;
+			if (!string.IsNullOrWhiteSpace( bookmark.Url ) && string.IsNullOrWhiteSpace( title ))
+			{
+				title = GetTitleFromUrl( bookmark.Url );
+			}
+
+			bookmark.Title = title;
+			bookmark.Image = image;
+			bookmark.Usercontext = usercontext;
+			bookmark.Username = username;
+			bookmark.Savedby = 1;
+
+			bookmark.Context1img = bookmark.Context1link =
+			bookmark.Context2img = bookmark.Context2link =
+			bookmark.Context3img = bookmark.Context3link =
+			bookmark.FullUrl = "";
+
+			return bookmark;
+		}
+
+		private string GetTitleFromUrl(string url)
+		{
+			string titlepart = "";
+			var partsplits = url.Split( '/' );
+			var lastPart = partsplits[partsplits.Length - 1];
+			if (lastPart.Contains( "?" ))
+			{
+				var sitesplits = lastPart.Split( "?" );
+				lastPart = sitesplits[0];
+			}
+
+			if (lastPart.Contains( "#" ))
+			{
+				var segmentsplits = lastPart.Split( "#" );
+				lastPart = segmentsplits[0];
+			}
+
+			titlepart = lastPart;
+
+			var site_urltext = titlepart.Replace( "_", " " ).Replace( "-", " " ).Trim( );
+			var site_domaintext = "";
+
+			var domainsplit = url.Split( "www." )?[1].Split( "." )?[0];
+			if (!string.IsNullOrWhiteSpace( domainsplit ))
+			{
+				site_domaintext = domainsplit + " - ";
+			}
+
+			string titletext = site_domaintext + site_urltext;
+
+			return titletext;
+		}
+
+
+		public List<Bookmark> ReadFromFile(IFormFile dataFile)
+		{
+			var bookmarks = new List<Bookmark>( );
+			var hydrationType = HydrationType.None;
 
 			using (var reader = new StreamReader( dataFile.OpenReadStream( ), System.Text.Encoding.UTF8, true ))
 			{
 				int currentLine = 0;
+				char seperationChar = ',';
 				while (!reader.EndOfStream)
 				{
 					var line = reader.ReadLine( );
 					currentLine++;
 
-					if (currentLine > 1 && !string.IsNullOrWhiteSpace( line ))
+					if (!string.IsNullOrWhiteSpace( line ))
 					{
-						var bookmarkValues = line.Split( ';' );
-						Bookmark bookmark = new Bookmark( );
-						bookmark.Guid = bookmarkValues[1];
-
-						var savedBookmark = _bookmarkRepository.Read( bookmark.Guid );
-						if (savedBookmark != null) continue;
-
-						bookmark.Url = bookmarkValues[2];
-						bookmark.Title = bookmarkValues[3];
-						bookmark.Image = bookmarkValues[4];
-						bookmark.Savedby = 0;
-						if (int.TryParse( bookmarkValues[5], out int savedby ))
+						if (currentLine == 1)
 						{
-							bookmark.Savedby = savedby;
-						}
-						bookmark.Timestamp = bookmarkValues[6];
-						bookmark.Usercontext = bookmarkValues[7];
-						bookmark.FullUrl = bookmarkValues[8];
-						bookmark.Context1link = bookmarkValues[9];
-						bookmark.Context1img = bookmarkValues[10];
-						bookmark.Context2link = bookmarkValues[11];
-						bookmark.Context2img = bookmarkValues[12];
-						bookmark.Context3link = bookmarkValues[13];
-						bookmark.Context3img = bookmarkValues[14];
-						bookmark.SetUsername( );
+							var columnHeaders = line.Split( seperationChar );
+							if (columnHeaders.Length == 1)
+							{
+								char semicolonSeperationChar = ';';
+								columnHeaders = line.Split( semicolonSeperationChar );
 
-						_bookmarkRepository.Create( bookmark );
-						userService.IncreaseBookmarkCount( bookmark.Username );
+								if (columnHeaders.Length > 1)
+								{
+									seperationChar = semicolonSeperationChar;
+								}
+							}
+							if (columnHeaders[0] == "Guid")
+							{
+								// Hydrate like Backup
+								hydrationType = HydrationType.Backup;
+							}
+							else if (columnHeaders[0] == "User")
+							{
+								// Hydrate like Userposts
+								hydrationType = HydrationType.Userpost;
+							}
+							else
+							{
+								// Dateifehler
+								break;
+							}
+						}
+						else if (currentLine > 1)
+						{
+							Bookmark? bookmark = null;
+							if (hydrationType == HydrationType.Backup)
+							{
+								try
+								{
+									bookmark = ReadAsBackup( line, seperationChar );
+								}
+								catch (Exception ex)
+								{
+									throw ex;
+								}
+							}
+							else if (hydrationType == HydrationType.Userpost)
+							{
+								try
+								{
+									bookmark = ReadAsPost( line, seperationChar );
+								}
+								catch (Exception ex)
+								{
+									throw ex;
+								}
+							}
+							else
+							{
+								break;
+							}
+
+							if (bookmark != null)
+							{
+								bookmarks.Add( bookmark );
+							}
+							else
+							{
+								// Fehler 
+								// Zeile konnte nicht geparsed werden
+								// 
+							}
+						}
 					}
 				}
-				success = true;
 			}
 
-			return success;
+			if (bookmarks.Any( ) && hydrationType == HydrationType.Userpost)
+			{
+				var bookmarksByUser = bookmarks.GroupBy( b => b.Username );
+				foreach (var usersBookmarks in bookmarksByUser)
+				{
+					DateTime lastDatetime = DateTime.Now.Subtract( new TimeSpan( 1, 0, 0, 0, 0 ) );
+					Bookmark lastPost = null;
+
+					try
+					{
+						lastPost = _bookmarkService.GetLastPost( usersBookmarks.Key );
+					}
+					catch (Exception ex)
+					{
+						throw ex;
+					}
+
+					int intervals = usersBookmarks.Count( ) + 1;
+
+					if (lastPost != null && lastPost.Timestamp != null)
+					{
+						lastDatetime = DateTime.Parse( lastPost.Timestamp );
+					}
+
+					var nextTimespan = DateTime.Now.Subtract( lastDatetime ).Divide( intervals );
+					var nextPosttimestamp = lastDatetime.Add( nextTimespan );
+
+					foreach (Bookmark bookmark in usersBookmarks)
+					{
+						bookmark.Timestamp = nextPosttimestamp.ToString( DatetimeFormat.Standard );
+						nextPosttimestamp = nextPosttimestamp.Add( nextTimespan );
+					}
+				}
+			}
+
+			return bookmarks;
 		}
 
-		public bool HydrateMockData()
+
+
+		private Bookmark? ReadAsPost(string line, char seperationChar = ',')
 		{
-			bool success = false;
+			var bookmarkValues = line.Split( seperationChar );
+			if (bookmarkValues.Length < 4)
+			{
+				return null;
+			}
 
-			success = _bookmarkRepository.Hydrate( );
+			Bookmark? bookmark = new Bookmark( );
+			string username = bookmarkValues[0];
+			bookmark.Username = username;
+			bookmark.Usercontext = username;
+			bookmark.Image = bookmarkValues[1];
+			bookmark.Url = bookmarkValues[2];
+			bookmark.Title = bookmarkValues[3];
 
-			return success;
+			if (bookmarkValues.Length > 4)
+			{
+				var extraText = "";
+				for (int i = 4; i <= bookmarkValues.Length - 1; i++)
+				{
+					if (!string.IsNullOrWhiteSpace(bookmarkValues[i]))
+					{
+						extraText += " " + bookmarkValues[i]; 
+					}
+				}
+
+				bookmark.Title += extraText;
+			}
+
+			return bookmark;
+		}
+
+		private Bookmark? ReadAsBackup(string line, char seperationChar = ',')
+		{
+			Bookmark bookmark = new Bookmark( );
+
+			var bookmarkValues = line.Split( seperationChar );
+			if (bookmarkValues.Length != 15) return null;
+
+			bookmark.Guid = bookmarkValues[0];
+			var savedBookmark = _bookmarkService.Read( bookmark.Guid );
+			if (savedBookmark != null) return null;
+
+			bookmark.Url = bookmarkValues[1];
+			bookmark.Title = bookmarkValues[2];
+			bookmark.Image = bookmarkValues[3];
+			bookmark.Savedby = 1;
+			if (int.TryParse( bookmarkValues[4], out int savedby ))
+			{
+				bookmark.Savedby = savedby;
+			}
+			bookmark.Timestamp = bookmarkValues[5];
+			bookmark.Usercontext = bookmarkValues[6];
+			bookmark.FullUrl = bookmarkValues[7];
+			bookmark.Context1link = bookmarkValues[8];
+			bookmark.Context1img = bookmarkValues[9];
+			bookmark.Context2link = bookmarkValues[10];
+			bookmark.Context2img = bookmarkValues[11];
+			bookmark.Context3link = bookmarkValues[12];
+			bookmark.Context3img = bookmarkValues[13];
+			bookmark.Username = bookmarkValues[14];
+			SetUsername( bookmark );
+
+			return bookmark;
+		}
+
+		public enum HydrationType
+		{
+			None = 0,
+			Backup = 1,
+			Userpost = 2
 		}
 
 		internal void UpdateUserCount(List<string> usernames)
 		{
-			var _userRepository = new UserRepository( _connectionString );
 			foreach (var username in usernames)
 			{
 				var userName = username.Trim( );
 				var userRole = UserHelper.GetRole( userName );
-				var userCount = _bookmarkRepository.GetCount( userName, "" );
+				var userCount = _bookmarkService.GetBookmarkCount( userName, "" );
 
-				var storedUser = _userRepository.Read( userName );
+				var storedUser = _userService.Read( userName );
 				if (storedUser != null)
 				{
 					storedUser.Name = userName;
 					storedUser.Role = userRole;
 					storedUser.Count = userCount;
 
-					_userRepository.Update( storedUser );
+					_userService.Update( storedUser );
 				}
 				else
 				{
@@ -187,24 +399,9 @@ namespace reffffound.Services
 					user.Link = "";
 					user.Count = userCount;
 
-					_userRepository.Create( user );
+					_userService.Create( user );
 				}
 			}
-		}
-
-		/// <summary>
-		/// Loads the 10 Related 
-		/// </summary>
-		/// <param name="username"></param>
-		/// <param name="guid"></param>
-		/// <returns></returns>
-		public List<Bookmark> GetUsersRelatedBookmarks(string username, string guid)
-		{
-			var model = new List<Bookmark>();
-
-			model = _bookmarkRepository.GetUsersRelatedBookmarks(username, guid);
-
-			return model;
 		}
 	}
 }
