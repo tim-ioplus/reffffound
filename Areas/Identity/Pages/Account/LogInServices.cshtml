@@ -1,0 +1,38 @@
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="col-md-6 col-md-offset-2">
+	<section>
+		<h3>Use another service to log in.</h3>
+		<hr />
+		AT{
+		if ((Model.ExternalLogins?.Count ?? 0) == 0)
+		{
+		<div>
+			<p>
+				There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">
+					article
+					about setting up this ASP.NET application to support logging in via external services
+				</a>.
+			</p>
+		</div>
+		}
+		else
+		{
+		<form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="ATModel.ReturnUrl" method="post" class="form-horizontal">
+			<div>
+				<p>
+					AT foreach (var provider in Model.ExternalLogins!)
+					{
+					<button type="submit" class="btn btn-primary" name="provider" value="ATprovider.Name" title="Log in using your ATprovider.DisplayName account">ATprovider.DisplayName</button>
+					}
+				</p>
+			</div>
+		</form>
+		}
+		}
+	</section>
+</div>

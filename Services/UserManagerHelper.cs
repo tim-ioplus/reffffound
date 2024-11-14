@@ -3,7 +3,7 @@ using Microsoft.Data.SqlClient;
 using reffffound.Data;
 using reffffound.Models;
 using System.Security.Claims;
-public static class UserHelper
+public static class UserManagerHelper
 {
 
 	private static readonly List<ContentUser> _initUsers = new List<ContentUser>( )
