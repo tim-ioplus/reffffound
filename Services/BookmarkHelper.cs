@@ -378,7 +378,7 @@ namespace reffffound.Services
 			foreach (var username in usernames)
 			{
 				var userName = username.Trim( );
-				var userRole = UserHelper.GetRole( userName );
+				var userRole = UserManagerHelper.GetRole( userName );
 				var userCount = _bookmarkService.GetBookmarkCount( userName, "" );
 
 				var storedUser = _userService.Read( userName );

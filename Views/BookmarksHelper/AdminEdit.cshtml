@@ -4,17 +4,31 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-controller="Bookmarks" asp-action="Edit" asp-route-guid="@Model.Guid">
+        <form asp-controller="BookmarksHelper" asp-action="AdminEdit" asp-route-guid="@Model.Guid">
             <div asp-validation-summary="ModelOnly" class="text-danger">
-				if(@ViewBag.ShowValidationMessage)
+				@if(@ViewBag.ShowValidationMessage)
 				{
 					<p>@ViewBag.ValidationMessage</p>
 				}
 			</div>
             <div class="form-group" style="">
                 <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" value="@ViewBag.Username" />
-                <!-- <span asp-validation-for="" class="text-danger"></span> -->
+                <!-- <input asp-for="Username" class="form-control" value="@Model.Username" /> -->
+                <span asp-validation-for="Username" class="text-danger"></span>
+				<select asp-for="Username" class="form-control">
+					@foreach (string username in @ViewBag.AllUsernames)
+					{
+						@if (username.Equals(Model.Username))
+						{
+							<option value="@username" selected> @username</option>
+						}
+						else
+						{
+							<option value="@username"> @username</option>
+						}
+
+					}
+				</select>
             </div>
 			<!--<div class="form-group">
 				<label asp-for="Guid" class="control-label"></label>
@@ -37,17 +51,24 @@
                 <span asp-validation-for="Image" class="text-danger"></span>
 				<image style="max-width:500px;height:auto;" src="@Model.Image"></image>
             </div>
-            <!--
+            
             <div class="form-group">
                 <label asp-for="Savedby" class="control-label"></label>
-                <input asp-for="Savedby" class="form-control" />
+                <input asp-for="Savedby" class="form-control" value="@Model.Savedby"/>
                 <span asp-validation-for="Savedby" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Timestamp" class="control-label"></label>
-                <input asp-for="Timestamp" class="form-control" />
+                <input asp-for="Timestamp" class="form-control" value="@Model.Timestamp"/>
                 <span asp-validation-for="Timestamp" class="text-danger"></span>
             </div>
+
+			<div class="form-group">
+				<label asp-for="Usercontext" class="control-label"></label>
+				<input asp-for="Usercontext" class="form-control" value="@Model.Usercontext"/>
+				<span asp-validation-for="Usercontext" class="text-danger"></span>
+			</div>
+			<!--
             <div class="form-group">
                 <label asp-for="Context1link" class="control-label"></label>
                 <input asp-for="Context1link" class="form-control" />
@@ -77,11 +98,6 @@
                 <label asp-for="Context3img" class="control-label"></label>
                 <input asp-for="Context3img" class="form-control" />
                 <span asp-validation-for="Context3img" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Usercontext" class="control-label"></label>
-                <input asp-for="Usercontext" class="form-control" />
-                <span asp-validation-for="Usercontext" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FullUrl" class="control-label"></label>

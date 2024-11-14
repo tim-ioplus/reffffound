@@ -82,6 +82,12 @@
 			}
 		}
 
+		if(@ViewBag.IsAdminUser)
+		{
+			<a class="nav-link text" title="Hydrate Database" asp-area="" asp-controller="BookmarksHelper" asp-action="Hydrate">Hydrate</a>
+			<a asp-controller="BookmarksHelper" asp-action="AdminEdit" asp-route-guid="@Model.Guid">Admin Edit (Ae)</a>
+		}
+
 		<a asp-controller="Bookmarks" asp-action="Create" asp-route-username="@ViewBag.Username">Create (c)</a>
 
 	}

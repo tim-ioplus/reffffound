@@ -18,12 +18,17 @@ namespace reffffound.Services
 		{
 			var userActivity = new Dictionary<string, string>();
 
-			foreach (var contentUser in _context.ContentUsers)
+			foreach (var contentUser in _data)
 			{
 				userActivity.Add(contentUser.Name, contentUser.Count.ToString());
 			}
 
 			return userActivity;
+		}
+
+		public List<string> ListUsernames()
+		{
+			return _data.Select(x => x.Name).ToList();
 		}
 
 		public ContentUser? Read(string username)

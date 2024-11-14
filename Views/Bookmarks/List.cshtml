@@ -83,7 +83,7 @@
 
 	@if(@ViewBag.ShowUserFunctions && @ViewBag.IsAdminUser)
 	{
-		<!--<a class="nav-link text" title="Hydrate Database" asp-area="" asp-controller="Bookmarks" asp-action="Hydrate" asp-route-username="@ViewBag.Username">Hydrate</a> -->
+		<!-- <a class="nav-link text" title="Hydrate Database" asp-area="" asp-controller="Bookmarks" asp-action="Hydrate" asp-route-username="@ViewBag.Username">Hydrate</a> -->
 		<a class="nav-link text" title="Hydrate Database" asp-area="" asp-controller="BookmarksHelper" asp-action="Hydrate">Hydrate</a>
 		<a class="nav-link text" title="Migrate ContentUsers (Sql > sqlite)" asp-area="" asp-controller="BookmarksHelper" asp-action="MigrateContentUsers">Migrate Content Users</a>
 		<a class="nav-link text" title="Migrate Bookmarks (Sql > sqlite)" asp-area="" asp-controller="BookmarksHelper" asp-action="MigrateBookmarks">Migrate Bookmarks</a>

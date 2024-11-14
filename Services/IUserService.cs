@@ -10,6 +10,7 @@ namespace reffffound.Services
 		public void Delete(ContentUser contentUser);
 		public List<ContentUser> List();
 		public IDictionary<string, string> GetActiveUsers();
+		public List<string> ListUsernames();
 		public void IncreaseBookmarkCount(string username);
 		public void DecreaseBookmarkCount(string username);
 	}

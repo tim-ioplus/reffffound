@@ -50,7 +50,7 @@ namespace reffffound.Models
 			Context3img = Context3link =
 			FullUrl = "";
 		}
-		
+
 
 		public override string ToString()
 		{
@@ -62,7 +62,7 @@ namespace reffffound.Models
 
 
 
-		public void UpdateFrom(IFormCollection collection)
+		public void UpdateFrom(IFormCollection collection, bool isAdminEdit = false)
 		{
 			var url = collection["Url"][0];
 			var title = collection["Title"][0];
@@ -79,6 +79,34 @@ namespace reffffound.Models
 			if (!string.IsNullOrEmpty( image ) && !this.Image.Equals( image ))
 			{
 				Image = image;
+			}
+
+			if (isAdminEdit)
+			{
+				var username = collection["Username"][0];
+				var savedby = collection["SavedBy"][0];
+				var timestamp = collection["Timestamp"][0];
+				var usercontext = collection["Usercontext"];
+
+				if (!string.IsNullOrEmpty( username ) && !this.Username.Equals( username ))
+				{
+					Username = username;
+				}
+
+				if (!string.IsNullOrEmpty( savedby ) && !this.Savedby.Equals( savedby ))
+				{
+					Savedby = int.Parse( savedby );
+				}
+
+				if (!string.IsNullOrEmpty( timestamp ) && !this.Timestamp.Equals( timestamp ))
+				{
+					Timestamp = timestamp;
+				}
+
+				if (!string.IsNullOrEmpty( usercontext ))
+				{
+					Usercontext = usercontext;
+				}
 			}
 		}
 
