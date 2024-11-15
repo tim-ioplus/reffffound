@@ -105,35 +105,7 @@ namespace reffffound.Services
 			}
 		}
 
-		public Bookmark CreateFrom(IFormCollection collection)
-		{
-			Bookmark bookmark = new Bookmark( );
-
-			var url = collection["Url"][0] ?? "";
-			var title = collection["Title"][0] ?? "";
-			var image = collection["Image"][0] ?? "";
-			var usercontext = collection["Usercontext"][0] ?? "";
-			var username = usercontext;
-
-			bookmark.Url = url;
-			if (!string.IsNullOrWhiteSpace( bookmark.Url ) && string.IsNullOrWhiteSpace( title ))
-			{
-				title = GetTitleFromUrl( bookmark.Url );
-			}
-
-			bookmark.Title = title;
-			bookmark.Image = image;
-			bookmark.Usercontext = usercontext;
-			bookmark.Username = username;
-			bookmark.Savedby = 1;
-
-			bookmark.Context1img = bookmark.Context1link =
-			bookmark.Context2img = bookmark.Context2link =
-			bookmark.Context3img = bookmark.Context3link =
-			bookmark.FullUrl = "";
-
-			return bookmark;
-		}
+		
 
 		private string GetTitleFromUrl(string url)
 		{

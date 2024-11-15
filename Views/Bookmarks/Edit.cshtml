@@ -1,26 +1,17 @@
 @model reffffound.Models.Bookmark
 
 <h4>Edit Bookmark</h4>
-<hr />
+<hr /> 
 <div class="row">
     <div class="col-md-4">
-        <form asp-controller="Bookmarks" asp-action="Edit" asp-route-guid="@Model.Guid">
-            <div asp-validation-summary="ModelOnly" class="text-danger">
-				if(@ViewBag.ShowValidationMessage)
+		<form asp-controller="Bookmarks" asp-action="Edit" asp-route-guid="@Model.Guid">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				@if (ViewBag.ShowValidationMessage)
 				{
 					<p>@ViewBag.ValidationMessage</p>
 				}
-			</div>
-            <div class="form-group" style="">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" value="@ViewBag.Username" />
-                <!-- <span asp-validation-for="" class="text-danger"></span> -->
-            </div>
-			<!--<div class="form-group">
-				<label asp-for="Guid" class="control-label"></label>
-				<input asp-for="Guid" class="form-control" />
-				<span asp-validation-for="Guid" class="text-danger"></span>
-			</div>-->
+			
+          
             <div class="form-group">
                 <label asp-for="Url" class="control-label"></label>
                 <input asp-for="Url" class="form-control" value="@Model.Url" />
@@ -38,6 +29,16 @@
 				<image style="max-width:500px;height:auto;" src="@Model.Image"></image>
             </div>
             <!--
+				  <!--
+				<div class="form-group" style="" >  la bel asp-for="Username" class ="control-label"></la>
+				  nput asp-for="Username" class= "form-control" value=" ViewBag.Username" />
+				 --  span asp-v alidation-for=" " class="text-danger">  span  --
+			  d iv
+			<!-- <div class="form-group">
+				<label asp-for="Guid" class="control-label"></label>
+				<input asp-for="Guid" class="form-control" />
+				<span asp-validation-for="Guid" class="text-danger"></span>
+			</div>-
             <div class="form-group">
                 <label asp-for="Savedby" class="control-label"></label>
                 <input asp-for="Savedby" class="form-control" />

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
@@ -151,6 +152,8 @@ namespace reffffound.Controllers
 		public ActionResult Create(string username)
 		{
 			if (!UserManagerHelper.CanDo( User, _showUserFunctions )) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
+			ViewBag.ShowValidationMessage = false;
+			ViewBag.ValidationMessage = "";
 
 			ViewBag.Username = username;
 			return View( "Create" );
@@ -164,14 +167,18 @@ namespace reffffound.Controllers
 		{
 			if (!UserManagerHelper.CanDo( User, _showUserFunctions )) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
 			ViewBag.ShowValidationMessage = false;
+			ViewBag.ValidationMessage = "";
 
 			try
 			{
-				var bookmark = new BookmarkHelper( _bookmarkService, null).CreateFrom( collection );
-				if (!bookmark.IsValid( out string validationMessage ))
+				var bookmark = new Bookmark( collection );
+
+				if (!bookmark.IsValid( out string propertyValidationMessage ) ||
+					!new ContentModerationService().AreUrlsValid(bookmark))
 				{
 					ViewBag.ShowValidationMessage = true;
-					ViewBag.ValidationMessage = validationMessage;
+					ViewBag.ValidationMessage = propertyValidationMessage + ". " + "Urls sind nicht gültig ";
+
 					return View( "Create", bookmark );
 				}
 
@@ -237,6 +244,8 @@ namespace reffffound.Controllers
 		{
 			if (!UserManagerHelper.CanDo( User, _showUserFunctions )) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
 			if (String.IsNullOrWhiteSpace( guid )) return View( "Error" );
+			ViewBag.ShowValidationMessage = false;
+			ViewBag.ValidationMessage = "";
 
 			var bm = _bookmarkService.Read( guid );
 
@@ -257,6 +266,8 @@ namespace reffffound.Controllers
 		public ActionResult Edit(string guid, IFormCollection collection)
 		{
 			if (!UserManagerHelper.CanDo( User, _showUserFunctions )) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
+			ViewBag.ShowValidationMessage = false;
+			ViewBag.ValidationMessage = "";
 
 			try
 			{
@@ -267,16 +278,20 @@ namespace reffffound.Controllers
 				if (UserManagerHelper.CanWrite( User, bookmark.Username ))
 				{
 					bookmark.UpdateFrom( collection );
-					if (!bookmark.IsValid( out string validationMessage ))
+
+					if (!bookmark.IsValid( out string validationMessage ) ||
+						!new ContentModerationService().AreUrlsValid(bookmark))
 					{
 						ViewBag.ShowValidationMessage = true;
-						ViewBag.ValidatioNMessage = validationMessage;
+						ViewBag.ValidationMessage = validationMessage + " Oder Url ungültig";
 
 						return View( "Edit", bookmark );
 					}
 
 					_bookmarkService.Update( bookmark );
 				}
+
+				return View("Edit", bookmark);
 
 				return RedirectToAction( nameof( Details ), "Bookmarks", new { guid = bookmark.Guid } );
 			}

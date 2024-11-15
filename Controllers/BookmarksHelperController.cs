@@ -214,6 +214,8 @@ namespace reffffound.Controllers
 		{
 			if (!UserManagerHelper.CanDo( User, _showUserFunctions )) return RedirectToAction( "FeedNullFour", "Bookmarks", new { username = "", filter = "", page = 1 } );
 			if (String.IsNullOrWhiteSpace( guid )) return View( "Error" );
+			ViewBag.ShowValidationMessage = false;
+			ViewBag.ValidationMessage = "";
 
 			var bm = _bookmarkService.Read( guid );
 
@@ -235,6 +237,8 @@ namespace reffffound.Controllers
 		public ActionResult AdminEdit(string guid, IFormCollection collection)
 		{
 			if (!UserManagerHelper.CanDo( User, _showUserFunctions )) return RedirectToAction( "FeedNullFour", "Bookmarks", new { username = "", filter = "", page = 1 } );
+			ViewBag.ShowValidationMessage = false;
+			ViewBag.ValidationMessage = "";
 
 			try
 			{
@@ -248,7 +252,7 @@ namespace reffffound.Controllers
 					if (!bookmark.IsValid( out string validationMessage ))
 					{
 						ViewBag.ShowValidationMessage = true;
-						ViewBag.ValidatioNMessage = validationMessage;
+						ViewBag.ValidationMessage = validationMessage;
 
 						return View( "AdminEdit", bookmark );
 					}
