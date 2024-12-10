@@ -1,3 +1,7 @@
+@using Microsoft.AspNetCore.Identity
+@using reffffound.Data
+@inject SignInManager<ApplicationUser> SignInManager
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,84 +13,70 @@
 </head>
 <body>
     <header>
-		<div id="cookieNotice" class="" style="display:none;position:absolute;left:190px;top:0px;z-index:999;max-width:500px; height:auto;border:2px solid magenta;">
-			<div class="content-wrap" style="background-color:magenta;color:#fff;padding:1px 1px 1px 5px;">Cookie Consent <span href="#" style="float:right;" onclick="acceptCookieConsent()">X</span></div>
-			<div class="content-wrap" style="background:#fff;padding:5px 5px 5px 5px;">
-					<span>We use cookies to enable correct functionality of our service. We do not use cookies to measure or record user interactions or to share Information with any third parties.
-						By continuing to use our website, you agree to our  <a class="" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>. <a href="#" onclick="acceptCookieConsent();">Accept</a></span>
-			</div>
-		</div>
+        <div id="cookieNotice" class="position-absolute" style="display:none;left:190px;top:0px;z-index:999;max-width:500px;height:auto;border:2px solid magenta;">
+            <div class="content-wrap bg-magenta text-white p-1">
+                Cookie Consent <span href="#" class="float-right" onclick="acceptCookieConsent()">X</span>
+            </div>
+            <div class="content-wrap bg-white p-3">
+                <span>We use cookies to enable correct functionality of our service. We do not use cookies to measure or record user interactions or to share Information with any third parties.
+                    By continuing to use our website, you agree to our <a class="" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>. <a href="#" onclick="acceptCookieConsent();">Accept</a></span>
+            </div>
+        </div>
         <div class="container">
-            <table>
-                <tr>
-                    <td valign="top">
-                        <div class="left-side">
-                            <div class="">
-                                <a class="nav-link" asp-area="" asp-controller="Bookmarks" asp-action="Index">
-                                    <img src="~/assets/logo.png" />
-                                </a>
-                            </div>
-                        </div>
-                    </td>
-                    <td valign="top">
-                        <div class="title">
-							<h1>RE:FFFFOUND!</h1>
-							@if(ViewBag.Action=="List")
-							{
-								<h2>@ViewBag.Username 's aestethic fix</h2>
-								<a class="@ViewBag.FeedLinkCss" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="" asp-route-page="1"> Feed </a> @HtmlEncoder.Encode(" ")
-								<a class="@ViewBag.PostLinkCss" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="1">Only posts</a> @HtmlEncoder.Encode(" ")
-								<a class="@ViewBag.FoundLinkCss" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="found" asp-route-page="1">Only founds</a> @HtmlEncoder.Encode(" ")
-							}
-							else
-							{
-								<h2>your daily aestethic fix</h2>						
-							}							
-                        </div>
-                    </td>
-                </tr>
-            </table>
+            <div class="row">
+                <div class="col-4 col-md-4 col-lg-3">
+					<button id="menuburger" class="btn d-md-none mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#leftSideMenu" aria-expanded="false" aria-controls="leftSideMenu">
+						<!-- -->
+					</button>
+				</div>
+			   <div class="col-8 col-md-8 col-lg-9">
+                    <a class="nav-link" style="padding:none !important;" asp-area="" asp-controller="Bookmarks" asp-action="Index">
+                        <img src="~/assets/logo_ECinverttransparent.png" class="logo-fluid" style="border:2px solid #000;" />
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
     <div class="container">
-        <table>
-            <tr>
-                <td style="width=150px;vertical-align: top;">
+        <div class="row">
+            <div class="col-md-4 col-lg-3">                
+                <div class="collapse d-md-block" id="leftSideMenu">
                     <div class="left-side">
+
                         <div id="menu-activeusers" class="menupartial">
-							@await Component.InvokeAsync("ActiveUsers")
+                            @await Component.InvokeAsync("ActiveUsers")
                         </div>
                         <div id="menu-signin" class="menupartial">
                             <partial name="_LoginPartial" />
                         </div>
                         <div id="menu-context" class="menupartial">
-							<partial name="_ContextMenuPartial" />
+                            <partial name="_ContextMenuPartial" />
                         </div>
                         <div id="menu-legal" class="menupartial">
-							<partial name="_LegalMenuPartial" />
+                            <partial name="_LegalMenuPartial" />
                         </div>                                            
                         <div id="menu-ads">
                             <!-- more aaads f*** yeah -->
                         </div>
                     </div>
-
-                </td>                
-                <td>
-                    <main role="main" class="pb-3">
-                        @RenderBody()
-                    </main>
-                </td>
-            </tr>
-        </table>
-    </div>	
+                </div>
+            </div>                
+            <div class="col-md-8 col-lg-9">
+				<main role="main">
+					<!-- class="pb-3" -->
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    </div>    
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-	<script>
+    <script>
 
-	</script>
-	
+    </script>
+    
 </body>
 </html>
