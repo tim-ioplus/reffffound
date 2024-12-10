@@ -267,5 +267,14 @@ namespace reffffound.Controllers
 				return View( );
 			}
 		}
+
+		// GET: BookmarksHelperController/AdminMenu
+		public ActionResult AdminMenu()
+		{
+			if (!UserManagerHelper.IsAdmin(User.Identity.Name)) return RedirectToAction( "FeedNullFour", "Bookmarks", new { username = "", filter = "", page = 1 } );
+
+			return View();
+		}
+		
 	}
 }
