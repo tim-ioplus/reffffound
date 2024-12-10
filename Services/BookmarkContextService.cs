@@ -25,7 +25,7 @@ namespace reffffound.Services
 		{
 			var contentUser = _context.ContentUsers.SingleOrDefault( cu => cu.Name.Equals( bookmark.Username ) );
 
-			if(contentUser != null)
+			if (contentUser != null)
 			{
 				_data.Add( bookmark );
 				contentUser.Count++;
@@ -107,7 +107,15 @@ namespace reffffound.Services
 			}
 			else
 			{
-				bookmarks = _data.OrderByDescending( b => b.Timestamp ).Skip( skip ).Take( 10 ).ToList( );
+				if (filter.Equals( "trending" ))
+				{
+					bookmarks = _data.Where(b => b.Savedby > 1).OrderByDescending( b => b.Timestamp ).Skip( skip ).Take( 10 ).ToList( );
+				}
+				else
+				{
+					bookmarks = _data.OrderByDescending( b => b.Timestamp ).Skip( skip ).Take( 10 ).ToList( );
+				}
+
 			}
 
 			AddContext( bookmarks );
@@ -273,7 +281,7 @@ namespace reffffound.Services
 		{
 			foreach (var bookmark in bookmarks)
 			{
-				if(bookmark.IsValid(out string message))
+				if (bookmark.IsValid( out string message ))
 				{
 					Create( bookmark );
 				}

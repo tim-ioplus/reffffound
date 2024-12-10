@@ -22,6 +22,11 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\assets\internetarchive_ddos_message.png" />
+    <Content Remove="wwwroot\assets\logo_EC.png" />
+    <Content Remove="wwwroot\assets\logo_ECinvert.png" />
+    <Content Remove="wwwroot\assets\logo_ECinverttransparent.png" />
+    <Content Remove="wwwroot\assets\menu_hamburger.png" />
+    <Content Remove="wwwroot\assets\menu_hamburger_hoover.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -58,6 +63,19 @@
 
   <ItemGroup>
     <None Include="wwwroot\assets\internetarchive_ddos_message.png" />
+    <None Include="wwwroot\assets\logo_EC.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\assets\logo_ECinvert.png" />
+    <None Include="wwwroot\assets\logo_ECinverttransparent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\assets\menu_hamburger.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\assets\menu_hamburger_hoover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -75,6 +93,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Assets\internetarchive_ddos_message.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\logo_EC.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\logo_ECinverttransparent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\menu_hamburger.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\menu_hamburger_hoover.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

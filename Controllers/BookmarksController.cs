@@ -52,6 +52,17 @@ namespace reffffound.Controllers
 			ViewBag.Filter = "";
 			ViewBag.Username = "";
 
+			if (User.Identity != null && User.Identity.Name != null && User.Identity.IsAuthenticated)
+			{
+				ViewBag.ShowUserFunctions = true;
+				ViewBag.ShowAdminFunctions = UserManagerHelper.IsAdmin( User.Identity.Name );
+			}
+			else
+			{
+				ViewBag.ShowUserFunctions = ViewBag.ShowAdminFunctions = false;
+			}
+
+
 			if (bookmarks.Count == 0)
 			{
 				return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = page } );
@@ -74,12 +85,13 @@ namespace reffffound.Controllers
 			if (User.Identity != null && User.Identity.Name != null && User.Identity.IsAuthenticated)
 			{
 				bool userHasPosted = bookmark.Username.Equals( User.Identity.Name );
-				bool isAdminUser = UserManagerHelper.IsAdmin(User.Identity.Name);
+				bool isAdminUser = UserManagerHelper.IsAdmin( User.Identity.Name );
 
 				ViewBag.IsAdminUser = isAdminUser;
+				ViewBag.ShowAdminFunctions = isAdminUser;
 				ViewBag.ShowUserFunctions = true;
 				ViewBag.IdentityUserName = User.Identity.Name;
-				ViewBag.ShowEditFunctions = (userHasPosted|| isAdminUser);
+				ViewBag.ShowEditFunctions = (userHasPosted || isAdminUser);
 				ViewBag.UserHasPosted = userHasPosted;
 				ViewBag.UserHasSaved = !ViewBag.UserHasPosted &&
 												bookmark.Usercontext.Split( "," ).Any( x => x.Replace( " ", "" ).Equals( User.Identity.Name ) );
@@ -112,10 +124,18 @@ namespace reffffound.Controllers
 			}
 			else
 			{
+				if (User.Identity != null && User.Identity.Name != null && User.Identity.IsAuthenticated)
+				{
+					ViewBag.ShowUserFunctions = true;
+					ViewBag.ShowAdminFunctions = UserManagerHelper.IsAdmin( User.Identity.Name );
+				}
+				else
+				{
+					ViewBag.ShowUserFunctions = ViewBag.ShowAdminFunctions = false;
+				}
+
 				ViewBag.Username = username;
-				ViewBag.ShowUserFunctions = User.Identity != null && User.Identity.IsAuthenticated;
-				ViewBag.ShowEditFunctions = User.Identity.Name == username;
-				ViewBag.IsAdminUser = UserManagerHelper.IsAdmin( User.Identity.Name );
+
 
 				page = page < 1 ? 1 : page;
 				ViewBag.PreviousPage = page > 1 ? page - 1 : 1;
@@ -148,14 +168,13 @@ namespace reffffound.Controllers
 		}
 
 
-		// GET: Bookmarks/Create/Username
-		public ActionResult Create(string username)
+		// GET: Bookmarks/Create/
+		public ActionResult Create()
 		{
 			if (!UserManagerHelper.CanDo( User, _showUserFunctions )) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
 			ViewBag.ShowValidationMessage = false;
 			ViewBag.ValidationMessage = "";
 
-			ViewBag.Username = username;
 			return View( "Create" );
 		}
 
@@ -172,12 +191,16 @@ namespace reffffound.Controllers
 			try
 			{
 				var bookmark = new Bookmark( collection );
+				bookmark.Username = User.Identity.Name;
+				bookmark.Usercontext = User.Identity.Name;
+
+				string urlValidationMessage = "";
 
 				if (!bookmark.IsValid( out string propertyValidationMessage ) ||
-					!new ContentModerationService().AreUrlsValid(bookmark))
+					!new ContentModerationService( ).AreUrlsValid( bookmark, out urlValidationMessage ))
 				{
 					ViewBag.ShowValidationMessage = true;
-					ViewBag.ValidationMessage = propertyValidationMessage + ". " + "Urls sind nicht gültig ";
+					ViewBag.ValidationMessage = propertyValidationMessage + ". " + urlValidationMessage;
 
 					return View( "Create", bookmark );
 				}
@@ -244,6 +267,7 @@ namespace reffffound.Controllers
 		{
 			if (!UserManagerHelper.CanDo( User, _showUserFunctions )) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
 			if (String.IsNullOrWhiteSpace( guid )) return View( "Error" );
+
 			ViewBag.ShowValidationMessage = false;
 			ViewBag.ValidationMessage = "";
 
@@ -251,6 +275,7 @@ namespace reffffound.Controllers
 
 			if (bm != null && UserManagerHelper.CanWrite( User, bm.Username ))
 			{
+				ViewBag.ShowUserFunctions = true;
 				ViewBag.Username = bm.Username;
 				return View( "Edit", bm );
 			}
@@ -266,12 +291,14 @@ namespace reffffound.Controllers
 		public ActionResult Edit(string guid, IFormCollection collection)
 		{
 			if (!UserManagerHelper.CanDo( User, _showUserFunctions )) return RedirectToAction( nameof( FeedNullFour ), "Bookmarks", new { username = "", filter = "", page = 1 } );
+
 			ViewBag.ShowValidationMessage = false;
 			ViewBag.ValidationMessage = "";
 
 			try
 			{
 				if (String.IsNullOrWhiteSpace( guid )) return View( "Error" );
+
 				var bookmark = _bookmarkService.Read( guid );
 				if (bookmark == null) return View( "Error" );
 
@@ -279,19 +306,20 @@ namespace reffffound.Controllers
 				{
 					bookmark.UpdateFrom( collection );
 
+					var contentModerationService = new ContentModerationService( );
+					string urlValidationMessage  = "";
+
 					if (!bookmark.IsValid( out string validationMessage ) ||
-						!new ContentModerationService().AreUrlsValid(bookmark))
+						 !contentModerationService.AreUrlsValid( bookmark, out urlValidationMessage ))
 					{
 						ViewBag.ShowValidationMessage = true;
-						ViewBag.ValidationMessage = validationMessage + " Oder Url ungültig";
+						ViewBag.ValidationMessage = validationMessage + " " + urlValidationMessage;
 
 						return View( "Edit", bookmark );
 					}
 
 					_bookmarkService.Update( bookmark );
 				}
-
-				return View("Edit", bookmark);
 
 				return RedirectToAction( nameof( Details ), "Bookmarks", new { guid = bookmark.Guid } );
 			}
@@ -315,6 +343,7 @@ namespace reffffound.Controllers
 			{
 				if (UserManagerHelper.CanWrite( User, bookmark.Username ))
 				{
+					ViewBag.ShowUserFunctions = true;
 					ViewBag.Username = bookmark.Username;
 					return View( "Delete", bookmark );
 				}

@@ -8,20 +8,19 @@ namespace reffffound.Services
     {
 		public ContentModerationService() { }
 
-		public bool AreUrlsValid(Bookmark bookmark)
+		public bool AreUrlsValid(Bookmark bookmark, out string urlValidationMessage)
 		{
 			bool isValid = false;
-			var validationMessage = string.Empty;
 
 			isValid = IsUrlValid(bookmark.Url.ToLower()) && IsUrlValid(bookmark.Image.ToLower());
 
 			if(isValid)
 			{
-				validationMessage = "Provided links are valid.";
+				urlValidationMessage = "Provided links are valid.";
 			}
 			else
 			{
-				validationMessage = "Please do not user links from " + "facebook"  + " domains.";
+				urlValidationMessage = "Please do not use links from " + "facebook"  + " domains.";
 			}
 
 			return isValid;

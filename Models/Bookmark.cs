@@ -166,6 +166,11 @@ namespace reffffound.Models
 				validationMessage = "Please provide link to your bookmarked Image.";
 				isValid = false;
 			}
+			if (string.IsNullOrWhiteSpace( Username ) || string.IsNullOrWhiteSpace( Usercontext ))
+			{
+				validationMessage = "Please provide a Username.";
+				isValid = false;
+			}
 
 			return isValid;
 		}
