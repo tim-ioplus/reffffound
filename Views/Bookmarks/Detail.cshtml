@@ -2,43 +2,74 @@
 @{
 	ViewData["Title"] = "Bookmarks Details..";
 }
-
+@if (@ViewBag.ReferAction != "")
+{
+	<a asp-controller="Bookmarks" asp-action="@ViewBag.ReferAction" asp-route-username="@ViewBag.ReferUsername" asp-route-page="@ViewBag.ReferPage">Back to List</a>
+	<br />
+}
 <div class="assets">
 	<blockquote class="bookmarkblock">
+		<div class="row">
+			<div class="col-12">
+				<p class="bookmarkheader">
+					<span class="quoted">Quoted From:</span>&nbsp;
+					<span class="headerlink"><a target="_blank" href="@Model.Url">@Model.Title</a></span><br />
+					<span class="headerurl">@Model.Url</span>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<p class="bookmarkimage">
+					<image style="max-width:500px;height:auto;" title="@Model.Title on @Model.Url" src="@Model.Image"></image>
+					<br />
+					<span class="flaglink">
+						<a class="" title="Click here to report an issue with this image." asp-controller="Home" asp-action="Copyright">Flag this image</a>
+					</span>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<p class="bookmarkfooter componentTodo">
+				<span class="posted"> Posted on @Html.DisplayFor(model => model.Timestamp) </span><br />
+				Saved By @Model.Savedby People: @foreach (var username in Model.Usercontext.Replace(" ", "").Split(','))
+				{
+					<a class="nav-link text-dark" style="display:inline;padding:2px;" title="Click to see what @username posted from the web or found here."
+					   asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@username" asp-route-filter="feed" asp-route-page="1">@username</a>
+				}
+			</p>
+		</div>
+		<div class="row">
 
-		<p class="bookmarkheader">
-			<span class="quoted">Quoted From:</span>&nbsp;
-			<span class="headerlink"><a target="_blank" href="@Model.Url">@Model.Title</a></span><br />
-			<span class="headerurl">@Model.Url</span>
-		</p>
-
-		<table>
-			<tr>
-				<td style="width:500px;" valign="top">
-					<p class="bookmarkimage">						
-						<image style="max-width:500px;height:auto;" title="@Model.Title on @Model.Url" src="@Model.Image"></image>
-							<br />
-							<span class="flaglink">
-								<a class="" title="Click here to report an issue with this image." asp-controller="Home" asp-action="Copyright">Flag this image</a>
-							</span>
-						
-					</p>
-				</td>
-				<td style="vertical-align:top;width:75px;height:auto;">
-					<!-- No Contextlinks here. yet.. -->
-				</td>
-			</tr>
-		</table>
-
-		<p class="bookmarkfooter componentTodo">
-			<span class="posted"> Posted on @Html.DisplayFor(model => model.Timestamp) </span><br />
-			Saved By @Model.Savedby People: @foreach (var username in Model.Usercontext.Replace(" ", "").Split(','))
+			@if (@ViewBag.IsAdminUser)
 			{
-				<a class="nav-link text-dark" style="display:inline;padding:2px;" title="Click to see what @username posted from the web or found here."  
-				asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@username" asp-route-filter="feed" asp-route-page="1">@username</a>
+			   <a asp-controller="BookmarksHelper" asp-action="AdminEdit" asp-route-guid="@Model.Guid">Admin Edit (Ae)</a>
 			}
-		</p>
 
+			@if (ViewBag.UserHasPosted || ViewBag.ShowEditFunctions)
+			{
+				<a asp-controller="Bookmarks" asp-action="Edit" asp-route-guid="@Model.Guid" asp-route-username="@ViewBag.Username">Edit (e)</a>
+				<a asp-controller="Bookmarks" asp-action="Delete" asp-route-guid="@Model.Guid" asp-route-username="@Model.Username">Delete (d)</a>
+			}
+
+			@if(ViewBag.ShowUserFunctions)
+			{
+				@if (!ViewBag.UserHasPosted && ViewBag.UserHasSaved)
+				{
+					<form method="post" asp-controller="Bookmarks" asp-action="Forget">
+						<input id="guidinput" asp-for="Guid" class="form-control" value="@Model.Guid" hidden />
+						<input type="submit" value="Forget">
+					</form>
+				}
+				else
+				{
+					<form method="post" asp-controller="Bookmarks" asp-action="Save">
+						<input id="guidinput" asp-for="Guid" class="form-control" value="@Model.Guid" hidden />
+						<input type="submit" value="Save">
+					</form>
+				}
+			}		
+		</div>
 	</blockquote>
 </div>
 
@@ -51,44 +82,14 @@
 </div>
 
 
-<div class="staticmenu">
-	@if (@ViewBag.ReferAction != "")
-	{
-		<a asp-controller="Bookmarks" asp-action="@ViewBag.ReferAction" asp-route-username="@ViewBag.ReferUsername" asp-route-page="@ViewBag.ReferPage">Back to List</a>
-	}
-
-	@if (ViewBag.ShowUserFunctions)
-	{
-		@if (ViewBag.UserHasPosted || ViewBag.ShowEditFunctions)
-		{
-			<a asp-controller="Bookmarks" asp-action="Edit" asp-route-guid="@Model.Guid" asp-route-username="@ViewBag.Username">Edit (e)</a>
-			<a asp-controller="Bookmarks" asp-action="Delete" asp-route-guid="@Model.Guid" asp-route-username="@Model.Username">Delete (d)</a>
-		}
-		else
-		{
-			@if (ViewBag.UserHasSaved)
-			{
-				<form method="post" asp-controller="Bookmarks" asp-action="Forget">
-					<input id="guidinput" asp-for="Guid" class="form-control" value="@Model.Guid" hidden />
-					<input type="submit" value="Forget">
-				</form>
-			}
-			else
-			{
-				<form method="post" asp-controller="Bookmarks" asp-action="Save">
-					<input id="guidinput" asp-for="Guid" class="form-control" value="@Model.Guid" hidden />
-					<input type="submit" value="Save">
-				</form>
-			}
-		}
-
-		if(@ViewBag.IsAdminUser)
-		{
-			<a class="nav-link text" title="Hydrate Database" asp-area="" asp-controller="BookmarksHelper" asp-action="Hydrate">Hydrate</a>
-			<a asp-controller="BookmarksHelper" asp-action="AdminEdit" asp-route-guid="@Model.Guid">Admin Edit (Ae)</a>
-		}
-
+@if (ViewBag.ShowUserFunctions)
+{
+	<div class="staticmenu">
 		<a asp-controller="Bookmarks" asp-action="Create" asp-route-username="@ViewBag.Username">Create (c)</a>
 
-	}
-</div>
+		@if (ViewBag.ShowAdminFunctions)
+		{
+			<a class="nav-link text" title="Adminstration" asp-area="" asp-controller="BookmarksHelper" asp-action="AdminMenu">Admin</a>
+		}
+	</div>
+}

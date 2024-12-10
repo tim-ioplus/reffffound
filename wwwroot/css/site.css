@@ -1,157 +1,232 @@
 html {
-  font-size: 12px;
-  font-family: Georgia !important;
+	font-size: 12px;
+	font-family: Georgia !important;
 }
 
 
 @media (min-width: 768px) {
-  html {
-    font-size: 14px;
-  }
+	html {
+		font-size: 14px;
+	}
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+	box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+	position: relative;
+	min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
-  font-family: Georgia !important;
+	max-width: 1024px;
+	margin-bottom: 36px;
+	font-family: Georgia !important;
+	background-color: ghostwhite;
 }
 
-ul 
-{
-    margin:0;
-    padding:0;
-}
-a
-{
-    color:#0000ff !important;
-    /*color:#1d60d9;*/
-}
-a:hover
-{
-    text-decoration:underline;
+ul {
+	margin: 0;
+	padding: 0;
 }
 
-h1 {}
-h2 {}
-h3 {}
-h4 {}
-h5 {}
-h6 {}
-
-.staticmenu
-{
-    top:5px;
-    right:5px;
-    position:absolute;
-    font-size:12px;
+a {
+	color: #0000ff !important;
+	/*color:#1d60d9;*/
 }
-.staticmenu a
-{
 
+	a:hover {
+		text-decoration: underline;
+	}
+
+h1 {
 }
+
+h2 {
+}
+
+h3 {
+}
+
+h4 {
+}
+
+h5 {
+}
+
+h6 {
+}
+
+.staticmenu {
+	top: 5px;
+	right: 5px;
+	position: absolute;
+	font-size: 12px;
+}
+
+	.staticmenu a {
+	}
+
 .inactive, inactive a, .inactive a:hover {
-  color: #212529;
-  text-decoration: none;
-  cursor: wait;
+	color: #212529;
+	text-decoration: none;
+	cursor: wait;
 }
 
 .form-group, .form-group label, .form-group input, .form-group span {
-  min-width: 500px;
+	min-width: 500px;
 }
 
-.container
-{
-    margin-left:0px !important;
+.container {
+	margin-left: 0px !important;
 }
 
-.title
-{
-    margin-left:20px;
+.title {
+	margin-left: 20px;
 }
 
-.assets
+header
 {
-  margin-left: 12px;
+	border-bottom: 1px solid #f1f1f1;
+}
+main
+{
+	 border-left:1px solid #fbfbfb;
+}
+
+.assets {
+	margin: inherit;
+}
+
+.logo-fluid {
+	width: 128px;
+	height: auto;
+}
+
+@media (max-width: 1200px) {
+	.logo-fluid {
+		width: 96px;
+	}
+}
+
+@media (max-width: 992px) {
+	.logo-fluid {
+		width: 64px;
+	}
+}
+
+@media (max-width: 767px) {
+	.logo-fluid {
+		width: 32px;
+	}
 }
 
 .bookmarkblock {
-  margin: 5px 5px 50px 20px;
+	margin-bottom: 3rem !important;
 }
 
 .headerlink {
-  font-size: 18px;
-  white-space: nowrap;
+	font-size: 18px;
 }
-.quoted, .headerurl
-{
-    color:#9b9b9b;
+
+.quoted, .headerurl {
+	color: #9b9b9b;
 }
 
 .flaglink, .flaglink a {
-  color: #f1f1f1; /*#9b9b9b;*/
-  font-size: 0.875em;
-  text-decoration: none;
-  margin-top: 0px;
+	color: #f1f1f1; /*#9b9b9b;*/
+	font-size: 0.875em;
+	text-decoration: none;
+	margin-top: 0px;
 }
 
-.posted{}
-.savedby
-{
-    display:block;
+.posted {
 }
+
+.savedby {
+	display: block;
+	text-align: end;
+}
+
+#contextimages div {
+	padding-bottom: 1rem;
+	text-align: end;
+}
+
+.contextpreview {
+	width: 100%;
+	max-width: 100px;
+	height: auto;
+	opacity: 0.66;
+}
+
+	.contextpreview:hover {
+		opacity: 1;
+	}
 
 /* Page: Change Log */
-.versionbullets{
-    list-style-type:disc;
-    padding-left:12px;
+.versionbullets {
+	list-style-type: disc;
+	padding-left: 12px;
 }
 
-.versionbullets li {
+	.versionbullets li {
+	}
 
+.versionwip {
+	/*background-color:gold;*/
 }
-.versionwip
-{
-    /*background-color:gold;*/
-}
-.versionfinished
-{
-    /*background-color:lightgreen;*/
+
+.versionfinished {
+	/*background-color:lightgreen;*/
 }
 
 .menupartial {
-  margin-top: 18px;
-}
-.menupartial ul {
-    list-style-type:none;
+	margin-top: 18px;
 }
 
-#menu-activeuser{}
-#menu-signin{}
-#menu-context{}
+	.menupartial ul {
+		list-style-type: none;
+	}
+
+#menu-activeuser {
+}
+
+#menu-signin {
+}
+
+#menu-context {
+}
+
 #menu-legal {
-  font-size: 12px;
+	font-size: 12px;
 }
 
-.pagination a, .pagination span
-{
-    margin-left:12px;
-}
-.pagination .current
-{
-    text-decoration:none;
+#menuburger {
+	min-width: 32px;
+	min-height: 32px;
+	background-image: url(../assets/menu_hamburger.png);
 }
 
-.currentFilter
-{
-	 text-decoration: none;
+	#menuburger:hover {
+		background-image: url(../assets/menu_hamburger_hoover.png);
+	}
+
+.pagination {
+	margin-left: 12px;
+}
+
+	.pagination p a, .pagination p span {
+		margin-left: 12px;
+	}
+
+	.pagination .current {
+		text-decoration: none;
+	}
+
+.currentFilter {
+	text-decoration: none;
 }
 
 .contentcontextlegal {

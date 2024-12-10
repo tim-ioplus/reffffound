@@ -7,9 +7,10 @@
 	//border-left:1px solid #f0f0f0;padding-left:18px;
 *@
 @model List<reffffound.Models.Bookmark>
+<div class="row">
 
-<div style="margin-top:24px;"><span>you may also like this</span></div>
-<div style="max-width:auto;height:auto;margin-top:24px;">
+<div class="col-12" style="margin-top:24px;"><span>you may also like this</span></div>
+<div class="col-12" style="max-width:auto;height:auto;margin-top:24px;">
 
    @foreach(var bookmark in Model)
    {
@@ -24,8 +25,9 @@
 					  </td>
 				  </tr>
 			  </tbody>
-		  </table>
-		 		  
+		  </table>		 		  
 	  </div>
    }
+</div>
+
 </div>

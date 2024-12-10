@@ -10,86 +10,89 @@
 
 <div class="assets">
   @foreach (var bookmark in Model)
-  {
-	<blockquote class="bookmarkblock">
-	  <p class="bookmarkheader">
-		  <span class="quoted">Quoted From:</span>&nbsp;
-		  <span class="headerlink"><a target="_blank" href="@bookmark.Url">@bookmark.Title</a></span><br />
-		  <span class="headerurl">@bookmark.Url</span>
-	  </p>
-
-	  <table>
-	  <tr>
-		  <td style="width:500px;" valign="top">
-			  <p class="bookmarkimage">
-				  <a class="" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid" asp-route-referAction="List" asp-route-referUsername="@ViewBag.Username" asp-route-referPage="@ViewBag.CurrentPage">
-					 <image style="max-width:500px;height:auto;" title="@bookmark.Title on @bookmark.Url" src="@bookmark.Image"></image>
-				  </a>
-			  </p>
-		  </td>
-		  <td style="vertical-align:top;width:100px;height:auto;border-left:1px solid #f0f0f0;padding-left:18px;">
-			@if (bookmark.Context1img != "" && bookmark.Context1link != "")
-			{
-				<div class="related-xs" style="margin-left:18px; margin:18px;">
-					<a class="" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Context1link" asp-route-referAction="List" asp-route-referUsername="@ViewBag.Username" asp-route-referPage="@ViewBag.CurrentPage">
-						<image style="max-width:100px;height:auto;" src="@bookmark.Context1img"></image>
-					</a>
+	{
+		{
+			ViewBag.HrColor = new List<string> { "cyan", "magenta", "yellow", "black" }[new Random().Next(0, 3)];
+			<hr style="background-color:@ViewBag.HrColor;height:2px;" />
+		}
+		<blockquote class="bookmarkblock">
+			<div class="row">
+				<div class="col-12">
+					<p class="bookmarkheader">
+						<span class="quoted">Quoted From:</span>&nbsp;
+						<span class="headerlink"><a target="_blank" title="@bookmark.Title on @bookmark.Url" href="@bookmark.Url">@bookmark.Title</a></span><br />
+						<span class="headerurl">@bookmark.Url</span>
+					</p>
 				</div>
-			}
-			@if (bookmark.Context2img != "" && bookmark.Context2link != "")
-			{
-				<div class="related-xs" style="margin-left:18px; margin:18px;">
-					<a class="" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Context2link" asp-route-referAction="List" asp-route-referUsername="@ViewBag.Username" asp-route-referPage="@ViewBag.CurrentPage">
-						<image style="max-width:100px;height:auto;" src="@bookmark.Context2img"></image>
-					</a>
+			</div>
+			<div class="row">
+				<div class="col-10 col-md-9">
+					<p class="bookmarkimage">
+						<a class="" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid" asp-route-referAction="@ViewBag.Action" asp-route-referUsername="@ViewBag.Username" asp-route-referPage="@ViewBag.CurrentPage">
+							<img class="img-fluid" style="" title="@bookmark.Title on @bookmark.Url" src="@bookmark.Image" />
+						</a>
+					</p>
 				</div>
-			}
-			@if (bookmark.Context3img != "" && bookmark.Context3link != "")
-			{
-				<div class="related-xs" style="margin-left:18px; margin:18px;">
-					<a class="" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Context3link" asp-route-referAction="List" asp-route-referUsername="@ViewBag.Username" asp-route-referPage="@ViewBag.CurrentPage">
-						<image style="max-width:100px;height:auto;" src="@bookmark.Context3img"></image>
-					</a>
+				<div id="contextimages" class="col-2 col-md-3">
+					@if (bookmark.Context1img != "" && bookmark.Context1link != "")
+					{
+						<div class="row">
+							<a class="" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Context1link" asp-route-referAction="@ViewBag.Action" asp-route-referUsername="@ViewBag.Username" asp-route-referPage="@ViewBag.CurrentPage">
+								<img class="contextpreview" src="@bookmark.Context1img" />
+							</a>
+						</div>
+					}
+					@if (bookmark.Context2img != "" && bookmark.Context2link != "")
+					{
+						<div class="row">
+							<a class="" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Context2link" asp-route-referAction="@ViewBag.Action" asp-route-referUsername="@ViewBag.Username" asp-route-referPage="@ViewBag.CurrentPage">
+								<img class="contextpreview" src="@bookmark.Context2img" />
+							</a>
+						</div>
+					}
+					@if (bookmark.Context3img != "" && bookmark.Context3link != "")
+					{
+						<div class="row">
+							<a class="" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Context3link" asp-route-referAction="@ViewBag.Action" asp-route-referUsername="@ViewBag.Username" asp-route-referPage="@ViewBag.CurrentPage">
+								<img class="contextpreview" src="@bookmark.Context3img" />
+							</a>
+						</div>
+					}
 				</div>
-			}
-		</td>
-	  </tr>
-	  </table>
-	  <p class="bookmarkfooter componentTodo">
-		  <span class="posted">Posted on: @bookmark.Timestamp </span><br>
-		  <a class="savedby" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid" asp-route-guid="@bookmark.Guid" asp-route-referAction="List" asp-route-referUsername="@ViewBag.Username" asp-route-referPage="@ViewBag.CurrentPage">Saved By @bookmark.Savedby People</a>
-	  </p>
-	</blockquote>
-  }
+			</div>
+			<div class="row">
+				<div class="col-10 col-md-9">
+					<div class="row">
+						<div class="col-6">
+							<p class="bookmarkfooter">
+								<span class="posted">Posted on: @bookmark.Timestamp </span>&nbsp;
+							</p>
+						</div>
+						<div class="col-6">
+							<p class="bookmarkfooter">
+								<a class="savedby" asp-area="" asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@bookmark.Guid" asp-route-referAction="@ViewBag.Action" asp-route-referUsername="@ViewBag.Username" asp-route-referPage="@ViewBag.CurrentPage">Saved By @bookmark.Savedby People</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-2 col-md-3">&nbsp;</div>
+			</div>
+		</blockquote>
+	}
 </div>
-<hr color="fuchsia"/>
+
+<hr style="color:fuchsia; background-color:fuchsia !important;border-color:fuchsia;" />
 @await Component.InvokeAsync("Pagination")
-<hr color="cyan"/>
+<hr style="color:cyan; background-color:cyan !important;border-color:cyan;" />
 
+@if (ViewBag.ShowUserFunctions)
+{
+   <div class="staticmenu">
+	   <a asp-controller="Bookmarks" asp-action="Create" asp-route-username="">Create (c)</a>
 
-<div class="staticmenu">
-	@if (ViewBag.ShowUserFunctions)
-	{
-		<a asp-controller="Bookmarks" asp-action="Create" asp-route-username="@ViewBag.Username">Create (c)</a>
-	}
-
-	<a class="inactive" href="javascript:void(0);" onmousedown="" onclick="return false;">tile(v)</a>
-	<a class="inactive" href="javascript:void(0);" onmousedown="" onclick="return false;">top(t)</a>
-	<a class="" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="@ViewBag.Filter" asp-route-page="@ViewBag.PreviousPage">previous (p)</a>
-	<a class="" asp-area="" asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="@ViewBag.Filter" asp-route-page="@ViewBag.NextPage">next (n)</a>
-	<!-- use UserManager and Role -->
-
-
-
-	@if(@ViewBag.ShowUserFunctions && @ViewBag.IsAdminUser)
-	{
-		<!-- <a class="nav-link text" title="Hydrate Database" asp-area="" asp-controller="Bookmarks" asp-action="Hydrate" asp-route-username="@ViewBag.Username">Hydrate</a> -->
-		<a class="nav-link text" title="Hydrate Database" asp-area="" asp-controller="BookmarksHelper" asp-action="Hydrate">Hydrate</a>
-		<a class="nav-link text" title="Migrate ContentUsers (Sql > sqlite)" asp-area="" asp-controller="BookmarksHelper" asp-action="MigrateContentUsers">Migrate Content Users</a>
-		<a class="nav-link text" title="Migrate Bookmarks (Sql > sqlite)" asp-area="" asp-controller="BookmarksHelper" asp-action="MigrateBookmarks">Migrate Bookmarks</a>
-		<a class="nav-link text" title="Migrate Bookmarks (Sql > sqlite)" asp-area="" asp-controller="UserHelper" asp-action="MigrateUser">Migrate AspNetUsers</a>
-		<a class="nav-link text" title="Update Usercounts" asp-area="" asp-controller="BookmarksHelper" asp-action="UpdateUsercounts" asp-route-username="@ViewBag.Username">Update Usercounts</a>
-		<a class="nav-link text" title="Update Usernames" asp-area="" asp-controller="BookmarksHelper" asp-action="UpdateUsernames" asp-route-username="@ViewBag.Username">Update Usernames</a>
-	}
-</div>
-
+		@if (ViewBag.ShowAdminFunctions)
+		{
+			<a class="nav-link text" title="Adminstration" asp-area="" asp-controller="BookmarksHelper" asp-action="AdminMenu">Admin</a>
+		}
+	</div>
+}

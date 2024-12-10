@@ -1,0 +1,14 @@
+@{
+	ViewData["Title"] = "AdministrativeFunctions";
+}
+<div class="row">
+	<div class="col-12">
+		<a class="nav-link text" title="Hydrate Database" asp-area="" asp-controller="BookmarksHelper" asp-action="Hydrate">Hydrate</a><br />
+		<a class="nav-link text" title="Migrate ContentUsers (Sql > sqlite)" asp-area="" asp-controller="BookmarksHelper" asp-action="MigrateContentUsers">Migrate Content Users</a><br />
+		<a class="nav-link text" title="Migrate Bookmarks (Sql > sqlite)" asp-area="" asp-controller="BookmarksHelper" asp-action="MigrateBookmarks">Migrate Bookmarks</a><br />
+		<a class="nav-link text" title="Migrate Bookmarks (Sql > sqlite)" asp-area="" asp-controller="UserHelper" asp-action="MigrateUser">Migrate AspNetUsers</a><br />
+		<a class="nav-link text" title="Update Usercounts" asp-area="" asp-controller="BookmarksHelper" asp-action="UpdateUsercounts" asp-route-username="@ViewBag.Username">Update Usercounts</a><br />
+		<a class="nav-link text" title="Update Usernames" asp-area="" asp-controller="BookmarksHelper" asp-action="UpdateUsernames" asp-route-username="@ViewBag.Username">Update Usernames</a><br />
+	</div>
+
+</div>

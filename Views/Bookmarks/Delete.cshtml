@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Bookmarks Details..";
 }
+<a asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@Model.Guid">Back to Detail</a><br />
 <h4>Delete Bookmark</h4>
 <hr />
 <div class="assets">
@@ -124,8 +125,9 @@
 	</div>
 </form>
 
-<div class="staticmenu">
-	<a asp-action="List" asp-controller="Bookmarks" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="1">Back to List</a>|
-	<a asp-action="Edit" asp-route-guid="@Model.Guid" asp-route-username="@ViewBag.Username">Edit (e)</a>|
-	<a>Delete (d)</a>
-</div>
+@if (ViewBag.ShowUserFunctions)
+{
+	<div class="staticmenu">
+		
+	</div>
+}

@@ -10,11 +10,6 @@
 			{
 			   <p>@ViewBag.ValidationMessage</p>
 			}
-            <div class="form-group" style="display:none">
-                <label asp-for="Usercontext" class="control-label"></label>
-                <input asp-for="Usercontext" class="form-control" value="@ViewBag.Username" />
-                <!-- <span asp-validation-for="" class="text-danger"></span> -->
-            </div>
             <div class="form-group">
                 <label asp-for="Url" class="control-label"></label>
                 <input id="urlinput" asp-for="Url" class="form-control" />

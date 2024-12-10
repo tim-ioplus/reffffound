@@ -1,5 +1,7 @@
 @model reffffound.Models.Bookmark
 
+<a asp-controller="Bookmarks" asp-action="Details" asp-route-guid="@Model.Guid">Back to Detail</a>
+<br />
 <h4>Edit Bookmark</h4>
 <hr />
 <div class="row">
@@ -110,11 +112,4 @@
             </div>
         </form>
     </div>
-</div>
-
-
-<div class="staticmenu">
-	<a asp-controller="Bookmarks" asp-action="List" asp-route-username="@ViewBag.Username" asp-route-filter="post" asp-route-page="1">Back to List</a>|
-	<a>Edit (e)</a>|
-	<a asp-controller="Bookmarks" asp-action="Delete" asp-route-guid="@Model.Guid">Delete (d)</a> 
 </div>

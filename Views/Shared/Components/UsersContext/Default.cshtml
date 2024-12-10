@@ -12,7 +12,12 @@
 
 	@foreach (var userBookmarks in Model)
 	{
-		<span> @userBookmarks.Key.ToString() latest posts </span> <br />
+		<div class="row">
+
+		   <div class="col-12">
+			   <span> @userBookmarks.Key.ToString() latest posts </span>
+			</div>
+		<div class="col-12">
 		@foreach (Bookmark bookmark in userBookmarks.Value)
 		{
 			<div style="margin:0px 20px 20px 0px;float:left;width:170px;">
@@ -30,7 +35,9 @@
 				</table>
 			</div>
 		}
+		</div>
 
 		<div style="clear:both;"><br /></div>
+		</div>
 	}
 </div>
