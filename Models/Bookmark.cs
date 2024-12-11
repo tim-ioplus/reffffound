@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Primitives;
 using NuGet.Packaging.Signing;
 using System;
 using System.ComponentModel;
@@ -59,17 +60,29 @@ namespace reffffound.Models
 			Guid = System.Guid.NewGuid( ).ToString( );
 			Timestamp = DateTime.Now.ToString( DatetimeFormat.Standard );
 
-			var url = collection["Url"][0] ?? "";
-			var title = collection["Title"][0] ?? "";
-			var image = collection["Image"][0] ?? "";
-			var usercontext = collection["Usercontext"][0] ?? "";
-			var username = usercontext;
+			var url =  "";
+			if(collection.TryGetValue("Url", out StringValues urlValues))
+			{
+				url = urlValues[0] ?? "";
+			}
 
+			var title = "";
+			if(collection.TryGetValue("Title", out StringValues titleValues))
+			{
+				title = titleValues[0] ?? "";
+			}
+
+			var image = "";
+			if(collection.TryGetValue("Image", out StringValues imageValues))
+			{
+				image = imageValues[0] ?? "";
+			}
+			
 			Url = url;
 			Title = title;
 			Image = image;
-			Usercontext = usercontext;
-			Username = username;
+
+			Usercontext = Username = "";
 			Savedby = 1;
 
 			Context1img = Context1link =
