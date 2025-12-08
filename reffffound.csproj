@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+	 <AssemblyVersion>1.1.0.0</AssemblyVersion>
+	 <Version>1.1</Version>
+    <FileVersion>1.1.0.0</FileVersion>
+    <InformationalVersion>13122024</InformationalVersion>
+	 <ReleaseDate>13.12.2024</ReleaseDate>
+	 <ReleaseName>Santas second coming</ReleaseName>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-WebApplication1-0dfecf14-09a5-4a07-af83-bc8bd9d443dc</UserSecretsId>
@@ -9,6 +15,15 @@
     <DockerfileContext>.</DockerfileContext>
   </PropertyGroup>
 
+  <ItemGroup>
+    <AssemblyAttribute Include="ReleaseDateAttribute">
+      <_Parameter1>$(ReleaseDate)</_Parameter1>
+    </AssemblyAttribute>
+	      <AssemblyAttribute Include="ReleaseNameAttribute">
+      <_Parameter1>$(ReleaseName)</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+	
   <ItemGroup>
     <Compile Remove="NewFolder\**" />
     <Compile Remove="Views\NewFolder\**" />

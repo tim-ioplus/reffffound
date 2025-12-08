@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using reffffound.Models;
+using System.Reflection;
 
 namespace reffffound.Controllers
 {
@@ -19,7 +20,15 @@ namespace reffffound.Controllers
         }
         public IActionResult ChangeLog()
         {
-            return View();
+				var assembly = Assembly.GetExecutingAssembly( );
+				if(assembly != null)
+				{
+					ViewBag.FileVersion = assembly.GetCustomAttribute<AssemblyFileVersionAttribute>( )?.Version;
+					ViewBag.ReleaseName = assembly.GetCustomAttribute<ReleaseNameAttribute>()?.Name;
+					ViewBag.ReleaseDate = assembly.GetCustomAttribute<ReleaseDateAttribute>()?.Date;
+				}
+
+				return View();
         }
         public IActionResult Contact()
         {

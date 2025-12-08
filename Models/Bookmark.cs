@@ -49,6 +49,7 @@ namespace reffffound.Models
 			Timestamp = timestamp != "" ? timestamp : DateTime.Now.ToString( DatetimeFormat.Standard );
 
 			Savedby = 1;
+			Url = Title = Image = Usercontext = Username = 
 			Context1img = Context1link =
 			Context2img = Context2link =
 			Context3img = Context3link =

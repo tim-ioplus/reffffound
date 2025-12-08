@@ -58,6 +58,21 @@ h5 {
 h6 {
 }
 
+.bg-magenta
+{
+	 background-color: magenta;
+}
+
+.float-right
+{
+	 float:right;
+}
+
+.float-right:hover
+{
+	 cursor:pointer;
+}
+
 .staticmenu {
 	top: 5px;
 	right: 5px;
@@ -132,6 +147,13 @@ main
 
 .quoted, .headerurl {
 	color: #9b9b9b;
+}
+
+.headerurl
+{
+	display:block;
+	height:16px;
+	overflow:hidden;
 }
 
 .flaglink, .flaglink a {
