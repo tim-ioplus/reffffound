@@ -30,7 +30,8 @@ namespace reffffound.Services
 			var invalidurls = new List<string>()
 			{
 				"facebook.com","facebook.net","fbcdn.net","fbcdn.com","fb.com","fbcdn-profile-a.akamaihd.net",
-				"spot.im", "/cdn-cgi/pe/bag2?*connect.facebook.com", "/cdn-cgi/pe/bag2?*connect.facebook.net"
+				"spot.im", "/cdn-cgi/pe/bag2?*connect.facebook.com", "/cdn-cgi/pe/bag2?*connect.facebook.net",
+				"instagram.com","instagram.net"
 			};
 
 			var urlInvalid = string.IsNullOrWhiteSpace(urlToCheck) || invalidurls.Any(u => urlToCheck.Contains(u));

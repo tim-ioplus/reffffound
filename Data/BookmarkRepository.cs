@@ -20,6 +20,7 @@ namespace reffffound.Data
 {
 	public class BookmarkRepository : DataRepository
 	{
+		private const string sqlparamUsername = "@username";
 		public string ContentRootPath = "";
 		private string _connectionString;
 
@@ -32,6 +33,7 @@ namespace reffffound.Data
 		{
 			if (string.IsNullOrWhiteSpace( bookmark.Guid )) throw new NoNullAllowedException( );
 			if (string.IsNullOrWhiteSpace( bookmark.Url )) throw new NoNullAllowedException( );
+			if (string.IsNullOrWhiteSpace( bookmark.FullUrl )) ;/* throw new NoNullAllowedException( )*/ ;
 			if (string.IsNullOrWhiteSpace( bookmark.Title )) throw new NoNullAllowedException( );
 			if (bookmark.Title.Length > 64) bookmark.Title = bookmark.Title.Substring( 0, 64 );
 			if (string.IsNullOrWhiteSpace( bookmark.Image )) throw new NoNullAllowedException( );
@@ -60,7 +62,7 @@ namespace reffffound.Data
                 VALUES
                 (@guid, @url,@title,@image, @savedBy, 
                 @timestamp,@usercontext,@fullUrl, 
-                @context1link,@context1img,@context2link,@context2img,@context3link,@context3img, @username);";
+                @context1link,@context1img,@context2link,@context2img,@context3link,@context3img, {sqlparamUsername});";
 
 					using (SqlCommand command = new SqlCommand( sql, connection ))
 					{
@@ -71,7 +73,7 @@ namespace reffffound.Data
 						command.Parameters.AddWithValue( "@savedBy", bookmark.Savedby );
 						command.Parameters.AddWithValue( "@timestamp", bookmark.Timestamp );
 						command.Parameters.AddWithValue( "@usercontext", bookmark.Usercontext );
-						command.Parameters.AddWithValue( "@username", bookmark.Username );
+						command.Parameters.AddWithValue( sqlparamUsername, bookmark.Username );
 						command.Parameters.AddWithValue( "@fullUrl", bookmark.FullUrl ?? "" );
 						command.Parameters.AddWithValue( "@context1link", bookmark.Context1link ?? "" );
 						command.Parameters.AddWithValue( "@context1img", bookmark.Context1img ?? "" );
@@ -510,7 +512,7 @@ namespace reffffound.Data
 					{
 						if(filter == "feed")
 						{
-							sql += " where Username = @username ur Usercontext Contains (@username)";
+							sql += " where Username = @username or Usercontext Contains (@username)";
 						}
 						else if(filter == "post")
 						{
@@ -519,8 +521,7 @@ namespace reffffound.Data
 						else if(filter == "found")
 						{
 							sql += " where Username = @username";
-						}
-						
+						}						
 					}
 
 					using (var command = new SqlCommand( sql, connection ))

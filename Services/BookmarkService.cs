@@ -36,7 +36,7 @@ namespace reffffound.Services
 			{
 				_bookmarkRepository.Create( bookmark );
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
 				throw;
 			}
