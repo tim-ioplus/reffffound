@@ -422,4 +422,5 @@ obj/Debug/net8.0/reffffound.assets.cache
 obj/Debug/net8.0/reffffound.GeneratedMSBuildEditorConfig.editorconfig
 /bin
 /.vs
-/obj
+/obj/*
+/.vs/*
