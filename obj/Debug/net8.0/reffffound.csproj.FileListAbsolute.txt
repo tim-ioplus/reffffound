@@ -547,11 +547,6 @@ C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\reffffound.RazorAssemb
 C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\reffffound.sourcelink.json
 C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\staticwebassets\msbuild.reffffound.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\staticwebassets\msbuild.build.reffffound.props
-C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.reffffound.props
-C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.reffffound.props
-C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\scopedcss\bundle\reffffound.styles.css
 C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\scopedcss\projectbundle\reffffound.bundle.scp.css
@@ -569,3 +564,11 @@ C:\Users\T14\Documents\GitHub\reffffound\bin\Debug\net8.0\Assets\menu_hamburger_
 C:\Users\T14\Documents\GitHub\reffffound\bin\Debug\net8.0\wwwroot\assets\menu_hamburger.png
 C:\Users\T14\Documents\GitHub\reffffound\bin\Debug\net8.0\wwwroot\assets\menu_hamburger_hoover.png
 C:\Users\T14\Documents\GitHub\reffffound\bin\Debug\net8.0\wwwroot\assets\logo_ECinverttransparent.png
+C:\Users\T14\Documents\GitHub\reffffound\bin\Debug\net8.0\reffffound.staticwebassets.endpoints.json
+C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\T14\Documents\GitHub\reffffound\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

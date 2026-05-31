@@ -3,72 +3,68 @@
   "WorkspaceRootPath": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\data\\bookmarkrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:data\\bookmarkrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\models\\bookmark.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:models\\bookmark.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\services\\bookmarkservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:services\\bookmarkservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\services\\bookmarkcontextservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:services\\bookmarkcontextservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\controllers\\bookmarkscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:controllers\\bookmarkscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\views\\bookmarks\\create2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:views\\bookmarks\\create2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\views\\bookmarks\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:views\\bookmarks\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\services\\imageprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:services\\imageprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\services\\bookmarkservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:services\\bookmarkservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\controllers\\bookmarkscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:controllers\\bookmarkscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\data\\bookmarkrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:data\\bookmarkrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\views\\bookmarks\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:views\\bookmarks\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\components\\userscontextviewcomponent\\userscontextviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:components\\userscontextviewcomponent\\userscontextviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\services\\usercontextservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:services\\usercontextservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\areas\\identity\\pages\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:areas\\identity\\pages\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\models\\bookmark.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:models\\bookmark.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\areas\\identity\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:areas\\identity\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\views\\home\\changelog.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:views\\home\\changelog.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\reffffound.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:reffffound.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\controllers\\userhelpercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:controllers\\userhelpercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\views\\bookmarks\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:views\\bookmarks\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\views\\bookmarks\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:views\\bookmarks\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\controllers\\bookmarkshelpercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:controllers\\bookmarkshelpercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\services\\contentmoderationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:services\\contentmoderationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\T14\\AppData\\Local\\Temp\\.vsdbgsrc\\1cc6d2a634203e0de348b5980fee97b87977d5074b436e24ff974f8438968be4\\ActionMethodExecutor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -122,10 +118,6 @@
       "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\services\\usercontextservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:services\\usercontextservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|c:\\users\\t14\\documents\\github\\reffffound\\views\\shared\\components\\activeusers\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{15E97125-2766-4552-9B3E-1824322B4F12}|reffffound.csproj|solutionrelative:views\\shared\\components\\activeusers\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -141,24 +133,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 269,
-          "SelectedChildIndex": 13,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-15T16:55:38.936Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Bookmarks\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Bookmarks\\Index.cshtml",
@@ -167,19 +146,90 @@
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAFkAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-13T16:02:49.883Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Bookmarks\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Bookmarks\\Create.cshtml",
+              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Bookmarks\\Create.cshtml",
+              "RelativeToolTip": "Views\\Bookmarks\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-10T18:31:43.262Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Bookmark.cs",
+              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Models\\Bookmark.cs",
+              "RelativeDocumentMoniker": "Models\\Bookmark.cs",
+              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Models\\Bookmark.cs",
+              "RelativeToolTip": "Models\\Bookmark.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAkwAsAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T14:12:16.448Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BookmarkRepository.cs",
+              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Data\\BookmarkRepository.cs",
+              "RelativeDocumentMoniker": "Data\\BookmarkRepository.cs",
+              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Data\\BookmarkRepository.cs",
+              "RelativeToolTip": "Data\\BookmarkRepository.cs",
+              "ViewState": "AgIAAH0BAAAAAAAAAAApwFMBAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T19:36:30.894Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BookmarksController.cs",
+              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Controllers\\BookmarksController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BookmarksController.cs",
+              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Controllers\\BookmarksController.cs",
+              "RelativeToolTip": "Controllers\\BookmarksController.cs",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAkwNkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T19:40:33.808Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "BookmarkService.cs",
               "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Services\\BookmarkService.cs",
               "RelativeDocumentMoniker": "Services\\BookmarkService.cs",
               "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Services\\BookmarkService.cs",
               "RelativeToolTip": "Services\\BookmarkService.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBYAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAuwKAAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-22T12:19:15.35Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Create2.cshtml",
+              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Bookmarks\\Create2.cshtml",
+              "RelativeDocumentMoniker": "Views\\Bookmarks\\Create2.cshtml",
+              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Bookmarks\\Create2.cshtml",
+              "RelativeToolTip": "Views\\Bookmarks\\Create2.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-07T19:58:33.559Z",
               "EditorCaption": ""
             },
             {
@@ -200,180 +250,116 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAcwCMAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "ImageProcessor.cs",
+              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Services\\ImageProcessor.cs",
+              "RelativeDocumentMoniker": "Services\\ImageProcessor.cs",
+              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Services\\ImageProcessor.cs",
+              "RelativeToolTip": "Services\\ImageProcessor.cs",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAAAJAAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T20:57:34.008Z",
+              "WhenOpened": "2026-05-03T13:44:04.969Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "reffffound.csproj",
-              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\reffffound.csproj",
-              "RelativeDocumentMoniker": "reffffound.csproj",
-              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\reffffound.csproj",
-              "RelativeToolTip": "reffffound.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-12-11T20:46:30.548Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "UsersContextViewComponent.cs",
+              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Components\\UsersContextViewComponent\\UsersContextViewComponent.cs",
+              "RelativeDocumentMoniker": "Components\\UsersContextViewComponent\\UsersContextViewComponent.cs",
+              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Components\\UsersContextViewComponent\\UsersContextViewComponent.cs",
+              "RelativeToolTip": "Components\\UsersContextViewComponent\\UsersContextViewComponent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T20:42:29.074Z"
+              "WhenOpened": "2026-05-03T12:58:43.846Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "Bookmark.cs",
-              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Models\\Bookmark.cs",
-              "RelativeDocumentMoniker": "Models\\Bookmark.cs",
-              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Models\\Bookmark.cs",
-              "RelativeToolTip": "Models\\Bookmark.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAQwGkAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-05T14:12:16.448Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "BookmarksController.cs",
-              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Controllers\\BookmarksController.cs",
-              "RelativeDocumentMoniker": "Controllers\\BookmarksController.cs",
-              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Controllers\\BookmarksController.cs",
-              "RelativeToolTip": "Controllers\\BookmarksController.cs",
-              "ViewState": "AgIAAGIAAAAAAAAAAAAwwHYAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-05T16:01:19.726Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "BookmarkContextService.cs",
-              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Services\\BookmarkContextService.cs",
-              "RelativeDocumentMoniker": "Services\\BookmarkContextService.cs",
-              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Services\\BookmarkContextService.cs",
-              "RelativeToolTip": "Services\\BookmarkContextService.cs",
-              "ViewState": "AgIAAA0BAAAAAAAAAAAIwBcBAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T20:13:26.813Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BookmarkRepository.cs",
-              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Data\\BookmarkRepository.cs",
-              "RelativeDocumentMoniker": "Data\\BookmarkRepository.cs",
-              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Data\\BookmarkRepository.cs",
-              "RelativeToolTip": "Data\\BookmarkRepository.cs",
-              "ViewState": "AgIAAEQBAAAAAAAAAADwv08BAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T17:14:53.667Z",
-              "EditorCaption": ""
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
+              "RelativeToolTip": "Areas\\Identity\\Pages\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-03T12:57:28.782Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "ChangeLog.cshtml",
-              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Home\\ChangeLog.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\ChangeLog.cshtml",
-              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Home\\ChangeLog.cshtml",
-              "RelativeToolTip": "Views\\Home\\ChangeLog.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAyAAAAAAAAAA==",
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
+              "RelativeToolTip": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-11T20:51:05.99Z"
+              "WhenOpened": "2026-05-03T12:57:27.581Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "wwwroot\\css\\site.css",
-              "ViewState": "AgIAAI0AAAAAAAAAAAAswJsAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-11-27T16:16:05.283Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Bookmarks\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\Bookmarks\\Create.cshtml",
-              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Bookmarks\\Create.cshtml",
-              "RelativeToolTip": "Views\\Bookmarks\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-10T18:31:43.262Z",
-              "EditorCaption": ""
+              "DocumentIndex": 12,
+              "Title": "UserHelperController.cs",
+              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Controllers\\UserHelperController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserHelperController.cs",
+              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Controllers\\UserHelperController.cs",
+              "RelativeToolTip": "Controllers\\UserHelperController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBIAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-03T12:57:10.935Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "site.js",
-              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\wwwroot\\js\\site.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
-              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\wwwroot\\js\\site.js",
-              "RelativeToolTip": "wwwroot\\js\\site.js",
-              "ViewState": "AgIAABMAAAAAAAAAAAAgwA8AAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-12-19T08:14:28.528Z"
+              "Title": "UserContextService.cs",
+              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Services\\UserContextService.cs",
+              "RelativeDocumentMoniker": "Services\\UserContextService.cs",
+              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Services\\UserContextService.cs",
+              "RelativeToolTip": "Services\\UserContextService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwBAAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T15:49:27.008Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
+              "Title": "BookmarksHelperController.cs",
+              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Controllers\\BookmarksHelperController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BookmarksHelperController.cs",
+              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Controllers\\BookmarksHelperController.cs",
+              "RelativeToolTip": "Controllers\\BookmarksHelperController.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAowBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T20:17:46.578Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "Detail.cshtml",
               "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Bookmarks\\Detail.cshtml",
               "RelativeDocumentMoniker": "Views\\Bookmarks\\Detail.cshtml",
               "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Bookmarks\\Detail.cshtml",
               "RelativeToolTip": "Views\\Bookmarks\\Detail.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-13T15:42:11.517Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 15,
-              "Title": "List.cshtml",
-              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Bookmarks\\List.cshtml",
-              "RelativeDocumentMoniker": "Views\\Bookmarks\\List.cshtml",
-              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Bookmarks\\List.cshtml",
-              "RelativeToolTip": "Views\\Bookmarks\\List.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-13T16:03:29.233Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "ContentModerationService.cs",
-              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Services\\ContentModerationService.cs",
-              "RelativeDocumentMoniker": "Services\\ContentModerationService.cs",
-              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Services\\ContentModerationService.cs",
-              "RelativeToolTip": "Services\\ContentModerationService.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwCMAAAAsAAAAAAAAAA==",
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAmwBQAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T18:45:42.946Z"
+              "WhenOpened": "2024-12-11T20:57:34.008Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 19,
               "Title": "AdminMenu.cshtml",
               "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\BookmarksHelper\\AdminMenu.cshtml",
               "RelativeDocumentMoniker": "Views\\BookmarksHelper\\AdminMenu.cshtml",
@@ -385,7 +371,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 16,
               "Title": "ActionMethodExecutor.cs",
               "DocumentMoniker": "C:\\Users\\T14\\AppData\\Local\\Temp\\.vsdbgsrc\\1cc6d2a634203e0de348b5980fee97b87977d5074b436e24ff974f8438968be4\\ActionMethodExecutor.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\1cc6d2a634203e0de348b5980fee97b87977d5074b436e24ff974f8438968be4\\ActionMethodExecutor.cs",
@@ -397,7 +383,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 17,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Bookmarks\\Edit.cshtml",
               "RelativeDocumentMoniker": "Views\\Bookmarks\\Edit.cshtml",
@@ -409,7 +395,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 20,
               "Title": "_LoginPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Shared\\_LoginPartial.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_LoginPartial.cshtml",
@@ -421,7 +407,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 21,
               "Title": "Default.cshtml",
               "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Shared\\Components\\Pagination\\Default.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\Components\\Pagination\\Default.cshtml",
@@ -433,7 +419,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 18,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Bookmarks\\Delete.cshtml",
               "RelativeDocumentMoniker": "Views\\Bookmarks\\Delete.cshtml",
@@ -445,7 +431,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 22,
               "Title": "PaginationViewComponent.cs",
               "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Components\\PaginationViewComponent\\PaginationViewComponent.cs",
               "RelativeDocumentMoniker": "Components\\PaginationViewComponent\\PaginationViewComponent.cs",
@@ -457,7 +443,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 24,
               "Title": "Contact.cshtml",
               "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Home\\Contact.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Contact.cshtml",
@@ -469,7 +455,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 23,
               "Title": "Register.cshtml",
               "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
               "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Register.cshtml",
@@ -481,7 +467,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 26,
               "Title": "DataRepository.cs",
               "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Data\\DataRepository.cs",
               "RelativeDocumentMoniker": "Data\\DataRepository.cs",
@@ -493,7 +479,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 25,
               "Title": "LogInServices.cshtml",
               "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Areas\\Identity\\Pages\\Account\\LogInServices.cshtml",
               "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\LogInServices.cshtml",
@@ -505,19 +491,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "UserContextService.cs",
-              "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Services\\UserContextService.cs",
-              "RelativeDocumentMoniker": "Services\\UserContextService.cs",
-              "ToolTip": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Services\\UserContextService.cs",
-              "RelativeToolTip": "Services\\UserContextService.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBAAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T15:49:27.008Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 29,
               "Title": "Default.cshtml",
               "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\Shared\\Components\\ActiveUsers\\Default.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\Components\\ActiveUsers\\Default.cshtml",
@@ -529,7 +503,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 28,
               "Title": "IUserService.cs",
               "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Services\\IUserService.cs",
               "RelativeDocumentMoniker": "Services\\IUserService.cs",
@@ -541,7 +515,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 27,
               "Title": "UserService.cs",
               "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "Services\\UserService.cs",
@@ -553,7 +527,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 30,
               "Title": "Hydrate.cshtml",
               "DocumentMoniker": "C:\\Users\\T14\\Documents\\GitHub\\reffffound\\Views\\BookmarksHelper\\Hydrate.cshtml",
               "RelativeDocumentMoniker": "Views\\BookmarksHelper\\Hydrate.cshtml",

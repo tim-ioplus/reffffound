@@ -18,6 +18,7 @@ namespace reffffound.Models
 		public string Guid { get; set; }
 		public string Url { get; set; }
 		public string Title { get; set; }
+		// the url to bitmap or data url
 		public string Image { get; set; }
 		public int Savedby { get; set; }
 		public string Timestamp { get; set; }

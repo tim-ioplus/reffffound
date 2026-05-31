@@ -1,13 +1,8 @@
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using reffffound.Data;
 using reffffound.Models;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using System;
-using System.ComponentModel.DataAnnotations;
-using NuGet.Packaging.Signing;
-using Microsoft.Extensions.Primitives;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
-using Microsoft.CodeAnalysis;
 
 namespace reffffound.Services
 {
@@ -109,7 +104,7 @@ namespace reffffound.Services
 			{
 				if (filter.Equals( "trending" ))
 				{
-					bookmarks = _data.Where(b => b.Savedby > 1).OrderByDescending( b => b.Timestamp ).Skip( skip ).Take( 10 ).ToList( );
+					bookmarks = _data.Where( b => b.Savedby > 1 ).OrderByDescending( b => b.Timestamp ).Skip( skip ).Take( 10 ).ToList( );
 				}
 				else
 				{

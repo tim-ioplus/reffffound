@@ -1,12 +1,7 @@
-using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.EntityFrameworkCore;
-using NuGet.Versioning;
 using reffffound.Data;
 using reffffound.Models;
 using reffffound.Services;
-using System.ComponentModel.Design;
 
 namespace reffffound.Controllers
 {
@@ -205,6 +200,10 @@ namespace reffffound.Controllers
 					return View( "Create", bookmark );
 				}
 
+				string imageUrl = bookmark.Image;
+
+				bookmark.Image = ImageProcessingSync.ProcessImageListToDataUrl( imageUrl );
+
 				_bookmarkService.Create( bookmark );
 
 				return RedirectToAction( nameof( Details ), "Bookmarks", new { guid = bookmark.Guid } );
@@ -307,7 +306,7 @@ namespace reffffound.Controllers
 					bookmark.UpdateFrom( collection );
 
 					var contentModerationService = new ContentModerationService( );
-					string urlValidationMessage  = "";
+					string urlValidationMessage = "";
 
 					if (!bookmark.IsValid( out string validationMessage ) ||
 						 !contentModerationService.AreUrlsValid( bookmark, out urlValidationMessage ))
